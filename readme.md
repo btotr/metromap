@@ -1,5 +1,7 @@
-exampel
+WIP
 
+# example
+```
 SELECT ?capabilityName ?capabilityBusinessABBName  ?capabilityBusinessSBBName
 WHERE {
 	?capability rdf:type archimate:Capability .
@@ -14,3 +16,4 @@ WHERE {
 	?capabilityBusinessSBB archimate:nameRef ?capabilityBusinessSBBRef .
 	?capabilityBusinessSBBRef dtype:value ?capabilityBusinessSBBName .
 }
+```
