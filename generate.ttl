@@ -1,11 +1,24 @@
 # baseURI: https://architecture.politie.nl/metromap/generate
 # imports: file:///metromap/beslaglegging.xml
+# imports: http://topbraid.org/sparqlmotionlib
+# imports: http://topbraid.org/sxml
+# imports: http://uispin.org/svg
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # imports: https://architecture.politie.nl/metromap/functions
+# imports: https://architecture.politie.nl/metromap/instance
+# prefix: generate
 
+@prefix generate: <https://architecture.politie.nl/metromap/generate#> .
+@prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://architecture.politie.nl/metromap/generate>
