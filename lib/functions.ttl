@@ -1,0 +1,75 @@
+# baseURI: https://architecture.politie.nl/metromap/functions
+# imports: http://spinrdf.org/spl
+# imports: http://www.opengroup.org/xsd/archimate/3.0/
+# prefix: functions
+
+@prefix functions: <https://architecture.politie.nl/metromap/functions#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://architecture.politie.nl/metromap/functions>
+  a owl:Ontology ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
+.
+functions:connectedElement
+  a spin:MagicProperty ;
+  spin:body [
+      a sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "source" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "targetId" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
+            sp:subject [
+                sp:varName "connection" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sourceConnectionId" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/source> ;
+            sp:subject [
+                sp:varName "connection" ;
+              ] ;
+          ]
+          [
+            a sp:Filter ;
+            sp:expression [
+                a sp:eq ;
+                sp:arg1 spin:_arg1 ;
+                sp:arg2 [
+                    sp:varName "targetId" ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sourceConnectionId" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+            sp:subject [
+                sp:varName "source" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:predicate sp:arg1 ;
+    ] ;
+  rdfs:label "connected element" ;
+  rdfs:subClassOf spin:select ;
+.

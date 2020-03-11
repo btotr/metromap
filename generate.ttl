@@ -1,0 +1,16 @@
+# baseURI: https://architecture.politie.nl/metromap/generate
+# imports: file:///metromap/beslaglegging.xml
+# imports: http://www.opengroup.org/xsd/archimate/3.0/
+# imports: https://architecture.politie.nl/metromap/functions
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://architecture.politie.nl/metromap/generate>
+  a owl:Ontology ;
+  owl:imports <file:///metromap/beslaglegging.xml> ;
+  owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
+  owl:imports <https://architecture.politie.nl/metromap/functions> ;
+.
