@@ -1,18 +1,23 @@
 <html>
 	<head>
 		<title>metromap</title>
-		<script src="go.js"></script>
+		<script src="cytoscape.min.js"></script>
+		<script src="cytoscape-cxtmenu.js"></script>
+		<script src="cytoscape-klay.js"></script>
 		<script src="model.js"></script>
 		<script src="view.js"></script>
+		<script src="controller.js"></script>
   		<style>
-	  		html, body #metromap  {
+	  		html, body #cy  {
 	  			witdh:100%;
 	  			height:100%;
+	  			font-family: verdana;
+	  			font-size:10px;
 	  		}
   		</style>
   		
 	</head>
 	<body>
-		<div id="metromap"></div>
+		<div id="cy"></div>
 	</body>
 </html>
