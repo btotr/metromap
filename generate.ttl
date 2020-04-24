@@ -1,13 +1,10 @@
 # baseURI: https://architecture.politie.nl/metromap/generate
-# imports: file:///metromap/beslaglegging.xml
-# imports: http://topbraid.org/sparqlmotionlib
-# imports: http://topbraid.org/sxml
-# imports: http://uispin.org/svg
-# imports: http://www.opengroup.org/xsd/archimate/3.0/
+# imports: http://beslaglegging.politie.nl/
+# imports: http://metro.politie.nl
 # imports: https://architecture.politie.nl/metromap/functions
-# imports: https://architecture.politie.nl/metromap/instance
 # prefix: generate
 
+@prefix b: <http://beslaglegging.politie.nl/> .
 @prefix generate: <https://architecture.politie.nl/metromap/generate#> .
 @prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -21,9 +18,324 @@
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+b:BB
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://metro.politie.nl#S> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+          [
+            sp:object <http://metro.politie.nl#L> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "i" ;
+              ] ;
+            sp:predicate <http://metro.politie.nl#T> ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sbb" ;
+              ] ;
+            sp:predicate <http://metro.politie.nl#T> ;
+            sp:subject [
+                sp:varName "i2" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "abb" ;
+              ] ;
+            sp:predicate b:R ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "i" ;
+              ] ;
+            sp:predicate b:A ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            sp:object b:I ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+          [
+            a sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "i" ;
+                    ] ;
+                  sp:predicate b:D ;
+                  sp:subject [
+                      sp:varName "i2" ;
+                    ] ;
+                ]
+                [
+                  sp:object b:I ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "i2" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "0002 metromap" ;
+    ] ;
+.
+b:C
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object b:ABB ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "abbLabel" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "i" ;
+              ] ;
+            sp:predicate b:A ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "s" ;
+              ] ;
+            sp:predicate b:A ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "f" ;
+              ] ;
+            sp:predicate b:A ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            sp:object b:SBB ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sbbLabel" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "c" ;
+              ] ;
+            sp:predicate b:A ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "c2" ;
+              ] ;
+            sp:predicate b:A ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "abb" ;
+              ] ;
+            sp:predicate b:R ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "f" ;
+              ] ;
+            sp:predicate b:X ;
+            sp:subject [
+                sp:varName "c" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "cLabel" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "c" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "s" ;
+              ] ;
+            sp:predicate b:R ;
+            sp:subject [
+                sp:varName "f" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sLabel" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "i" ;
+              ] ;
+            sp:predicate b:T ;
+            sp:subject [
+                sp:varName "f" ;
+              ] ;
+          ]
+          [
+            a sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "c2" ;
+                    ] ;
+                  sp:predicate b:V ;
+                  sp:subject [
+                      sp:varName "c" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:concat ;
+                sp:arg1 "SBB: " ;
+                sp:arg2 [
+                    sp:varName "sLabel" ;
+                  ] ;
+                sp:arg3 " " ;
+                sp:arg4 [
+                    sp:varName "cLabel" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "sbbLabel" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:concat ;
+                sp:arg1 "ABB: " ;
+                sp:arg2 [
+                    sp:varName "sLabel" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "abbLabel" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/ABB-" ;
+                    sp:arg2 [
+                        sp:varName "sLabel" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://archimate.politie.nl/SBB-" ;
+                    sp:arg2 [
+                        sp:varName "sLabel" ;
+                      ] ;
+                    sp:arg3 "-" ;
+                    sp:arg4 [
+                        sp:varName "cLabel" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "0001 Aanmaken Building Blocks" ;
+    ] ;
+.
+b:samenstellen_teruggave_beslag
+  b:R b:administreren_overdracht_inbeslagname_goed ;
+.
+b:vastleggen_goed
+  b:R b:administrren_inbeslagname_goed ;
+.
 <https://architecture.politie.nl/metromap/generate>
   a owl:Ontology ;
-  owl:imports <file:///metromap/beslaglegging.xml> ;
-  owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
+  owl:imports b: ;
+  owl:imports <http://metro.politie.nl> ;
   owl:imports <https://architecture.politie.nl/metromap/functions> ;
 .

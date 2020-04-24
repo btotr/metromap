@@ -16,7 +16,7 @@ View.prototype.style = [
 	    selector: 'node',
 	    style: {
 	      'background-color': 'data(color)' ,
-	      'label': 'data(id)',
+	      'label': 'data(parent)',
     	  'pie-size': '80%',
           'pie-1-background-color': '#E8747C',
           'pie-1-background-size': 'mapData(foo, 0, 8, 0, 100)',
@@ -35,15 +35,15 @@ View.prototype.style = [
 	      'curve-style': 'unbundled-bezier',
 	      'line-color': 'data(color)',
 	      'target-arrow-color': 'data(color)',
-	      'target-arrow-shape': 'triangle'
+	      'target-arrow-shape': 'straight'
 	    }
 	  },
 	  {
 	    selector: 'parent',
 	    style: {
-	    	'background-opacity': '0.1',
-	    	'background-color': '#111',
-	      	'border-style':'dotted'
+	    	'background': 'none',
+	      	'border':'1px',
+	      	'label' : ''
 	    }
 	  }
 ];

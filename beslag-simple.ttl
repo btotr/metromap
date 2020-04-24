@@ -1,0 +1,127 @@
+# baseURI: http://beslaglegging.politie.nl/
+
+@prefix : <http://beslaglegging.politie.nl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:A
+  a rdf:Property ;
+  rdfs:domain :BB ;
+  rdfs:label "A" ;
+  rdfs:range owl:Thing ;
+.
+:ABB
+  a owl:Class ;
+  rdfs:label "ABB" ;
+  rdfs:subClassOf :BB ;
+.
+:B
+  a owl:Class ;
+  rdfs:label "B" ;
+  rdfs:subClassOf owl:Thing ;
+.
+:BB
+  a owl:Class ;
+  rdfs:label "BB" ;
+  rdfs:subClassOf owl:Thing ;
+.
+:C
+  a owl:Class ;
+  rdfs:label "C" ;
+  rdfs:subClassOf owl:Thing ;
+.
+:D
+  a owl:ObjectProperty ;
+  rdfs:domain :B ;
+  rdfs:label "D" ;
+  rdfs:range :B ;
+.
+:F
+  a owl:Class ;
+  rdfs:label "F" ;
+  rdfs:subClassOf owl:Thing ;
+.
+:I
+  a owl:Class ;
+  rdfs:label "I" ;
+  rdfs:subClassOf :B ;
+.
+:R
+  a rdf:Property ;
+  rdfs:domain :F ;
+  rdfs:label "R" ;
+  rdfs:range :S ;
+.
+:S
+  a owl:Class ;
+  rdfs:label "S" ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SBB
+  a owl:Class ;
+  rdfs:label "SBB" ;
+  rdfs:subClassOf :BB ;
+.
+:T
+  a rdf:Property ;
+  rdfs:domain :F ;
+  rdfs:label "T" ;
+  rdfs:range :I ;
+.
+:V
+  a rdf:Property ;
+  rdfs:domain :C ;
+  rdfs:label "V" ;
+  rdfs:range :C ;
+.
+:X
+  a rdf:Property ;
+  rdfs:domain :C ;
+  rdfs:label "X" ;
+  rdfs:range :F ;
+.
+:administreren_overdracht_inbeslagname_goed
+  a :S ;
+  rdfs:label "administreren overdracht inbeslagname goed" ;
+.
+:administrren_inbeslagname_goed
+  a :S ;
+  rdfs:label "administrren inbeslagname goed" ;
+.
+:beheer_beslag
+  a :B ;
+  :D :goed ;
+  rdfs:label "beheer beslag" ;
+.
+:bvh
+  a :C ;
+  :X :samenstellen_teruggave_beslag ;
+  :X :vastleggen_goed ;
+  rdfs:label "bvh" ;
+.
+:goed
+  a :I ;
+  :D :teruggave_beslag ;
+  rdfs:label "goed" ;
+.
+:samenstellen_teruggave_beslag
+  a :F ;
+  :T :teruggave_beslag ;
+  rdfs:label "samenstellen teruggave beslag" ;
+.
+:summit
+  a :C ;
+  :X :vastleggen_goed ;
+  rdfs:label "summit" ;
+.
+:teruggave_beslag
+  a :I ;
+  rdfs:label "teruggave beslag" ;
+.
+:vastleggen_goed
+  a :F ;
+  :T :goed ;
+  rdfs:label "vastleggen goed" ;
+.
