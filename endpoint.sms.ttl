@@ -1,5 +1,4 @@
 # baseURI: http://metromap.politie.nl/service
-# imports: http://metromap.politie.org/endpoint
 # imports: http://topbraid.org/sparqlmotionlib
 # prefix: endpoint
 
@@ -23,7 +22,6 @@
 
 <http://metromap.politie.nl/service>
   a owl:Ontology ;
-  owl:imports <http://metromap.politie.org/endpoint> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
@@ -48,8 +46,8 @@ endpoint:ImportRDFFromWorkspace_1
 .
 endpoint:ReturnSWPDocument_1
   a sml:ReturnSWPDocument ;
-  sm:nodeX 108 ;
-  sm:nodeY 635 ;
+  sm:nodeX 99 ;
+  sm:nodeY 636 ;
   sml:snippet true ;
   sml:view [
       a swon:Object ;
@@ -70,23 +68,12 @@ endpoint:ReturnSWPDocument_1
                   a swon:Object ;
                   ui:child [
                       a swon:Value ;
-                      arg:name "group" ;
-                      arg:value [
-                          a ui:label ;
-                          sp:arg1 [
-                              sp:varName "nodeType" ;
-                            ] ;
-                        ] ;
-                      ui:childIndex 0 ;
-                    ] ;
-                  ui:child [
-                      a swon:Values ;
                       arg:name "data" ;
                       ui:child [
                           a swon:Value ;
                           arg:name "color" ;
                           arg:value "green" ;
-                          ui:childIndex 1 ;
+                          ui:childIndex 2 ;
                         ] ;
                       ui:child [
                           a swon:Value ;
@@ -97,7 +84,18 @@ endpoint:ReturnSWPDocument_1
                                   sp:varName "f" ;
                                 ] ;
                             ] ;
+                          ui:childIndex 1 ;
+                        ] ;
+                      ui:child [
+                          a ui:TextNode ;
                           ui:childIndex 0 ;
+                          ui:text "{" ;
+                        ] ;
+                      ui:child [
+                          a ui:TextNode ;
+                          ui:childIndex 5 ;
+                          ui:text """}
+                """ ;
                         ] ;
                       ui:child [
                           a ui:else ;
@@ -123,7 +121,7 @@ endpoint:ReturnSWPDocument_1
                                 ] ;
                               ui:childIndex 1 ;
                             ] ;
-                          ui:childIndex 3 ;
+                          ui:childIndex 4 ;
                         ] ;
                       ui:child [
                           a ui:if ;
@@ -133,7 +131,7 @@ endpoint:ReturnSWPDocument_1
                               arg:value "10" ;
                               ui:childIndex 0 ;
                             ] ;
-                          ui:childIndex 2 ;
+                          ui:childIndex 3 ;
                           ui:condition [
                               a sp:eq ;
                               sp:arg1 [
@@ -143,6 +141,17 @@ endpoint:ReturnSWPDocument_1
                             ] ;
                         ] ;
                       ui:childIndex 1 ;
+                    ] ;
+                  ui:child [
+                      a swon:Value ;
+                      arg:name "group" ;
+                      arg:value [
+                          a ui:label ;
+                          sp:arg1 [
+                              sp:varName "nodeType" ;
+                            ] ;
+                        ] ;
+                      ui:childIndex 0 ;
                     ] ;
                   ui:child [
                       a ui:CommentNode ;

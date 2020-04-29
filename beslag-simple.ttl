@@ -91,7 +91,7 @@
   rdfs:label "administrren inbeslagname goed" ;
 .
 :beheer_beslag
-  a :I ;
+  a :B ;
   :D :goed ;
   rdfs:label "beheer beslag" ;
 .

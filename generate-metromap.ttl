@@ -93,13 +93,6 @@ b:BB
                       sp:varName "i2" ;
                     ] ;
                 ]
-                [
-                  sp:object b:I ;
-                  sp:predicate rdf:type ;
-                  sp:subject [
-                      sp:varName "i2" ;
-                    ] ;
-                ]
               ) ;
           ]
         ) ;
