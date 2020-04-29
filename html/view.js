@@ -16,11 +16,11 @@ View.prototype.style = [
 	    selector: 'node',
 	    style: {
 	      'background-color': 'data(color)' ,
-	      'label': 'data(parent)',
+	      'label': 'data(id)',
     	  'pie-size': '80%',
-          'pie-1-background-color': '#E8747C',
+          'pie-1-background-color': '#FFFFFF',
           'pie-1-background-size': 'mapData(foo, 0, 8, 0, 100)',
-          'pie-2-background-color': '#74CBE8',
+          'pie-2-background-color': '#DDDDDD',
           'pie-2-background-size': 'mapData(bar, 0, 8, 0, 100)',
           'pie-3-background-color': '#74E883',
           'pie-3-background-size': 'mapData(baz, 0, 8, 0, 100)',
@@ -32,20 +32,22 @@ View.prototype.style = [
 	    selector: 'edge',
 	    style: {
 	      'width': 3,
-	      'curve-style': 'unbundled-bezier',
+	      'curve-style': 'bezier',
 	      'line-color': 'data(color)',
 	      'target-arrow-color': 'data(color)',
 	      'target-arrow-shape': 'straight'
 	    }
 	  },
 	  {
-	    selector: 'parent',
-	    style: {
-	    	'background': 'none',
-	      	'border':'1px',
-	      	'label' : ''
-	    }
-	  }
+		    selector: ':parent',
+		    style: {
+		    	'background-color':'white',
+		      	'label' : 'data(id)',
+		      	'text-margin-y': '-20px',
+		      	'color':'#888888',
+		      	'border-style': 'dashed'
+		    }
+		  }
 ];
 
 
@@ -61,7 +63,7 @@ View.prototype.addMenu = function(controller){
 	  selector: 'node',
 	  commands: [ 
 	    { 
-	      fillColor: 'rgba(200, 0, 0, 0.75)', 
+	      fillColor: 'rgba(120, 0, 0, 1)', 
 	      content: 'definitie', 
 	      contentStyle: {},
 	      select: function(ele){
@@ -70,26 +72,25 @@ View.prototype.addMenu = function(controller){
 	      enabled: true 
 	    },
 	    { 
-	      fillColor: 'rgba(0, 200, 200, 0.75)', 
-	      content: 'grondslag', 
+	      fillColor: 'rgba(0, 0, 150, 1)', 
+	      content: 'documentatie', 
 	      contentStyle: {},
 	      select: function(ele){
 	    	  controller.menuSelected(2,ele.id()) 
 	      },
 	      enabled: true 
 		 },
-	    { 
-	      fillColor: 'rgba(0, 0, 200, 0.75)', 
-	      content: 'opmerking', 
-	      contentStyle: {},
-	      select: function(ele){
-	    	  controller.menuSelected(3,ele.id()) 
-	      },
-	      enabled: true 
-	    },
-		    
+	    {
+		      fillColor: 'rgba(0, 130, 0, 1)', 
+		      content: 'versie', 
+		      contentStyle: {},
+		      select: function(ele){
+		    	  controller.menuSelected(3,ele.id()) 
+		      },
+		      enabled: true 
+			 }
 	  ], 
-	  fillColor: 'rgba(0, 0, 0, 0.75)', 
+	  fillColor: 'rgba(0, 0, 0, 1)', 
 	  activeFillColor: 'rgba(1, 105, 217, 0.75)', 
 	  activePadding: 20, 
 	  indicatorSize: 24, 

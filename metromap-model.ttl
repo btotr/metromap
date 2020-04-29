@@ -9,12 +9,12 @@
 
 m:L
   a owl:Class ;
-  rdfs:label "L" ;
+  rdfs:label "edges" ;
   rdfs:subClassOf owl:Thing ;
 .
 m:S
   a owl:Class ;
-  rdfs:label "Station" ;
+  rdfs:label "nodes" ;
   rdfs:subClassOf owl:Thing ;
 .
 m:T

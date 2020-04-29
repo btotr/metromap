@@ -1,0 +1,249 @@
+# baseURI: http://metromap.politie.nl/service
+# imports: http://metromap.politie.org/endpoint
+# imports: http://topbraid.org/sparqlmotionlib
+# prefix: endpoint
+
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix dbpo: <http://dbpedia.org/ontology/> .
+@prefix endpoint: <http://metromap.politie.nl/service#> .
+@prefix m: <http://metro.politie.nl/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix swon: <http://uispin.org/swon#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://metromap.politie.nl/service>
+  a owl:Ontology ;
+  owl:imports <http://metromap.politie.org/endpoint> ;
+  owl:imports <http://topbraid.org/sparqlmotionlib> ;
+  owl:versionInfo "simple example for sparqlMotion" ;
+.
+endpoint:ApplyTopSPIN_1
+  a sml:ApplyTopSPIN ;
+  sm:next endpoint:ReturnSWPDocument_1 ;
+  sm:nodeX 123 ;
+  sm:nodeY 458 ;
+  sml:predicate spin:rule ;
+  sml:replace false ;
+  sml:singlePass false ;
+  rdfs:label "Apply top SPIN 1" ;
+.
+endpoint:ImportRDFFromWorkspace_1
+  a sml:ImportRDFFromWorkspace ;
+  sm:next endpoint:ApplyTopSPIN_1 ;
+  sm:nodeX 69 ;
+  sm:nodeY 311 ;
+  sml:ignoreImports false ;
+  sml:sourceFilePath "generate-metromap.ttl" ;
+  rdfs:label "Import RDFFrom workspace 1" ;
+.
+endpoint:ReturnSWPDocument_1
+  a sml:ReturnSWPDocument ;
+  sm:nodeX 108 ;
+  sm:nodeY 635 ;
+  sml:snippet true ;
+  sml:view [
+      a swon:Object ;
+      ui:child [
+          a swon:Value ;
+          arg:name "debug" ;
+          arg:value [
+              sp:varName "debug" ;
+            ] ;
+          ui:childIndex 0 ;
+        ] ;
+      ui:child [
+          a swon:Values ;
+          arg:name "metromap" ;
+          ui:child [
+              a ui:forEach ;
+              ui:child [
+                  a swon:Object ;
+                  ui:child [
+                      a swon:Value ;
+                      arg:name "group" ;
+                      arg:value [
+                          a ui:label ;
+                          sp:arg1 [
+                              sp:varName "nodeType" ;
+                            ] ;
+                        ] ;
+                      ui:childIndex 0 ;
+                    ] ;
+                  ui:child [
+                      a swon:Values ;
+                      arg:name "data" ;
+                      ui:child [
+                          a swon:Value ;
+                          arg:name "color" ;
+                          arg:value "green" ;
+                          ui:childIndex 1 ;
+                        ] ;
+                      ui:child [
+                          a swon:Value ;
+                          arg:name "id" ;
+                          arg:value [
+                              a ui:label ;
+                              sp:arg1 [
+                                  sp:varName "f" ;
+                                ] ;
+                            ] ;
+                          ui:childIndex 0 ;
+                        ] ;
+                      ui:child [
+                          a ui:else ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "source" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "f" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 0 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "target" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "t" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 1 ;
+                            ] ;
+                          ui:childIndex 3 ;
+                        ] ;
+                      ui:child [
+                          a ui:if ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "foo" ;
+                              arg:value "10" ;
+                              ui:childIndex 0 ;
+                            ] ;
+                          ui:childIndex 2 ;
+                          ui:condition [
+                              a sp:eq ;
+                              sp:arg1 [
+                                  sp:varName "nodeType" ;
+                                ] ;
+                              sp:arg2 "nodes" ;
+                            ] ;
+                        ] ;
+                      ui:childIndex 1 ;
+                    ] ;
+                  ui:child [
+                      a ui:CommentNode ;
+                      ui:childIndex 2 ;
+                      rdfs:comment """
+					{ group: 'nodes', data: { id: 'teruggave beslag', color: 'black',  foo: 10} }
+		  			{ group: 'edges', data: { id: 'beheren beslag-goed-bvh', source: 'beheren beslag', target: 'goed', color: 'green' } },
+				""" ;
+                    ] ;
+                  ui:childIndex 0 ;
+                ] ;
+              ui:childIndex 0 ;
+              ui:resultSet [
+                  a sp:Select ;
+                  sp:resultVariables (
+                      [
+                        sp:varName "f" ;
+                      ]
+                      [
+                        sp:varName "t" ;
+                      ]
+                      [
+                        sp:varName "nodeType" ;
+                      ]
+                    ) ;
+                  sp:where (
+                      [
+                        sp:object [
+                            sp:varName "t" ;
+                          ] ;
+                        sp:predicate <http://metro.politie.nl#T> ;
+                        sp:subject [
+                            sp:varName "f" ;
+                          ] ;
+                      ]
+                      [
+                        sp:object [
+                            sp:varName "class" ;
+                          ] ;
+                        sp:predicate rdf:type ;
+                        sp:subject [
+                            sp:varName "f" ;
+                          ] ;
+                      ]
+                      [
+                        sp:object [
+                            sp:varName "nodeType" ;
+                          ] ;
+                        sp:predicate rdfs:label ;
+                        sp:subject [
+                            sp:varName "class" ;
+                          ] ;
+                      ]
+                      [
+                        a sp:Filter ;
+                        sp:expression [
+                            a sp:or ;
+                            sp:arg1 [
+                                a sp:eq ;
+                                sp:arg1 [
+                                    sp:varName "class" ;
+                                  ] ;
+                                sp:arg2 <http://metro.politie.nl#S> ;
+                              ] ;
+                            sp:arg2 [
+                                a sp:eq ;
+                                sp:arg1 [
+                                    sp:varName "class" ;
+                                  ] ;
+                                sp:arg2 <http://metro.politie.nl#L> ;
+                              ] ;
+                          ] ;
+                      ]
+                    ) ;
+                ] ;
+              ui:separator "," ;
+            ] ;
+          ui:childIndex 1 ;
+        ] ;
+    ] ;
+  rdfs:label "Return SWPDocument 1" ;
+.
+endpoint:begrippenkader
+  a owl:DatatypeProperty ;
+  rdfs:label "debug" ;
+.
+endpoint:metromap
+  a spin:Function ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "false" ;
+      spl:optional true ;
+      spl:predicate endpoint:debug ;
+      spl:valueType xsd:string ;
+      sm:next endpoint:ImportRDFFromWorkspace_1 ;
+      sm:nodeX 33 ;
+      sm:nodeY 149 ;
+    ] ;
+  sm:returnModule endpoint:ReturnSWPDocument_1 ;
+  rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=metromap" ;
+  rdfs:comment "the instance name is used as idenifier for the request" ;
+  rdfs:label "request" ;
+  rdfs:subClassOf sm:Functions ;
+.

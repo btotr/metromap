@@ -1,0 +1,43 @@
+# baseURI: file:/C:/Users/c_mee/git/metromap/metromap-example.ttl
+# imports: http://metro.politie.nl
+
+@prefix m: <http://metro.politie.nl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:/C:/Users/c_mee/git/metromap/metromap-example.ttl>
+  a owl:Ontology ;
+  owl:imports <http://metro.politie.nl> ;
+.
+m:beheer-goed-bvh
+  a m:L ;
+  m:T "m:goed" ;
+  rdfs:label "beheer-goed-bvh" ;
+.
+m:beheer-goed-opp
+  a m:L ;
+  m:T "m:goed" ;
+  rdfs:label "beheer-goed-opp" ;
+.
+m:beheer_beslag
+  a m:S ;
+  m:T "m:beheer-goed-bvh" ;
+  m:T "m:beheer-goed-opp" ;
+  rdfs:label "beheer beslag" ;
+.
+m:goed
+  a m:S ;
+  m:T "m:goed-teruggave-bvh" ;
+  rdfs:label "goed" ;
+.
+m:goed-teruggave-bvh
+  a m:L ;
+  m:T "m:teruggave_beslag" ;
+  rdfs:label "goed-teruggave-bvh" ;
+.
+m:teruggave_beslag
+  a m:S ;
+  rdfs:label "teruggave beslag" ;
+.
