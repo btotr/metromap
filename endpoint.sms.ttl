@@ -215,6 +215,18 @@ endpoint:ReturnSWPDocument_1
                                     sp:varName "id" ;
                                   ] ;
                               ]
+                              [
+                                a sp:Filter ;
+                                sp:expression [
+                                    a sp:ne ;
+                                    sp:arg1 [
+                                        sp:varName "source" ;
+                                      ] ;
+                                    sp:arg2 [
+                                        sp:varName "target" ;
+                                      ] ;
+                                  ] ;
+                              ]
                             )
                             (
                               [
