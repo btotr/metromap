@@ -30,6 +30,6 @@ Model.prototype.getModel = function(callback){
 		  { group: 'edges', data: { id: 'beheren beslag-goed-summit', source: 'beheren beslag', target: 'goed', color: 'red' } },
 		  { group: 'edges', data: { id: 'goed-teruggave beslag-bvh', source: 'goed', target: 'teruggave beslag', color: 'green' } }
 
-		];*/
-	callback(model) 
+		];
+	callback(model) */
 }

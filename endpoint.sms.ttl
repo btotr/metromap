@@ -4,6 +4,7 @@
 # prefix: endpoint
 
 @prefix arg: <http://spinrdf.org/arg#> .
+@prefix beslaglegging.politie.nl: <http://beslaglegging.politie.nl/> .
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbpo: <http://dbpedia.org/ontology/> .
 @prefix endpoint: <http://metromap.politie.nl/service#> .
@@ -11,6 +12,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix sm: <http://topbraid.org/sparqlmotion#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sml: <http://topbraid.org/sparqlmotionlib#> .
@@ -32,6 +34,7 @@ endpoint:ApplyTopSPIN_1
   sm:next endpoint:ReturnSWPDocument_1 ;
   sm:nodeX 123 ;
   sm:nodeY 458 ;
+  sml:flatten false ;
   sml:predicate spin:rule ;
   sml:replace false ;
   sml:singlePass false ;
@@ -74,7 +77,12 @@ endpoint:ReturnSWPDocument_1
                       ui:child [
                           a swon:Value ;
                           arg:name "color" ;
-                          arg:value "green" ;
+                          arg:value [
+                              a ui:label ;
+                              sp:arg1 [
+                                  sp:varName "color" ;
+                                ] ;
+                            ] ;
                           ui:childIndex 2 ;
                         ] ;
                       ui:child [
@@ -130,7 +138,7 @@ endpoint:ReturnSWPDocument_1
                           ui:child [
                               a swon:Value ;
                               arg:name "foo" ;
-                              arg:value "10" ;
+                              arg:value 10 ;
                               ui:childIndex 0 ;
                             ] ;
                           ui:childIndex 3 ;
@@ -184,6 +192,9 @@ endpoint:ReturnSWPDocument_1
                       [
                         sp:varName "nodeType" ;
                       ]
+                      [
+                        sp:varName "color" ;
+                      ]
                     ) ;
                   sp:where (
                       [
@@ -216,6 +227,20 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
+                                a sp:TriplePath ;
+                                sp:object [
+                                    sp:varName "color" ;
+                                  ] ;
+                                sp:path [
+                                    a sp:SeqPath ;
+                                    sp:path1 beslaglegging.politie.nl:A ;
+                                    sp:path2 beslaglegging.politie.nl:hasColor ;
+                                  ] ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
                                 a sp:Filter ;
                                 sp:expression [
                                     a sp:ne ;
@@ -234,6 +259,13 @@ endpoint:ReturnSWPDocument_1
                                 sp:predicate rdf:type ;
                                 sp:subject [
                                     sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "black" ;
+                                sp:variable [
+                                    sp:varName "color" ;
                                   ] ;
                               ]
                             )

@@ -102,12 +102,17 @@
   a :C ;
   :X :samenstellen_teruggave_beslag ;
   :X :vastleggen_goed ;
+  :hasColor "blue" ;
   rdfs:label "bvh" ;
 .
 :goed
   a :I ;
   :D :teruggave_beslag ;
   rdfs:label "goed" ;
+.
+:hasColor
+  a owl:DatatypeProperty ;
+  rdfs:label "has color" ;
 .
 :samenstellen_teruggave_beslag
   a :F ;
@@ -117,6 +122,7 @@
 :summit
   a :C ;
   :X :vastleggen_goed ;
+  :hasColor "green" ;
   rdfs:label "summit" ;
 .
 :teruggave_beslag
