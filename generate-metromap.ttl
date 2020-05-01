@@ -1,15 +1,15 @@
 # baseURI: https://architecture.politie.nl/metromap/generate
-# imports: http://beslaglegging.politie.nl/
 # imports: http://metro.politie.nl
-# imports: https://architecture.politie.nl/metromap/functions
+# imports: http://simplearchimatemodel.politie.nl/
+# imports: http://spinrdf.org/spl
 # prefix: generate
 
-@prefix b: <http://beslaglegging.politie.nl/> .
 @prefix generate: <https://architecture.politie.nl/metromap/generate#> .
 @prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sam: <http://simplearchimatemodel.politie.nl/> .
 @prefix sm: <http://topbraid.org/sparqlmotion#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sml: <http://topbraid.org/sparqlmotionlib#> .
@@ -18,7 +18,7 @@
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-b:BB
+sam:BB
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -60,7 +60,7 @@ b:BB
             sp:object [
                 sp:varName "abb" ;
               ] ;
-            sp:predicate b:R ;
+            sp:predicate sam:R ;
             sp:subject [
                 sp:varName "sbb" ;
               ] ;
@@ -69,13 +69,13 @@ b:BB
             sp:object [
                 sp:varName "i" ;
               ] ;
-            sp:predicate b:A ;
+            sp:predicate sam:A ;
             sp:subject [
                 sp:varName "abb" ;
               ] ;
           ]
           [
-            sp:object b:I ;
+            sp:object sam:I ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "i" ;
@@ -88,7 +88,7 @@ b:BB
                   sp:object [
                       sp:varName "i" ;
                     ] ;
-                  sp:predicate b:D ;
+                  sp:predicate sam:D ;
                   sp:subject [
                       sp:varName "i2" ;
                     ] ;
@@ -99,12 +99,12 @@ b:BB
       rdfs:comment "0002 metromap" ;
     ] ;
 .
-b:C
+sam:C
   spin:rule [
       a sp:Construct ;
       sp:templates (
           [
-            sp:object b:ABB ;
+            sp:object sam:ABB ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "abb" ;
@@ -123,7 +123,7 @@ b:C
             sp:object [
                 sp:varName "i" ;
               ] ;
-            sp:predicate b:A ;
+            sp:predicate sam:A ;
             sp:subject [
                 sp:varName "abb" ;
               ] ;
@@ -132,7 +132,7 @@ b:C
             sp:object [
                 sp:varName "s" ;
               ] ;
-            sp:predicate b:A ;
+            sp:predicate sam:A ;
             sp:subject [
                 sp:varName "abb" ;
               ] ;
@@ -141,13 +141,13 @@ b:C
             sp:object [
                 sp:varName "f" ;
               ] ;
-            sp:predicate b:A ;
+            sp:predicate sam:A ;
             sp:subject [
                 sp:varName "abb" ;
               ] ;
           ]
           [
-            sp:object b:SBB ;
+            sp:object sam:SBB ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "sbb" ;
@@ -166,7 +166,7 @@ b:C
             sp:object [
                 sp:varName "c" ;
               ] ;
-            sp:predicate b:A ;
+            sp:predicate sam:A ;
             sp:subject [
                 sp:varName "sbb" ;
               ] ;
@@ -175,7 +175,7 @@ b:C
             sp:object [
                 sp:varName "c2" ;
               ] ;
-            sp:predicate b:A ;
+            sp:predicate sam:A ;
             sp:subject [
                 sp:varName "sbb" ;
               ] ;
@@ -184,7 +184,7 @@ b:C
             sp:object [
                 sp:varName "abb" ;
               ] ;
-            sp:predicate b:R ;
+            sp:predicate sam:R ;
             sp:subject [
                 sp:varName "sbb" ;
               ] ;
@@ -195,7 +195,7 @@ b:C
             sp:object [
                 sp:varName "f" ;
               ] ;
-            sp:predicate b:X ;
+            sp:predicate sam:X ;
             sp:subject [
                 sp:varName "c" ;
               ] ;
@@ -213,7 +213,7 @@ b:C
             sp:object [
                 sp:varName "s" ;
               ] ;
-            sp:predicate b:R ;
+            sp:predicate sam:R ;
             sp:subject [
                 sp:varName "f" ;
               ] ;
@@ -231,7 +231,7 @@ b:C
             sp:object [
                 sp:varName "i" ;
               ] ;
-            sp:predicate b:T ;
+            sp:predicate sam:T ;
             sp:subject [
                 sp:varName "f" ;
               ] ;
@@ -243,7 +243,7 @@ b:C
                   sp:object [
                       sp:varName "c2" ;
                     ] ;
-                  sp:predicate b:V ;
+                  sp:predicate sam:V ;
                   sp:subject [
                       sp:varName "c" ;
                     ] ;
@@ -320,15 +320,15 @@ b:C
       rdfs:comment "0001 Aanmaken Building Blocks" ;
     ] ;
 .
-b:samenstellen_teruggave_beslag
-  b:R b:administreren_overdracht_inbeslagname_goed ;
+sam:samenstellen_teruggave_beslag
+  sam:R sam:administreren_overdracht_inbeslagname_goed ;
 .
-b:vastleggen_goed
-  b:R b:administrren_inbeslagname_goed ;
+sam:vastleggen_goed
+  sam:R sam:administrren_inbeslagname_goed ;
 .
 <https://architecture.politie.nl/metromap/generate>
   a owl:Ontology ;
-  owl:imports b: ;
   owl:imports <http://metro.politie.nl> ;
-  owl:imports <https://architecture.politie.nl/metromap/functions> ;
+  owl:imports sam: ;
+  owl:imports <http://spinrdf.org/spl> ;
 .
