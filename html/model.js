@@ -3,6 +3,18 @@ var Model = function() {
 }
 
 Model.prototype.getModel = function(callback){
+		var oReq = new XMLHttpRequest();
+		oReq.open("GET", "http://localhost:8083/tbl/sparqlmotion?id=metromap");
+		oReq.send();
+		
+		oReq.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+    			console.log(JSON.parse(this.responseText).metromap)
+    	    	callback(JSON.parse(this.responseText).metromap);
+	    	}
+		};
+
+/*
 	var model = [
 		  { group: 'nodes', data: { id: 'opsporing' } },
 	
@@ -18,6 +30,6 @@ Model.prototype.getModel = function(callback){
 		  { group: 'edges', data: { id: 'beheren beslag-goed-summit', source: 'beheren beslag', target: 'goed', color: 'red' } },
 		  { group: 'edges', data: { id: 'goed-teruggave beslag-bvh', source: 'goed', target: 'teruggave beslag', color: 'green' } }
 
-		];
+		];*/
 	callback(model) 
 }

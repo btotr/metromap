@@ -6,6 +6,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+:
+  a owl:Ontology ;
+.
 :A
   a rdf:Property ;
   rdfs:domain :BB ;
@@ -91,7 +94,7 @@
   rdfs:label "administrren inbeslagname goed" ;
 .
 :beheer_beslag
-  a :B ;
+  a :I ;
   :D :goed ;
   rdfs:label "beheer beslag" ;
 .
@@ -122,6 +125,7 @@
 .
 :vastleggen_goed
   a :F ;
+  :T :beheer_beslag ;
   :T :goed ;
   rdfs:label "vastleggen goed" ;
 .

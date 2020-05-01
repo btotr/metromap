@@ -1,5 +1,6 @@
 # baseURI: http://metromap.politie.nl/service
 # imports: http://topbraid.org/sparqlmotionlib
+# imports: http://uispin.org/swon
 # prefix: endpoint
 
 @prefix arg: <http://spinrdf.org/arg#> .
@@ -23,6 +24,7 @@
 <http://metromap.politie.nl/service>
   a owl:Ontology ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
+  owl:imports <http://uispin.org/swon> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
 endpoint:ApplyTopSPIN_1
@@ -81,7 +83,7 @@ endpoint:ReturnSWPDocument_1
                           arg:value [
                               a ui:label ;
                               sp:arg1 [
-                                  sp:varName "f" ;
+                                  sp:varName "id" ;
                                 ] ;
                             ] ;
                           ui:childIndex 1 ;
@@ -95,7 +97,7 @@ endpoint:ReturnSWPDocument_1
                           a ui:TextNode ;
                           ui:childIndex 5 ;
                           ui:text """}
-                """ ;
+""" ;
                         ] ;
                       ui:child [
                           a ui:else ;
@@ -105,7 +107,7 @@ endpoint:ReturnSWPDocument_1
                               arg:value [
                                   a ui:label ;
                                   sp:arg1 [
-                                      sp:varName "f" ;
+                                      sp:varName "source" ;
                                     ] ;
                                 ] ;
                               ui:childIndex 0 ;
@@ -116,7 +118,7 @@ endpoint:ReturnSWPDocument_1
                               arg:value [
                                   a ui:label ;
                                   sp:arg1 [
-                                      sp:varName "t" ;
+                                      sp:varName "target" ;
                                     ] ;
                                 ] ;
                               ui:childIndex 1 ;
@@ -168,10 +170,16 @@ endpoint:ReturnSWPDocument_1
                   a sp:Select ;
                   sp:resultVariables (
                       [
-                        sp:varName "f" ;
+                        sp:varName "id" ;
                       ]
                       [
-                        sp:varName "t" ;
+                        sp:varName "source" ;
+                      ]
+                      [
+                        sp:varName "target" ;
+                      ]
+                      [
+                        sp:varName "class" ;
                       ]
                       [
                         sp:varName "nodeType" ;
@@ -179,13 +187,45 @@ endpoint:ReturnSWPDocument_1
                     ) ;
                   sp:where (
                       [
-                        sp:object [
-                            sp:varName "t" ;
-                          ] ;
-                        sp:predicate <http://metro.politie.nl#T> ;
-                        sp:subject [
-                            sp:varName "f" ;
-                          ] ;
+                        a sp:Union ;
+                        sp:elements (
+                            (
+                              [
+                                sp:object <http://metro.politie.nl#L> ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "id" ;
+                                  ] ;
+                                sp:predicate <http://metro.politie.nl#T> ;
+                                sp:subject [
+                                    sp:varName "source" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "target" ;
+                                  ] ;
+                                sp:predicate <http://metro.politie.nl#T> ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                            )
+                            (
+                              [
+                                sp:object <http://metro.politie.nl#S> ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                            )
+                          ) ;
                       ]
                       [
                         sp:object [
@@ -193,7 +233,7 @@ endpoint:ReturnSWPDocument_1
                           ] ;
                         sp:predicate rdf:type ;
                         sp:subject [
-                            sp:varName "f" ;
+                            sp:varName "id" ;
                           ] ;
                       ]
                       [
