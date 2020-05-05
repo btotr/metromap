@@ -1,6 +1,7 @@
 # baseURI: https://architecture.politie.nl/metromap/generate
 # imports: http://metro.politie.nl
 # imports: http://simplearchimatemodel.politie.nl/
+# imports: http://simplearchimatemodel.politie.nl/instances
 # imports: http://spinrdf.org/spl
 # prefix: generate
 
@@ -10,6 +11,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sam: <http://simplearchimatemodel.politie.nl/> .
+@prefix sami: <http://simplearchimatemodel.politie.nl/instances> .
 @prefix sm: <http://topbraid.org/sparqlmotion#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sml: <http://topbraid.org/sparqlmotionlib#> .
@@ -286,7 +288,7 @@ sam:C
                 a sp:iri ;
                 sp:arg1 [
                     a sp:concat ;
-                    sp:arg1 "http://archimate.politie.nl/ABB-" ;
+                    sp:arg1 "http://archimate.politie.nl/instances/ABB-" ;
                     sp:arg2 [
                         sp:varName "sLabel" ;
                       ] ;
@@ -302,7 +304,7 @@ sam:C
                 a sp:iri ;
                 sp:arg1 [
                     a sp:concat ;
-                    sp:arg1 "http://archimate.politie.nl/SBB-" ;
+                    sp:arg1 "http://archimate.politie.nl/instances/SBB-" ;
                     sp:arg2 [
                         sp:varName "sLabel" ;
                       ] ;
@@ -320,15 +322,11 @@ sam:C
       rdfs:comment "0001 Aanmaken Building Blocks" ;
     ] ;
 .
-sam:samenstellen_teruggave_beslag
-  sam:R sam:administreren_overdracht_inbeslagname_goed ;
-.
-sam:vastleggen_goed
-  sam:R sam:administrren_inbeslagname_goed ;
-.
+
 <https://architecture.politie.nl/metromap/generate>
   a owl:Ontology ;
   owl:imports <http://metro.politie.nl> ;
   owl:imports sam: ;
+  owl:imports sam:instances ;
   owl:imports <http://spinrdf.org/spl> ;
 .

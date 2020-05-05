@@ -1,0 +1,92 @@
+# baseURI: http://simplearchimatemodel.politie.nl/instances
+# imports: http://simplearchimatemodel.politie.nl/
+
+@prefix : <http://simplearchimatemodel.politie.nl/instances> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sam: <http://simplearchimatemodel.politie.nl/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sam:aangifte
+  a sam:I ;
+  rdfs:label "aangifte" ;
+.
+sam:aanhouding
+  a sam:I ;
+  sam:D sam:aangifte ;
+  rdfs:label "aanhouding" ;
+.
+sam:bvh
+  a sam:C ;
+  sam:X sam:vastleggen-aangifte ;
+  sam:X sam:vastleggen-aanhouding ;
+  sam:X sam:vastleggen-melding ;
+  sam:hasColor "green" ;
+  rdfs:label "bvh" ;
+.
+sam:connect
+  a sam:C ;
+  sam:X sam:vastleggen-aangifte ;
+  sam:hasColor "red" ;
+  rdfs:label "connect" ;
+.
+sam:gms
+  a sam:C ;
+  sam:X sam:vastleggen-melding ;
+  sam:hasColor "yellow" ;
+  rdfs:label "gms" ;
+.
+sam:incident
+  a sam:I ;
+  sam:D sam:melding ;
+  rdfs:label "incident" ;
+.
+sam:instances
+  a owl:Ontology ;
+  owl:imports sam: ;
+.
+sam:melding
+  a sam:I ;
+  sam:D sam:aanhouding ;
+  rdfs:label "melding" ;
+.
+sam:opp
+  a sam:C ;
+  sam:X sam:vastleggen-aangifte ;
+  sam:X sam:vastleggen-aanhouding ;
+  sam:X sam:vastleggen-melding ;
+  sam:hasColor "blue" ;
+  rdfs:label "opp" ;
+.
+sam:registreren-aangifte
+  a sam:S ;
+  rdfs:label "registreren aangifte" ;
+.
+sam:registreren-aanhouding
+  a sam:S ;
+  rdfs:label "registreren aanhouding" ;
+.
+sam:registreren-melding
+  a sam:S ;
+  rdfs:label "registreren melding" ;
+.
+sam:vastleggen-aangifte
+  a sam:F ;
+  sam:R sam:registreren-aangifte ;
+  sam:T sam:aangifte ;
+  rdfs:label "vastleggen aangifte" ;
+.
+sam:vastleggen-aanhouding
+  a sam:F ;
+  sam:R sam:registreren-aanhouding ;
+  sam:T sam:aanhouding ;
+  rdfs:label "vastleggen aanhouding" ;
+.
+sam:vastleggen-melding
+  a sam:F ;
+  sam:R sam:registreren-melding ;
+  sam:T sam:incident ;
+  sam:T sam:melding ;
+  rdfs:label "vastleggen melding" ;
+.
