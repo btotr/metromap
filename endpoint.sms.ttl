@@ -87,6 +87,17 @@ endpoint:ReturnSWPDocument_1
                         ] ;
                       ui:child [
                           a swon:Value ;
+                          arg:name "documentation" ;
+                          arg:value [
+                              a ui:label ;
+                              sp:arg1 [
+                                  sp:varName "documentation" ;
+                                ] ;
+                            ] ;
+                          ui:childIndex 4 ;
+                        ] ;
+                      ui:child [
+                          a swon:Value ;
                           arg:name "id" ;
                           arg:value [
                               a ui:label ;
@@ -97,13 +108,24 @@ endpoint:ReturnSWPDocument_1
                           ui:childIndex 1 ;
                         ] ;
                       ui:child [
+                          a swon:Value ;
+                          arg:name "version" ;
+                          arg:value [
+                              a ui:label ;
+                              sp:arg1 [
+                                  sp:varName "version" ;
+                                ] ;
+                            ] ;
+                          ui:childIndex 3 ;
+                        ] ;
+                      ui:child [
                           a ui:TextNode ;
                           ui:childIndex 0 ;
                           ui:text "{" ;
                         ] ;
                       ui:child [
                           a ui:TextNode ;
-                          ui:childIndex 5 ;
+                          ui:childIndex 7 ;
                           ui:text """}
 """ ;
                         ] ;
@@ -131,17 +153,35 @@ endpoint:ReturnSWPDocument_1
                                 ] ;
                               ui:childIndex 1 ;
                             ] ;
-                          ui:childIndex 4 ;
+                          ui:childIndex 6 ;
                         ] ;
                       ui:child [
                           a ui:if ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "bar" ;
+                              arg:value 0 ;
+                              ui:childIndex 1 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "bax" ;
+                              arg:value 0 ;
+                              ui:childIndex 3 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "baz" ;
+                              arg:value 0 ;
+                              ui:childIndex 2 ;
+                            ] ;
                           ui:child [
                               a swon:Value ;
                               arg:name "foo" ;
                               arg:value 10 ;
                               ui:childIndex 0 ;
                             ] ;
-                          ui:childIndex 3 ;
+                          ui:childIndex 5 ;
                           ui:condition [
                               a sp:eq ;
                               sp:arg1 [
@@ -194,6 +234,12 @@ endpoint:ReturnSWPDocument_1
                       ]
                       [
                         sp:varName "color" ;
+                      ]
+                      [
+                        sp:varName "version" ;
+                      ]
+                      [
+                        sp:varName "documentation" ;
                       ]
                     ) ;
                   sp:where (
@@ -260,6 +306,34 @@ endpoint:ReturnSWPDocument_1
                                 sp:subject [
                                     sp:varName "id" ;
                                   ] ;
+                              ]
+                              [
+                                a sp:Optional ;
+                                sp:elements (
+                                    [
+                                      sp:object [
+                                          sp:varName "version" ;
+                                        ] ;
+                                      sp:predicate sam:version ;
+                                      sp:subject [
+                                          sp:varName "id" ;
+                                        ] ;
+                                    ]
+                                  ) ;
+                              ]
+                              [
+                                a sp:Optional ;
+                                sp:elements (
+                                    [
+                                      sp:object [
+                                          sp:varName "documentation" ;
+                                        ] ;
+                                      sp:predicate sam:documentation ;
+                                      sp:subject [
+                                          sp:varName "id" ;
+                                        ] ;
+                                    ]
+                                  ) ;
                               ]
                               [
                                 a sp:Bind ;
@@ -339,4 +413,7 @@ endpoint:metromap
   rdfs:comment "the instance name is used as idenifier for the request" ;
   rdfs:label "request" ;
   rdfs:subClassOf sm:Functions ;
+.
+sam:vastleggen-incident
+  sam:R sam:registreren-melding ;
 .

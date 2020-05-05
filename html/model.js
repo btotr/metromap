@@ -1,16 +1,17 @@
 var Model = function() {
-	
+	this.data = null; 
 }
 
 Model.prototype.getModel = function(callback){
+		var self = this;
 		var oReq = new XMLHttpRequest();
 		oReq.open("GET", "http://localhost:8083/tbl/sparqlmotion?id=metromap");
 		oReq.send();
 		
 		oReq.onreadystatechange = function() {
     		if (this.readyState == 4 && this.status == 200) {
-    			console.log(JSON.parse(this.responseText).metromap)
-    	    	callback(JSON.parse(this.responseText).metromap);
+    			this.data = JSON.parse(this.responseText).metromap;
+    	    	callback(this.data);
 	    	}
 		};
 

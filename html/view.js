@@ -34,8 +34,7 @@ View.prototype.style = [
 	      'width': 3,
 	      'curve-style': 'bezier',
 	      'line-color': 'data(color)',
-	      'target-arrow-color': 'data(color)',
-	      'target-arrow-shape': 'straight'
+	      'target-arrow-color': 'data(color)'
 	    }
 	  },
 	  {
@@ -64,10 +63,10 @@ View.prototype.addMenu = function(controller){
 	  commands: [ 
 	    { 
 	      fillColor: 'rgba(120, 0, 0, 1)', 
-	      content: 'definitie', 
+	      content: 'annotatie toevoegen', 
 	      contentStyle: {},
 	      select: function(ele){
-	    	  controller.menuSelected(1,ele.id()) 
+	    	  controller.menuSelected(1,ele) 
 	      },
 	      enabled: true 
 	    },
@@ -76,7 +75,7 @@ View.prototype.addMenu = function(controller){
 	      content: 'documentatie', 
 	      contentStyle: {},
 	      select: function(ele){
-	    	  controller.menuSelected(2,ele.id()) 
+	    	  controller.menuSelected(2,ele) 
 	      },
 	      enabled: true 
 		 },
@@ -85,7 +84,7 @@ View.prototype.addMenu = function(controller){
 		      content: 'versie', 
 		      contentStyle: {},
 		      select: function(ele){
-		    	  controller.menuSelected(3,ele.id()) 
+		    	  controller.menuSelected(3,ele) 
 		      },
 		      enabled: true 
 			 }

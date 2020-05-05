@@ -85,3 +85,11 @@
   rdfs:label "X" ;
   rdfs:range :F ;
 .
+:documentation
+  a owl:DatatypeProperty ;
+  rdfs:label "documentation" ;
+.
+:version
+  a owl:DatatypeProperty ;
+  rdfs:label "version" ;
+.

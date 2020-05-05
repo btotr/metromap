@@ -10,17 +10,22 @@
 
 sam:aangifte
   a sam:I ;
+  sam:documentation "kennisgeving aan een opsporingsambtenaar dat een strafbaar feit is begaan" ;
+  sam:version "v0.2 22-10-2018 Colin Meerveld" ;
   rdfs:label "aangifte" ;
 .
 sam:aanhouding
   a sam:I ;
   sam:D sam:aangifte ;
+  sam:documentation "het aan de verdachte ontnemen van diens vrijheid teneinde hem te geleiden naar een plaats van onderzoek" ;
+  sam:version "v0.2 22-10-2018 Colin Meerveld" ;
   rdfs:label "aanhouding" ;
 .
 sam:bvh
   a sam:C ;
   sam:X sam:vastleggen-aangifte ;
   sam:X sam:vastleggen-aanhouding ;
+  sam:X sam:vastleggen-incident ;
   sam:X sam:vastleggen-melding ;
   sam:hasColor "green" ;
   rdfs:label "bvh" ;
@@ -33,6 +38,7 @@ sam:connect
 .
 sam:gms
   a sam:C ;
+  sam:X sam:vastleggen-incident ;
   sam:X sam:vastleggen-melding ;
   sam:hasColor "yellow" ;
   rdfs:label "gms" ;
@@ -40,6 +46,8 @@ sam:gms
 sam:incident
   a sam:I ;
   sam:D sam:melding ;
+  sam:documentation "een gebeurtenis" ;
+  sam:version "v0.2 01-10-2019 Colin Meerveld" ;
   rdfs:label "incident" ;
 .
 sam:instances
@@ -49,12 +57,15 @@ sam:instances
 sam:melding
   a sam:I ;
   sam:D sam:aanhouding ;
+  sam:documentation "kennisgeving aan een opsporingsambtenaar van een gebeurtenis" ;
+  sam:version "v0.2 22-10-2018 Colin Meerveld" ;
   rdfs:label "melding" ;
 .
 sam:opp
   a sam:C ;
   sam:X sam:vastleggen-aangifte ;
   sam:X sam:vastleggen-aanhouding ;
+  sam:X sam:vastleggen-incident ;
   sam:X sam:vastleggen-melding ;
   sam:hasColor "blue" ;
   rdfs:label "opp" ;
@@ -83,10 +94,15 @@ sam:vastleggen-aanhouding
   sam:T sam:aanhouding ;
   rdfs:label "vastleggen aanhouding" ;
 .
-sam:vastleggen-melding
+sam:vastleggen-incident
   a sam:F ;
   sam:R sam:registreren-melding ;
   sam:T sam:incident ;
+  rdfs:label "vastleggen incident" ;
+.
+sam:vastleggen-melding
+  a sam:F ;
+  sam:R sam:registreren-melding ;
   sam:T sam:melding ;
   rdfs:label "vastleggen melding" ;
 .

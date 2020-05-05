@@ -12,7 +12,13 @@ function Controller() {
 }
 
 Controller.prototype.menuSelected = function(menuId, node){
-	console.log(menuId, node);	
+	if (menuId == 3) {
+		console.log(node._private.data.version);
+	}
+	
+	if (menuId == 2) {
+		console.log(node._private.data.documentation);
+	}
 }
 
 window.addEventListener('load', function(){
