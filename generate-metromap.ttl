@@ -502,6 +502,39 @@ p3.0:Association
       rdfs:comment "00001 access" ;
     ] ;
 .
+p3.0:ConceptGroup
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "label" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "n" ;
+              ] ;
+            sp:predicate p3.0:nameRef ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "label" ;
+              ] ;
+            sp:predicate <http://www.linkedmodel.org/schema/dtype#value> ;
+            sp:subject [
+                sp:varName "n" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 label" ;
+    ] ;
+.
 p3.0:Realization
   spin:rule [
       a sp:Construct ;
