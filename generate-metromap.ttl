@@ -1,13 +1,15 @@
 # baseURI: https://architecture.politie.nl/metromap/generate
+# imports: file:///metromap/archimatemodel.xml
 # imports: http://metro.politie.nl
 # imports: http://simplearchimatemodel.politie.nl/
-# imports: http://simplearchimatemodel.politie.nl/instances
 # imports: http://spinrdf.org/spl
+# imports: https://architecture.politie.nl/metromap/functions
 # prefix: generate
 
 @prefix generate: <https://architecture.politie.nl/metromap/generate#> .
 @prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix p3.0: <http://www.opengroup.org/xsd/archimate/3.0/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sam: <http://simplearchimatemodel.politie.nl/> .
@@ -98,7 +100,7 @@ sam:BB
               ) ;
           ]
         ) ;
-      rdfs:comment "0002 metromap" ;
+      rdfs:comment "00003 metromap mapping" ;
     ] ;
 .
 sam:C
@@ -319,14 +321,285 @@ sam:C
               ] ;
           ]
         ) ;
-      rdfs:comment "0001 Aanmaken Building Blocks" ;
+      rdfs:comment "00002 Aanmaken Building Blocks" ;
+    ] ;
+  owl:equivalentClass p3.0:ApplicationComponent ;
+.
+sam:F
+  owl:equivalentClass p3.0:ApplicationFunction ;
+.
+sam:I
+  owl:equivalentClass p3.0:BusinessObject ;
+.
+sam:S
+  owl:equivalentClass p3.0:ApplicationService ;
+.
+p3.0:Access
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:T ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object p3.0:Access ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 acces" ;
     ] ;
 .
-
+p3.0:Assignment
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:X ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object p3.0:Assignment ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 assignement" ;
+    ] ;
+.
+p3.0:Association
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:D ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object p3.0:Association ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 access" ;
+    ] ;
+.
+p3.0:Realization
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:R ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object p3.0:Realization ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate p3.0:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 realization" ;
+    ] ;
+.
+owl:Thing
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "c" ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "ec" ;
+              ] ;
+            sp:predicate owl:equivalentClass ;
+            sp:subject [
+                sp:varName "c" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ec" ;
+              ] ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 owl equivalentClass" ;
+    ] ;
+.
 <https://architecture.politie.nl/metromap/generate>
   a owl:Ontology ;
+  owl:imports <file:///metromap/archimatemodel.xml> ;
   owl:imports <http://metro.politie.nl> ;
   owl:imports sam: ;
-  owl:imports sam:instances ;
   owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <https://architecture.politie.nl/metromap/functions> ;
 .
