@@ -1,4 +1,5 @@
 # baseURI: https://architecture.politie.nl/metromap/functions
+# imports: http://spinrdf.org/spinx
 # imports: http://spinrdf.org/spl
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # prefix: functions
@@ -9,11 +10,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
+@prefix spinx: <http://spinrdf.org/spinx#> .
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://architecture.politie.nl/metromap/functions>
   a owl:Ontology ;
+  owl:imports <http://spinrdf.org/spinx> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
 .
@@ -72,4 +75,16 @@ functions:connectedElement
     ] ;
   rdfs:label "connected element" ;
   rdfs:subClassOf spin:select ;
+.
+functions:getColor
+  a spin:Function ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:predicate sp:arg1 ;
+      spl:valueType xsd:string ;
+    ] ;
+  spin:returnType xsd:string ;
+  spinx:javaScriptFile "randomcolor.js" ;
+  rdfs:label "get color" ;
+  rdfs:subClassOf spin:Functions ;
 .

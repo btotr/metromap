@@ -278,15 +278,10 @@ endpoint:ReturnSWPDocument_1
                                 a sp:Optional ;
                                 sp:elements (
                                     [
-                                      a sp:TriplePath ;
                                       sp:object [
                                           sp:varName "color" ;
                                         ] ;
-                                      sp:path [
-                                          a sp:SeqPath ;
-                                          sp:path1 sam:A ;
-                                          sp:path2 sam:hasColor ;
-                                        ] ;
+                                      sp:predicate m:color ;
                                       sp:subject [
                                           sp:varName "id" ;
                                         ] ;

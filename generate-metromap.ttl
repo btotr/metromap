@@ -6,6 +6,7 @@
 # imports: https://architecture.politie.nl/metromap/functions
 # prefix: generate
 
+@prefix functions: <https://architecture.politie.nl/metromap/functions#> .
 @prefix generate: <https://architecture.politie.nl/metromap/generate#> .
 @prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -58,6 +59,15 @@ sam:BB
                 sp:varName "i2" ;
               ] ;
           ]
+          [
+            sp:object [
+                sp:varName "color" ;
+              ] ;
+            sp:predicate <http://metro.politie.nl#color> ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
         ) ;
       sp:where (
           [
@@ -65,6 +75,15 @@ sam:BB
                 sp:varName "abb" ;
               ] ;
             sp:predicate sam:R ;
+            sp:subject [
+                sp:varName "sbb" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "l" ;
+              ] ;
+            sp:predicate rdfs:label ;
             sp:subject [
                 sp:varName "sbb" ;
               ] ;
@@ -83,6 +102,18 @@ sam:BB
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "i" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a functions:getColor ;
+                sp:arg1 [
+                    sp:varName "l" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "color" ;
               ] ;
           ]
           [
@@ -262,7 +293,7 @@ sam:C
                 sp:arg2 [
                     sp:varName "sLabel" ;
                   ] ;
-                sp:arg3 " " ;
+                sp:arg3 "-" ;
                 sp:arg4 [
                     sp:varName "cLabel" ;
                   ] ;
