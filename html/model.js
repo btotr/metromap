@@ -11,6 +11,7 @@ Model.prototype.getModel = function(callback){
 		oReq.onreadystatechange = function() {
     		if (this.readyState == 4 && this.status == 200) {
     			this.data = JSON.parse(this.responseText).metromap;
+    			console.log(this.data);
     	    	callback(this.data);
 	    	}
 		};

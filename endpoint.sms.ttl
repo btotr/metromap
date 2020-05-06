@@ -1,4 +1,5 @@
 # baseURI: http://metromap.politie.nl/service
+# imports: http://metro.politie.nl
 # imports: http://topbraid.org/sparqlmotionlib
 # imports: http://uispin.org/swon
 # prefix: endpoint
@@ -7,7 +8,7 @@
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbpo: <http://dbpedia.org/ontology/> .
 @prefix endpoint: <http://metromap.politie.nl/service#> .
-@prefix m: <http://metro.politie.nl/#> .
+@prefix m: <http://metro.politie.nl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -25,6 +26,7 @@
 
 <http://metromap.politie.nl/service>
   a owl:Ontology ;
+  owl:imports <http://metro.politie.nl> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:imports <http://uispin.org/swon> ;
   owl:versionInfo "simple example for sparqlMotion" ;
@@ -248,7 +250,7 @@ endpoint:ReturnSWPDocument_1
                         sp:elements (
                             (
                               [
-                                sp:object <http://metro.politie.nl#L> ;
+                                sp:object m:L ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
                                     sp:varName "id" ;
@@ -258,7 +260,7 @@ endpoint:ReturnSWPDocument_1
                                 sp:object [
                                     sp:varName "id" ;
                                   ] ;
-                                sp:predicate <http://metro.politie.nl#T> ;
+                                sp:predicate m:T ;
                                 sp:subject [
                                     sp:varName "source" ;
                                   ] ;
@@ -267,24 +269,29 @@ endpoint:ReturnSWPDocument_1
                                 sp:object [
                                     sp:varName "target" ;
                                   ] ;
-                                sp:predicate <http://metro.politie.nl#T> ;
+                                sp:predicate m:T ;
                                 sp:subject [
                                     sp:varName "id" ;
                                   ] ;
                               ]
                               [
-                                a sp:TriplePath ;
-                                sp:object [
-                                    sp:varName "color" ;
-                                  ] ;
-                                sp:path [
-                                    a sp:SeqPath ;
-                                    sp:path1 sam:A ;
-                                    sp:path2 sam:hasColor ;
-                                  ] ;
-                                sp:subject [
-                                    sp:varName "id" ;
-                                  ] ;
+                                a sp:Optional ;
+                                sp:elements (
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "color" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:SeqPath ;
+                                          sp:path1 sam:A ;
+                                          sp:path2 sam:hasColor ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "id" ;
+                                        ] ;
+                                    ]
+                                  ) ;
                               ]
                               [
                                 a sp:Filter ;
@@ -301,7 +308,7 @@ endpoint:ReturnSWPDocument_1
                             )
                             (
                               [
-                                sp:object <http://metro.politie.nl#S> ;
+                                sp:object m:S ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
                                     sp:varName "id" ;
@@ -372,14 +379,14 @@ endpoint:ReturnSWPDocument_1
                                 sp:arg1 [
                                     sp:varName "class" ;
                                   ] ;
-                                sp:arg2 <http://metro.politie.nl#S> ;
+                                sp:arg2 m:S ;
                               ] ;
                             sp:arg2 [
                                 a sp:eq ;
                                 sp:arg1 [
                                     sp:varName "class" ;
                                   ] ;
-                                sp:arg2 <http://metro.politie.nl#L> ;
+                                sp:arg2 m:L ;
                               ] ;
                           ] ;
                       ]
