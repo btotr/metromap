@@ -32,8 +32,8 @@
 endpoint:ApplyTopSPIN_1
   a sml:ApplyTopSPIN ;
   sm:next endpoint:ReturnSWPDocument_1 ;
-  sm:nodeX 123 ;
-  sm:nodeY 458 ;
+  sm:nodeX 319 ;
+  sm:nodeY 493 ;
   sml:flatten false ;
   sml:predicate spin:rule ;
   sml:replace false ;
@@ -43,16 +43,16 @@ endpoint:ApplyTopSPIN_1
 endpoint:ImportRDFFromWorkspace_1
   a sml:ImportRDFFromWorkspace ;
   sm:next endpoint:ApplyTopSPIN_1 ;
-  sm:nodeX 69 ;
-  sm:nodeY 311 ;
+  sm:nodeX 297 ;
+  sm:nodeY 341 ;
   sml:ignoreImports false ;
   sml:sourceFilePath "generate-metromap.ttl" ;
   rdfs:label "Import RDFFrom workspace 1" ;
 .
 endpoint:ReturnSWPDocument_1
   a sml:ReturnSWPDocument ;
-  sm:nodeX 99 ;
-  sm:nodeY 636 ;
+  sm:nodeX 314 ;
+  sm:nodeY 706 ;
   sml:snippet true ;
   sml:view [
       a swon:Object ;
@@ -405,8 +405,8 @@ endpoint:metromap
       spl:predicate endpoint:debug ;
       spl:valueType xsd:string ;
       sm:next endpoint:ImportRDFFromWorkspace_1 ;
-      sm:nodeX 33 ;
-      sm:nodeY 149 ;
+      sm:nodeX 178 ;
+      sm:nodeY 146 ;
     ] ;
   sm:returnModule endpoint:ReturnSWPDocument_1 ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=metromap" ;
