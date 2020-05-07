@@ -1,16 +1,17 @@
 # baseURI: https://architecture.politie.nl/metromap/generate
-# imports: file:///metromap/archimatemodel.xml
+# imports: http://archimate.politie.nl/instances/
 # imports: http://metro.politie.nl
 # imports: http://simplearchimatemodel.politie.nl/
 # imports: http://spinrdf.org/spl
 # imports: https://architecture.politie.nl/metromap/functions
 # prefix: generate
 
+@prefix ai: <http://archimate.politie.nl/instances/> .
+@prefix archimate: <http://www.opengroup.org/xsd/archimate/3.0/> .
 @prefix functions: <https://architecture.politie.nl/metromap/functions#> .
 @prefix generate: <https://architecture.politie.nl/metromap/generate#> .
 @prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix p3.0: <http://www.opengroup.org/xsd/archimate/3.0/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sam: <http://simplearchimatemodel.politie.nl/> .
@@ -354,18 +355,18 @@ sam:C
         ) ;
       rdfs:comment "00002 Aanmaken Building Blocks" ;
     ] ;
-  owl:equivalentClass p3.0:ApplicationComponent ;
+  owl:equivalentClass archimate:ApplicationComponent ;
 .
 sam:F
-  owl:equivalentClass p3.0:ApplicationFunction ;
+  owl:equivalentClass archimate:ApplicationFunction ;
 .
 sam:I
-  owl:equivalentClass p3.0:BusinessObject ;
+  owl:equivalentClass archimate:BusinessObject ;
 .
 sam:S
-  owl:equivalentClass p3.0:ApplicationService ;
+  owl:equivalentClass archimate:ApplicationService ;
 .
-p3.0:Access
+archimate:Access
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -384,20 +385,20 @@ p3.0:Access
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:source ;
+            sp:predicate archimate:source ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "s" ;
               ] ;
           ]
           [
-            sp:object p3.0:Access ;
+            sp:object archimate:Access ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
@@ -405,14 +406,14 @@ p3.0:Access
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:target ;
+            sp:predicate archimate:target ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "t" ;
               ] ;
@@ -421,7 +422,7 @@ p3.0:Access
       rdfs:comment "00001 acces" ;
     ] ;
 .
-p3.0:Assignment
+archimate:Assignment
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -440,20 +441,20 @@ p3.0:Assignment
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:source ;
+            sp:predicate archimate:source ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "s" ;
               ] ;
           ]
           [
-            sp:object p3.0:Assignment ;
+            sp:object archimate:Assignment ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
@@ -461,14 +462,14 @@ p3.0:Assignment
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:target ;
+            sp:predicate archimate:target ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "t" ;
               ] ;
@@ -477,7 +478,7 @@ p3.0:Assignment
       rdfs:comment "00001 assignement" ;
     ] ;
 .
-p3.0:Association
+archimate:Association
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -496,20 +497,20 @@ p3.0:Association
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:source ;
+            sp:predicate archimate:source ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "s" ;
               ] ;
           ]
           [
-            sp:object p3.0:Association ;
+            sp:object archimate:Association ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
@@ -517,14 +518,14 @@ p3.0:Association
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:target ;
+            sp:predicate archimate:target ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "t" ;
               ] ;
@@ -533,7 +534,7 @@ p3.0:Association
       rdfs:comment "00001 access" ;
     ] ;
 .
-p3.0:ConceptGroup
+archimate:ConceptGroup
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -550,7 +551,7 @@ p3.0:ConceptGroup
             sp:object [
                 sp:varName "n" ;
               ] ;
-            sp:predicate p3.0:nameRef ;
+            sp:predicate archimate:nameRef ;
             sp:subject spin:_this ;
           ]
           [
@@ -566,7 +567,7 @@ p3.0:ConceptGroup
       rdfs:comment "00001 label" ;
     ] ;
 .
-p3.0:Realization
+archimate:Realization
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -585,20 +586,20 @@ p3.0:Realization
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:source ;
+            sp:predicate archimate:source ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "sid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "s" ;
               ] ;
           ]
           [
-            sp:object p3.0:Realization ;
+            sp:object archimate:Realization ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
@@ -606,14 +607,14 @@ p3.0:Realization
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:target ;
+            sp:predicate archimate:target ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
                 sp:varName "tid" ;
               ] ;
-            sp:predicate p3.0:identifier ;
+            sp:predicate archimate:identifier ;
             sp:subject [
                 sp:varName "t" ;
               ] ;
@@ -661,7 +662,7 @@ owl:Thing
 .
 <https://architecture.politie.nl/metromap/generate>
   a owl:Ontology ;
-  owl:imports <file:///metromap/archimatemodel.xml> ;
+  owl:imports ai: ;
   owl:imports <http://metro.politie.nl> ;
   owl:imports sam: ;
   owl:imports <http://spinrdf.org/spl> ;
