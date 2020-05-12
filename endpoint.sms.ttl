@@ -18,6 +18,7 @@
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sml: <http://topbraid.org/sparqlmotionlib#> .
 @prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix swon: <http://uispin.org/swon#> .
@@ -34,8 +35,8 @@
 endpoint:ApplyTopSPIN_1
   a sml:ApplyTopSPIN ;
   sm:next endpoint:ReturnSWPDocument_1 ;
-  sm:nodeX 319 ;
-  sm:nodeY 493 ;
+  sm:nodeX 396 ;
+  sm:nodeY 957 ;
   sml:flatten false ;
   sml:predicate spin:rule ;
   sml:replace false ;
@@ -44,28 +45,35 @@ endpoint:ApplyTopSPIN_1
 .
 endpoint:ImportRDFFromWorkspace_1
   a sml:ImportRDFFromWorkspace ;
-  sm:next endpoint:ApplyTopSPIN_1 ;
-  sm:nodeX 297 ;
-  sm:nodeY 341 ;
+  sm:next endpoint:Merge_1 ;
+  sm:nodeX 53 ;
+  sm:nodeY 560 ;
   sml:ignoreImports false ;
   sml:sourceFilePath "generate-metromap.ttl" ;
   rdfs:label "Import RDFFrom workspace 1" ;
 .
+endpoint:ImportRDFFromWorkspace_2
+  a sml:ImportRDFFromWorkspace ;
+  sm:nodeX 635 ;
+  sm:nodeY 542 ;
+  sml:baseURI "{?workspace}" ;
+  sml:ignoreImports true ;
+  rdfs:label "Import RDFFrom workspace 2" ;
+.
+endpoint:Merge_1
+  a sml:Merge ;
+  sm:next endpoint:ApplyTopSPIN_1 ;
+  sm:nodeX 428 ;
+  sm:nodeY 745 ;
+  rdfs:label "Merge 1" ;
+.
 endpoint:ReturnSWPDocument_1
   a sml:ReturnSWPDocument ;
-  sm:nodeX 314 ;
-  sm:nodeY 706 ;
+  sm:nodeX 382 ;
+  sm:nodeY 1129 ;
   sml:snippet true ;
   sml:view [
       a swon:Object ;
-      ui:child [
-          a swon:Value ;
-          arg:name "debug" ;
-          arg:value [
-              sp:varName "debug" ;
-            ] ;
-          ui:childIndex 0 ;
-        ] ;
       ui:child [
           a swon:Values ;
           arg:name "metromap" ;
@@ -389,7 +397,7 @@ endpoint:ReturnSWPDocument_1
                 ] ;
               ui:separator "," ;
             ] ;
-          ui:childIndex 1 ;
+          ui:childIndex 0 ;
         ] ;
     ] ;
   rdfs:label "Return SWPDocument 1" ;
@@ -398,17 +406,33 @@ endpoint:begrippenkader
   a owl:DatatypeProperty ;
   rdfs:label "debug" ;
 .
+endpoint:buildString_1
+  a spif:buildString ;
+  sp:arg1 [
+      a sp:concat ;
+      sp:arg1 "urn:x-evn-master:" ;
+      sp:arg2 [
+          sp:varName "debug" ;
+        ] ;
+    ] ;
+  sm:next endpoint:ImportRDFFromWorkspace_2 ;
+  sm:nodeX 740 ;
+  sm:nodeY 311 ;
+  sm:outputVariable "workspace" ;
+  rdfs:label "build string 1" ;
+.
 endpoint:metromap
   a spin:Function ;
   spin:constraint [
       a spl:Argument ;
-      spl:defaultValue "false" ;
-      spl:optional true ;
+      spl:defaultValue "at" ;
+      spl:optional false ;
       spl:predicate endpoint:debug ;
       spl:valueType xsd:string ;
       sm:next endpoint:ImportRDFFromWorkspace_1 ;
-      sm:nodeX 178 ;
-      sm:nodeY 146 ;
+      sm:nodeX 548 ;
+      sm:nodeY 65 ;
+      sml:hidden true ;
     ] ;
   sm:returnModule endpoint:ReturnSWPDocument_1 ;
   rdfs:comment "http://localhost:8083/tbl/sparqlmotion?id=metromap" ;

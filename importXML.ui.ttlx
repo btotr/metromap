@@ -92,13 +92,53 @@ importXML:XMLimport
   a ui:Service ;
   spin:constraint [
       a spl:Argument ;
+      spl:predicate arg:graph ;
+      spl:valueType xsd:string ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
       spl:predicate arg:xmlUrl ;
       spl:valueType xsd:string ;
     ] ;
   ui:prototype """
-<ui:group let:xmlFromURL=\"{= importer:importXMLFromUrl(?xmlUrl) }\">
-    <h2>{= ?xmlUrl }</h2>
-    <ui:parse ui:str=\"{= ?xmlFromURL }\"/>
+<ui:group let:baseURI=\"http://archimate.politie.nl/instances\" let:graphURI=\"{= IRI(CONCAT(&quot;urn:x-evn-master:&quot;, LCASE(?graph))) }\" let:schemaGraph=\"{= IRI(&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot;) }\" let:targetFilePath=\"/metromap/output.xml\" let:xmlFromURL=\"{= importer:importXMLFromUrl(?xmlUrl) }\">
+    <sml:ExportToTextFile sml:replace=\"{= true }\" sml:targetFilePath=\"{= ?targetFilePath }\" sml:text=\"{= ?xmlFromURL }\"/>
+    <sml:ImportTextFile sm:outputVariable=\"xml\" sml:sourceFilePath=\"{= ?targetFilePath }\">
+        <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?schemaGraph) }\">
+            <sml:ConvertXMLToRDF sml:baseURI=\"{= ?baseURI }\" sml:replace=\"{= true }\" sml:xml=\"{= ?xml }\">
+                <ui:update ui:updateQuery=\"{!
+                        INSERT {
+                            GRAPH ui:tempGraph {
+                                ?s ?p ?o .
+                            } .
+                        }
+                        WHERE {
+                            ?s ?p ?o .
+                        } }\"/>
+            </sml:ConvertXMLToRDF>
+            <!--sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/-->
+        </ui:setContext>
+    </sml:ImportTextFile>
+    <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
+    <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
+        <ui:update ui:updateQuery=\"{!
+                DELETE {
+                    ?s ?p ?o .
+                }
+                WHERE {
+                    ?s ?p ?o .
+                } }\"/>
+        <ui:update ui:updateQuery=\"{!
+                INSERT {
+                    ?s ?p ?o .
+                }
+                WHERE {
+                    GRAPH ui:tempGraph {
+                        ?s ?p ?o .
+                    } .
+                } }\"/>
+    </ui:setContext>
+    <h1>importeren is gelukt!</h1>
 </ui:group>
 """^^ui:Literal ;
   ui:responseType ui:HTML ;
