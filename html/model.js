@@ -2,10 +2,13 @@ var Model = function() {
 	this.data = null; 
 }
 
-Model.prototype.getModel = function(callback){
+Model.prototype.getModel = function(debugarg, callback){
+		var debug = "";
+		if(debugarg) debug = "&debug="+debugarg	
+	
 		var self = this;
 		var oReq = new XMLHttpRequest();
-		oReq.open("GET", "http://localhost:8083/tbl/sparqlmotion?id=metromap");
+		oReq.open("GET", "http://localhost:8083/tbl/sparqlmotion?id=metromap"+debug);
 		oReq.send();
 		
 		oReq.onreadystatechange = function() {

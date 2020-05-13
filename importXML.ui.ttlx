@@ -119,26 +119,24 @@ importXML:XMLimport
             <!--sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/-->
         </ui:setContext>
     </sml:ImportTextFile>
-    <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
-    <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
-        <ui:update ui:updateQuery=\"{!
-                DELETE {
-                    ?s ?p ?o .
-                }
-                WHERE {
-                    ?s ?p ?o .
-                } }\"/>
-        <ui:update ui:updateQuery=\"{!
-                INSERT {
-                    ?s ?p ?o .
-                }
-                WHERE {
-                    GRAPH ui:tempGraph {
+    <!--ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"ui:tempGraph\"/-->
+    <ui:try>
+        <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
+            <ui:update ui:updateQuery=\"{!
+                    INSERT {
                         ?s ?p ?o .
-                    } .
-                } }\"/>
-    </ui:setContext>
-    <h1>importeren is gelukt!</h1>
+                    }
+                    WHERE {
+                        GRAPH ui:tempGraph {
+                            ?s ?p ?o .
+                        } .
+                    } }\"/>
+        </ui:setContext>
+        <h1>importeren is gelukt!</h1>
+    </ui:try>
+    <ui:catch>
+        <h1>mislukt!</h1>
+    </ui:catch>
 </ui:group>
 """^^ui:Literal ;
   ui:responseType ui:HTML ;

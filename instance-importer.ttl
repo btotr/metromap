@@ -1,7 +1,6 @@
 # baseURI: http://archimate.politie.nl/instances/
 # imports: http://topbraid.org/sxml
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
-# imports: urn:x-swp-dump:a407d8d4-6ddc-4ed8-b196-7b049e36c6dc
 # prefix: ai
 
 @prefix ai: <http://archimate.politie.nl/instances/> .
@@ -16,6 +15,5 @@ ai:
   a owl:Ontology ;
   owl:imports <http://topbraid.org/sxml> ;
   owl:imports p3.0: ;
-  owl:imports <urn:x-swp-dump:a407d8d4-6ddc-4ed8-b196-7b049e36c6dc> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .

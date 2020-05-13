@@ -41,8 +41,8 @@ client:NodeClass
     <script src=\"{= fn:concat(?base, &quot;model.js&quot;) }\"/>
     <script src=\"{= fn:concat(?base, &quot;view.js&quot;) }\"/>
     <script src=\"{= fn:concat(?base, &quot;controller.js&quot;) }\"/>
-    <style>html, body #cy  {
-	  			witdh:100%;
+    <style>html, div, body, #cy  {
+	  			width:100%;
 	  			height:100%;
 	  			font-family: verdana;
 	  			font-size:10px;
@@ -50,9 +50,7 @@ client:NodeClass
 </ui:group>
 """^^ui:Literal ;
   ui:prototype """
-<div id=\"cy\">
-    <h1>test {= ui:label(?this) }</h1>
-</div>
+<div id=\"cy\"/>
 """^^ui:Literal ;
   rdfs:label "Node class" ;
   rdfs:subClassOf html:Div ;
@@ -81,4 +79,30 @@ html:Div_1
 """^^ui:Literal ;
   rdfs:label "Div 1" ;
   rdfs:subClassOf html:Div ;
+.
+ui:client
+  a ui:Service ;
+  ui:headIncludes """
+<ui:group let:base=\"lib/6.1.1.v20181206-1652R/server/build/\">
+    <title>metromap</title>
+    <script src=\"{= fn:concat(?base, &quot;cytoscape.min.js&quot;) } \"/>
+    <script src=\"{= fn:concat(?base, &quot;cytoscape-cxtmenu.js&quot;) }\"/>
+    <script src=\"{= fn:concat(?base, &quot;cytoscape-klay.js&quot;) }\"/>
+    <script src=\"{= fn:concat(?base, &quot;model.js&quot;) }\"/>
+    <script src=\"{= fn:concat(?base, &quot;view.js&quot;) }\"/>
+    <script src=\"{= fn:concat(?base, &quot;controller.js&quot;) }\"/>
+    <style>html, body, #cy  {
+	  			width:100%;
+	  			height:100%;
+	  			font-family: verdana;
+	  			font-size:10px;
+	  		}</style>
+</ui:group>
+"""^^ui:Literal ;
+  ui:prototype """
+<div id=\"cy\"/>
+"""^^ui:Literal ;
+  ui:responseType ui:HTML ;
+  rdfs:label "client" ;
+  rdfs:subClassOf ui:Services ;
 .

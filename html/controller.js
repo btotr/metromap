@@ -4,7 +4,7 @@ function Controller() {
     this.view = new View();
     this.view.createCy('cy'); 
     this.view.addMenu(self);
-    this.model.getModel(function(model){
+    this.model.getModel(getQueryParams('debug',document.location.search), function(model){
     	 self.view.cy.add(model);
     	 var layout = self.view.cy.layout(self.view.layout);
     	 layout.run();
@@ -25,3 +25,9 @@ window.addEventListener('load', function(){
     new Controller()
 } , false);
 
+const getQueryParams = ( params, url ) => {  
+	  let href = url;
+	  let reg = new RegExp( '[?&]' + params + '=([^&#]*)', 'i' );
+	  let queryString = reg.exec(href);
+	  return queryString ? queryString[1] : null;
+};
