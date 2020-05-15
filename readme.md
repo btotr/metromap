@@ -2,6 +2,12 @@
 
 generates a metromap based on a archimate model
 
+#pre
+
+copy the content from the html folder to server.topbraidlive.org/system-applications/server.www/build/
+and change te version to edg in ui:client (e.g. let:base="lib/6.2.4.v20190907-2245R/server/build/")
+ 
+
 # usage
 
 1. create an ontology in edg

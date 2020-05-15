@@ -76,6 +76,12 @@ endpoint:ImportRDFFromWorkspace_2
   sml:ignoreImports false ;
   rdfs:label "Import RDFFrom workspace 2" ;
 .
+endpoint:ImportRDFFromWorkspace_3
+  a sml:ImportRDFFromWorkspace ;
+  sm:next endpoint:ApplyTopSPIN_1 ;
+  sml:ignoreImports false ;
+  sml:sourceFilePath "generate-metromap.ttl" ;
+.
 endpoint:ReturnSWPDocument_1
   a sml:ReturnSWPDocument ;
   sm:nodeX 390 ;
@@ -434,7 +440,7 @@ endpoint:metromap
   a spin:Function ;
   spin:constraint [
       a spl:Argument ;
-      spl:defaultValue "at3" ;
+      spl:defaultValue "metromap_identificatie" ;
       spl:optional false ;
       spl:predicate endpoint:debug ;
       spl:valueType xsd:string ;
