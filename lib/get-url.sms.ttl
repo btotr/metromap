@@ -23,18 +23,32 @@
 importer:BindLiteralVariable_1
   a sml:BindLiteralVariable ;
   sm:next importer:importXMLFromUrl_Return ;
-  sm:nodeX 181 ;
-  sm:nodeY 403 ;
+  sm:nodeX 227 ;
+  sm:nodeY 514 ;
   sm:outputVariable "doc" ;
   sml:datatype xsd:string ;
   sml:template "{?xml}" ;
   rdfs:label "Bind literal variable 1" ;
 .
+importer:ImportTextFile_1
+  a sml:ImportTextFile ;
+  sm:next importer:BindLiteralVariable_1 ;
+  sm:nodeX 91 ;
+  sm:nodeY 264 ;
+  sm:outputVariable "xml" ;
+  sml:sourceFilePath [
+      a sp:concat ;
+      sp:arg1 "../archimate-models/" ;
+      sp:arg2 [
+          sp:varName "url" ;
+        ] ;
+      sp:arg3 ".xml" ;
+    ] ;
+.
 importer:ImportXMLFromURL_1
   a sml:ImportXMLFromURL ;
-  sm:next importer:BindLiteralVariable_1 ;
-  sm:nodeX 170 ;
-  sm:nodeY 228 ;
+  sm:nodeX 499 ;
+  sm:nodeY 283 ;
   sm:outputVariable "xml" ;
   sml:ignoreDoctype false ;
   sml:url "{?url}" ;
@@ -44,13 +58,13 @@ importer:importXMLFromUrl
   a sm:Function ;
   spin:constraint [
       a spl:Argument ;
-      spl:defaultValue "http://gist.githubusercontent.com/btotr/4268e3c034ef0423dadb9e79655acaad/raw/c6b8dce44c479a763bc6975d96bd2551e4f4e85e/archimate-example" ;
+      spl:defaultValue "model1" ;
       spl:optional false ;
       spl:predicate <http://spinrdf.org/arg#url> ;
       spl:valueType xsd:string ;
-      sm:next importer:ImportXMLFromURL_1 ;
-      sm:nodeX 326 ;
-      sm:nodeY 46 ;
+      sm:next importer:ImportTextFile_1 ;
+      sm:nodeX 365 ;
+      sm:nodeY 50 ;
       sml:hidden false ;
     ] ;
   sm:returnModule importer:importXMLFromUrl_Return ;
@@ -63,8 +77,8 @@ importer:importXMLFromUrl_1
 .
 importer:importXMLFromUrl_Return
   a sml:ReturnNode ;
-  sm:nodeX 161 ;
-  sm:nodeY 609 ;
+  sm:nodeX 150 ;
+  sm:nodeY 707 ;
   sml:result [
       sp:varName "doc" ;
     ] ;

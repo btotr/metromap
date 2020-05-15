@@ -1,10 +1,12 @@
 # baseURI: http://metromap.politie.org/importXML
 # imports: http://metromap.politie.org/importer_archimate
 # imports: http://topbraid.org/swa
+# imports: http://www.opengroup.org/xsd/archimate/3.0/
 # prefix: importXML
 
 @prefix adminguide: <http://server.topbraidlive.org/doc/adminguide#> .
 @prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix archimate: <http://www.opengroup.org/xsd/archimate/3.0/> .
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix cfg: <http://server.topbraidlive.org/web/2009/config#> .
 @prefix charts: <http://uispin.org/charts#> .
@@ -15,6 +17,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix default: <http://uispin.org/default#> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
 @prefix edg: <http://edg.topbraid.solutions/model/> .
 @prefix email: <http://topbraid.org/email#> .
 @prefix fn: <http://www.w3.org/2005/xpath-functions#> .
@@ -77,6 +80,8 @@
 @prefix tosh.ui: <http://topbraid.org/tosh.ui#> .
 @prefix ui: <http://uispin.org/ui#> .
 @prefix uix: <http://topbraidlive.org/uix#> .
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix voag: <http://voag.linkedmodel.org/voag#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix wot: <http://xmlns.com/wot/0.1/> .
 @prefix xlink: <http://www.w3.org/1999/xlink#> .
@@ -86,6 +91,7 @@
   a owl:Ontology ;
   owl:imports <http://metromap.politie.org/importer_archimate> ;
   owl:imports <http://topbraid.org/swa> ;
+  owl:imports archimate: ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 importXML:XMLimport
@@ -119,7 +125,7 @@ importXML:XMLimport
             <!--sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/-->
         </ui:setContext>
     </sml:ImportTextFile>
-    <!--ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"ui:tempGraph\"/-->
+    <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
     <ui:try>
         <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
             <ui:update ui:updateQuery=\"{!
