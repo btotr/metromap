@@ -8,7 +8,9 @@ Model.prototype.getModel = function(debugarg, callback){
 	
 		var self = this;
 		var oReq = new XMLHttpRequest();
-		oReq.open("GET", "http://localhost:8083/tbl/sparqlmotion?id=metromap"+debug);
+		var origin = document.location.origin;
+		if (document.location.hostname != "localhost") origin += "/edg"
+		oReq.open("GET", origin + "/tbl/sparqlmotion?id=metromap"+debug);
 		oReq.send();
 		
 		oReq.onreadystatechange = function() {

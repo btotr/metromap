@@ -23,6 +23,7 @@
 @prefix spra: <http://spinrdf.org/spra#> .
 @prefix style: <http://uispin.org/style#> .
 @prefix ui: <http://uispin.org/ui#> .
+@prefix uix: <http://topbraidlive.org/uix#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://metromap.politie.nl/client>
@@ -83,7 +84,7 @@ html:Div_1
 ui:client
   a ui:Service ;
   ui:headIncludes """
-<ui:group let:base=\"lib/6.2.4.v20190907-2245R/server/build/\">
+<ui:group let:base=\"{= fn:concat(&quot;lib/&quot;, uix:getTBVersion(), &quot;/server/build/&quot;) }\">
     <title>metromap</title>
     <script src=\"{= fn:concat(?base, &quot;cytoscape.min.js&quot;) } \"/>
     <script src=\"{= fn:concat(?base, &quot;cytoscape-cxtmenu.js&quot;) }\"/>
