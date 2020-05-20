@@ -118,6 +118,9 @@ importXML:XMLimport
     ] ;
   ui:prototype """
 <ui:group let:baseURI=\"http://archimate.politie.nl/instances\" let:graphURI=\"{= IRI(CONCAT(&quot;urn:x-evn-master:&quot;, LCASE(?graph))) }\" let:schemaGraph=\"{= IRI(&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot;) }\" let:targetFilePath=\"/metromap/output.xml\" let:xmlFromURL=\"{= importer:importXMLFromUrl(?model, ?source, ?xmlUrl) }\">
+    <ui:debug>
+        <ui:dumpScope ui:message=\"import variables\"/>
+    </ui:debug>
     <sml:ExportToTextFile sml:replace=\"{= true }\" sml:targetFilePath=\"{= ?targetFilePath }\" sml:text=\"{= ?xmlFromURL }\"/>
     <sml:ImportTextFile sm:outputVariable=\"xml\" sml:sourceFilePath=\"{= ?targetFilePath }\">
         <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?schemaGraph) }\">
@@ -135,14 +138,12 @@ importXML:XMLimport
             <!--sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/-->
         </ui:setContext>
     </sml:ImportTextFile>
-    <!--ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"ui:tempGraph\"/-->
+    <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
     <ui:try>
         <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
             <ui:update ui:updateQuery=\"{!
                     INSERT {
-                        GRAPH ?model {
-                            ?s ?p ?o .
-                        } .
+                        ?s ?p ?o .
                     }
                     WHERE {
                         GRAPH ui:tempGraph {
@@ -157,6 +158,7 @@ importXML:XMLimport
     </ui:try>
     <ui:catch>
         <h1>mislukt!</h1>
+        <p>{= ?swpTrace }</p>
     </ui:catch>
 </ui:group>
 """^^ui:Literal ;
