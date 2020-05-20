@@ -22,11 +22,14 @@
   owl:imports <http://topbraid.org/sparqlmotionlib-tb> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
+importer:Ask_1
+  a sp:Ask ;
+  rdfs:label "Ask 1" ;
+.
 importer:BindBySelect_1
   a sml:BindBySelect ;
-  sm:next importer:BindLiteralVariable_1 ;
-  sm:nodeX 273 ;
-  sm:nodeY 281 ;
+  sm:nodeX 60 ;
+  sm:nodeY 645 ;
   sml:selectQuery [
       a sp:Select ;
       sp:limit "1"^^xsd:long ;
@@ -39,6 +42,15 @@ importer:BindBySelect_1
           [
             sp:object <http://metro.politie.nl#source> ;
             sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "model" ;
+              ] ;
+            sp:predicate rdfs:label ;
             sp:subject [
                 sp:varName "s" ;
               ] ;
@@ -58,30 +70,60 @@ importer:BindBySelect_1
 importer:BindLiteralVariable_1
   a sml:BindLiteralVariable ;
   sm:next importer:importXMLFromUrl_Return ;
-  sm:nodeX 276 ;
-  sm:nodeY 471 ;
+  sm:nodeX 769 ;
+  sm:nodeY 1054 ;
   sm:outputVariable "doc" ;
   sml:datatype xsd:string ;
   sml:template "{?xml}" ;
 .
+importer:BranchByAsk_1
+  a sml:BranchByAsk ;
+  sm:else importer:ImportXMLFromURL_1 ;
+  sm:if importer:BindBySelect_1 ;
+  sm:next importer:BindLiteralVariable_1 ;
+  sm:nodeX 627 ;
+  sm:nodeY 497 ;
+  sml:askQuery [
+      a sp:Ask ;
+      sp:where (
+          [
+            sp:object <http://metro.politie.nl#source> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+          [
+            a sp:Filter ;
+            sp:expression [
+                a sp:isURI ;
+                sp:arg1 [
+                    sp:varName "i" ;
+                  ] ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "if not source instance" ;
+.
 importer:ImportRDFFromWorkspace_1
   a sml:ImportRDFFromWorkspace ;
-  sm:next importer:BindBySelect_1 ;
-  sm:nodeX 51 ;
-  sm:nodeY 160 ;
+  sm:next importer:BranchByAsk_1 ;
+  sm:nodeX 380 ;
+  sm:nodeY 294 ;
   sml:baseURI [
       a sp:concat ;
       sp:arg1 "urn:x-evn-master:" ;
       sp:arg2 [
-          sp:varName "url" ;
+          sp:varName "ontology" ;
         ] ;
     ] ;
   sml:ignoreImports false ;
 .
 importer:ImportXMLFromURL_1
   a sml:ImportXMLFromURL ;
-  sm:nodeX 499 ;
-  sm:nodeY 283 ;
+  sm:nodeX 1000 ;
+  sm:nodeY 596 ;
   sm:outputVariable "xml" ;
   sml:ignoreDoctype false ;
   sml:url "{?url}" ;
@@ -94,13 +136,34 @@ importer:importXMLFromUrl
   a sm:Function ;
   spin:constraint [
       a spl:Argument ;
-      spl:defaultValue "metromap2" ;
+      spl:defaultValue "metromap_source" ;
       spl:optional false ;
-      spl:predicate <http://spinrdf.org/arg#url> ;
+      spl:predicate <http://spinrdf.org/arg#ontology> ;
       spl:valueType xsd:string ;
       sm:next importer:ImportRDFFromWorkspace_1 ;
-      sm:nodeX 389 ;
-      sm:nodeY 68 ;
+      sm:nodeX 426 ;
+      sm:nodeY 113 ;
+      sml:hidden true ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "model1" ;
+      spl:optional true ;
+      spl:predicate <http://spinrdf.org/arg#model> ;
+      spl:valueType xsd:string ;
+      sm:next importer:BindBySelect_1 ;
+      sm:nodeX 15 ;
+      sm:nodeY 33 ;
+      sml:hidden true ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:optional true ;
+      spl:predicate <http://spinrdf.org/arg#url> ;
+      spl:valueType xsd:string ;
+      sm:next importer:BranchByAsk_1 ;
+      sm:nodeX 992 ;
+      sm:nodeY 139 ;
       sml:hidden false ;
     ] ;
   sm:returnModule importer:importXMLFromUrl_Return ;
@@ -115,8 +178,8 @@ importer:importXMLFromUrl_1
 .
 importer:importXMLFromUrl_Return
   a sml:ReturnNode ;
-  sm:nodeX 84 ;
-  sm:nodeY 649 ;
+  sm:nodeX 161 ;
+  sm:nodeY 1109 ;
   sml:result [
       sp:varName "doc" ;
     ] ;
