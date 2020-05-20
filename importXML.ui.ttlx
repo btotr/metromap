@@ -139,27 +139,20 @@ importXML:XMLimport
         </ui:setContext>
     </sml:ImportTextFile>
     <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
-    <ui:try>
-        <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
-            <ui:update ui:updateQuery=\"{!
-                    INSERT {
+    <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
+        <ui:update ui:updateQuery=\"{!
+                INSERT {
+                    ?s ?p ?o .
+                }
+                WHERE {
+                    GRAPH ui:tempGraph {
                         ?s ?p ?o .
-                    }
-                    WHERE {
-                        GRAPH ui:tempGraph {
-                            ?s ?p ?o .
-                        } .
-                    } }\"/>
-        </ui:setContext>
-        <h1>importeren is gelukt!</h1>
-        <p>
-            <a href=\"swp?_viewClass=ui:client&amp;debug={= ui:label(?graph) }\">open de metromap</a>
-        </p>
-    </ui:try>
-    <ui:catch>
-        <h1>mislukt!</h1>
-        <p>{= ?swpTrace }</p>
-    </ui:catch>
+                    } .
+                } }\"/>
+    </ui:setContext>
+    <p>
+        <a href=\"swp?_viewClass=ui:client&amp;debug={= ui:label(?graph) }\">open de metromap</a>
+    </p>
 </ui:group>
 """^^ui:Literal ;
   ui:responseType ui:HTML ;
