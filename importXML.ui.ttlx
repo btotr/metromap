@@ -32,6 +32,7 @@
 @prefix let: <http://uispin.org/let#> .
 @prefix letrs: <http://uispin.org/letrs#> .
 @prefix list: <http://jena.hpl.hp.com/ARQ/list#> .
+@prefix m: <http://metro.politie.nl#> .
 @prefix metadata: <http://topbraid.org/metadata#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix raci: <http://topbraid.org/raci#> .
@@ -103,11 +104,20 @@ importXML:XMLimport
     ] ;
   spin:constraint [
       a spl:Argument ;
+      spl:predicate arg:model ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:predicate arg:source ;
+      spl:valueType xsd:string ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
       spl:predicate arg:xmlUrl ;
       spl:valueType xsd:string ;
     ] ;
   ui:prototype """
-<ui:group let:baseURI=\"http://archimate.politie.nl/instances\" let:graphURI=\"{= IRI(CONCAT(&quot;urn:x-evn-master:&quot;, LCASE(?graph))) }\" let:schemaGraph=\"{= IRI(&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot;) }\" let:targetFilePath=\"/metromap/output.xml\" let:xmlFromURL=\"{= importer:importXMLFromUrl(?xmlUrl) }\">
+<ui:group let:baseURI=\"http://archimate.politie.nl/instances\" let:graphURI=\"{= IRI(CONCAT(&quot;urn:x-evn-master:&quot;, LCASE(?graph))) }\" let:schemaGraph=\"{= IRI(&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot;) }\" let:targetFilePath=\"/metromap/output.xml\" let:xmlFromURL=\"{= importer:importXMLFromUrl(?model, ?source, ?xmlUrl) }\">
     <sml:ExportToTextFile sml:replace=\"{= true }\" sml:targetFilePath=\"{= ?targetFilePath }\" sml:text=\"{= ?xmlFromURL }\"/>
     <sml:ImportTextFile sm:outputVariable=\"xml\" sml:sourceFilePath=\"{= ?targetFilePath }\">
         <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?schemaGraph) }\">
@@ -125,12 +135,14 @@ importXML:XMLimport
             <!--sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/-->
         </ui:setContext>
     </sml:ImportTextFile>
-    <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
+    <!--ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"ui:tempGraph\"/-->
     <ui:try>
         <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
             <ui:update ui:updateQuery=\"{!
                     INSERT {
-                        ?s ?p ?o .
+                        GRAPH ?model {
+                            ?s ?p ?o .
+                        } .
                     }
                     WHERE {
                         GRAPH ui:tempGraph {
@@ -139,6 +151,9 @@ importXML:XMLimport
                     } }\"/>
         </ui:setContext>
         <h1>importeren is gelukt!</h1>
+        <p>
+            <a href=\"swp?_viewClass=ui:client&amp;debug={= ui:label(?graph) }\">open de metromap</a>
+        </p>
     </ui:try>
     <ui:catch>
         <h1>mislukt!</h1>

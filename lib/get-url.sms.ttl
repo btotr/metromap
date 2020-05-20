@@ -137,7 +137,7 @@ importer:importXMLFromUrl
   spin:constraint [
       a spl:Argument ;
       spl:defaultValue "metromap_source" ;
-      spl:optional false ;
+      spl:optional true ;
       spl:predicate <http://spinrdf.org/arg#ontology> ;
       spl:valueType xsd:string ;
       sm:next importer:ImportRDFFromWorkspace_1 ;
