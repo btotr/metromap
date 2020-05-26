@@ -81,6 +81,13 @@ sam:BB
               ] ;
           ]
           [
+            sp:object sam:ABB ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
             sp:object [
                 sp:varName "l" ;
               ] ;

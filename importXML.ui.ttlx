@@ -135,7 +135,7 @@ importXML:XMLimport
                             ?s ?p ?o .
                         } }\"/>
             </sml:ConvertXMLToRDF>
-            <!--sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/-->
+            <sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/>
         </ui:setContext>
     </sml:ImportTextFile>
     <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
