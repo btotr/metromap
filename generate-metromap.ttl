@@ -24,6 +24,9 @@
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<file:///metromap/archimate-models/model1.xml#r-1-42>
+  sam:R <file:///metromap/archimate-models/model1.xml#r-1-23> ;
+.
 sam:BB
   spin:rule [
       a sp:Construct ;
@@ -410,6 +413,13 @@ archimate:Access
             sp:subject spin:_this ;
           ]
           [
+            sp:object archimate:ApplicationFunction ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
             sp:object [
                 sp:varName "tid" ;
               ] ;
@@ -425,8 +435,85 @@ archimate:Access
                 sp:varName "t" ;
               ] ;
           ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
         ) ;
-      rdfs:comment "00001 acces" ;
+      rdfs:comment "00001 access" ;
+    ] ;
+.
+archimate:Aggregation
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:D ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:Aggregation ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 aggregation" ;
     ] ;
 .
 archimate:Assignment
@@ -483,62 +570,6 @@ archimate:Assignment
           ]
         ) ;
       rdfs:comment "00001 assignement" ;
-    ] ;
-.
-archimate:Association
-  spin:rule [
-      a sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "t" ;
-              ] ;
-            sp:predicate sam:D ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object [
-                sp:varName "sid" ;
-              ] ;
-            sp:predicate archimate:source ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "sid" ;
-              ] ;
-            sp:predicate archimate:identifier ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-          [
-            sp:object archimate:Association ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "tid" ;
-              ] ;
-            sp:predicate archimate:target ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "tid" ;
-              ] ;
-            sp:predicate archimate:identifier ;
-            sp:subject [
-                sp:varName "t" ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "00001 access" ;
     ] ;
 .
 archimate:ConceptGroup

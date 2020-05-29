@@ -98,127 +98,6 @@ endpoint:ReturnSWPDocument_1
                   a swon:Object ;
                   ui:child [
                       a swon:Value ;
-                      arg:name "data" ;
-                      ui:child [
-                          a swon:Value ;
-                          arg:name "color" ;
-                          arg:value [
-                              a ui:label ;
-                              sp:arg1 [
-                                  sp:varName "color" ;
-                                ] ;
-                            ] ;
-                          ui:childIndex 2 ;
-                        ] ;
-                      ui:child [
-                          a swon:Value ;
-                          arg:name "documentation" ;
-                          arg:value [
-                              a ui:label ;
-                              sp:arg1 [
-                                  sp:varName "documentation" ;
-                                ] ;
-                            ] ;
-                          ui:childIndex 4 ;
-                        ] ;
-                      ui:child [
-                          a swon:Value ;
-                          arg:name "id" ;
-                          arg:value [
-                              a ui:label ;
-                              sp:arg1 [
-                                  sp:varName "id" ;
-                                ] ;
-                            ] ;
-                          ui:childIndex 1 ;
-                        ] ;
-                      ui:child [
-                          a swon:Value ;
-                          arg:name "version" ;
-                          arg:value [
-                              a ui:label ;
-                              sp:arg1 [
-                                  sp:varName "version" ;
-                                ] ;
-                            ] ;
-                          ui:childIndex 3 ;
-                        ] ;
-                      ui:child [
-                          a ui:TextNode ;
-                          ui:childIndex 0 ;
-                          ui:text "{" ;
-                        ] ;
-                      ui:child [
-                          a ui:TextNode ;
-                          ui:childIndex 7 ;
-                          ui:text """}
-""" ;
-                        ] ;
-                      ui:child [
-                          a ui:else ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "source" ;
-                              arg:value [
-                                  a ui:label ;
-                                  sp:arg1 [
-                                      sp:varName "source" ;
-                                    ] ;
-                                ] ;
-                              ui:childIndex 0 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "target" ;
-                              arg:value [
-                                  a ui:label ;
-                                  sp:arg1 [
-                                      sp:varName "target" ;
-                                    ] ;
-                                ] ;
-                              ui:childIndex 1 ;
-                            ] ;
-                          ui:childIndex 6 ;
-                        ] ;
-                      ui:child [
-                          a ui:if ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "bar" ;
-                              arg:value 0 ;
-                              ui:childIndex 1 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "bax" ;
-                              arg:value 0 ;
-                              ui:childIndex 3 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "baz" ;
-                              arg:value 0 ;
-                              ui:childIndex 2 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "foo" ;
-                              arg:value 10 ;
-                              ui:childIndex 0 ;
-                            ] ;
-                          ui:childIndex 5 ;
-                          ui:condition [
-                              a sp:eq ;
-                              sp:arg1 [
-                                  sp:varName "nodeType" ;
-                                ] ;
-                              sp:arg2 "nodes" ;
-                            ] ;
-                        ] ;
-                      ui:childIndex 1 ;
-                    ] ;
-                  ui:child [
-                      a swon:Value ;
                       arg:name "group" ;
                       arg:value [
                           a ui:label ;
@@ -230,11 +109,173 @@ endpoint:ReturnSWPDocument_1
                     ] ;
                   ui:child [
                       a ui:CommentNode ;
-                      ui:childIndex 2 ;
+                      ui:childIndex 3 ;
                       rdfs:comment """
 					{ group: 'nodes', data: { id: 'teruggave beslag', color: 'black',  foo: 10} }
 		  			{ group: 'edges', data: { id: 'beheren beslag-goed-bvh', source: 'beheren beslag', target: 'goed', color: 'green' } },
 				""" ;
+                    ] ;
+                  ui:child [
+                      a ui:else ;
+                      ui:child [
+                          a swon:Value ;
+                          arg:name "data" ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "color" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "color" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 2 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "id" ;
+                              arg:value [
+                                  a sp:concat ;
+                                  sp:arg1 [
+                                      sp:varName "id" ;
+                                    ] ;
+                                  sp:arg2 [
+                                      a sp:rand ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 1 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "source" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "source" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 3 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "target" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "target" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 4 ;
+                            ] ;
+                          ui:child [
+                              a ui:TextNode ;
+                              ui:childIndex 0 ;
+                              ui:text "{" ;
+                            ] ;
+                          ui:child [
+                              a ui:TextNode ;
+                              ui:childIndex 5 ;
+                              ui:text """}
+						""" ;
+                            ] ;
+                          ui:childIndex 0 ;
+                        ] ;
+                      ui:childIndex 2 ;
+                    ] ;
+                  ui:child [
+                      a ui:if ;
+                      ui:child [
+                          a swon:Value ;
+                          arg:name "data" ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "bar" ;
+                              arg:value 0 ;
+                              ui:childIndex 6 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "bax" ;
+                              arg:value 0 ;
+                              ui:childIndex 8 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "baz" ;
+                              arg:value 0 ;
+                              ui:childIndex 7 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "color" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "color" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 2 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "documentation" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "documentation" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 4 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "foo" ;
+                              arg:value 10 ;
+                              ui:childIndex 5 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "id" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "id" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 1 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "version" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "version" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 3 ;
+                            ] ;
+                          ui:child [
+                              a ui:TextNode ;
+                              ui:childIndex 0 ;
+                              ui:text "{" ;
+                            ] ;
+                          ui:child [
+                              a ui:TextNode ;
+                              ui:childIndex 9 ;
+                              ui:text """}
+						""" ;
+                            ] ;
+                          ui:childIndex 0 ;
+                        ] ;
+                      ui:childIndex 1 ;
+                      ui:condition [
+                          a sp:eq ;
+                          sp:arg1 [
+                              sp:varName "nodeType" ;
+                            ] ;
+                          sp:arg2 "nodes" ;
+                        ] ;
                     ] ;
                   ui:childIndex 0 ;
                 ] ;
