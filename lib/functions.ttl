@@ -1,4 +1,5 @@
 # baseURI: https://architecture.politie.nl/metromap/functions
+# imports: http://simplearchimatemodel.politie.nl/
 # imports: http://spinrdf.org/spinx
 # imports: http://spinrdf.org/spl
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
@@ -8,6 +9,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sam: <http://simplearchimatemodel.politie.nl/> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spinx: <http://spinrdf.org/spinx#> .
@@ -16,6 +18,7 @@
 
 <https://architecture.politie.nl/metromap/functions>
   a owl:Ontology ;
+  owl:imports sam: ;
   owl:imports <http://spinrdf.org/spinx> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.opengroup.org/xsd/archimate/3.0/> ;
@@ -86,5 +89,167 @@ functions:getColor
   spin:returnType xsd:string ;
   spinx:javaScriptFile "randomcolor.js" ;
   rdfs:label "get color" ;
+  rdfs:subClassOf spin:Functions ;
+.
+functions:getStyle
+  a spin:Function ;
+  spin:body [
+      a sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "style" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object <http://www.opengroup.org/xsd/archimate/3.0/Aggregation> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "a" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sourceS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/source> ;
+            sp:subject [
+                sp:varName "a" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sourceS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.opengroup.org/xsd/archimate/3.0/Plateau> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "targetS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
+            sp:subject [
+                sp:varName "a" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "targetS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.opengroup.org/xsd/archimate/3.0/Assignment> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sourceAS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/source> ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sourceAS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+            sp:subject [
+                sp:varName "as" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "targetAS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "targetAS" ;
+              ] ;
+            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+            sp:subject [
+                sp:varName "f" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "service" ;
+              ] ;
+            sp:predicate sam:R ;
+            sp:subject [
+                sp:varName "f" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "as" ;
+              ] ;
+            sp:predicate sam:A ;
+            sp:subject spin:_arg1 ;
+          ]
+          [
+            sp:object [
+                sp:varName "abb" ;
+              ] ;
+            sp:predicate sam:R ;
+            sp:subject spin:_arg1 ;
+          ]
+          [
+            sp:object [
+                sp:varName "service" ;
+              ] ;
+            sp:predicate sam:A ;
+            sp:subject [
+                sp:varName "abb" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:if ;
+                sp:arg1 [
+                    a sp:bound ;
+                    sp:arg1 [
+                        sp:varName "as" ;
+                      ] ;
+                  ] ;
+                sp:arg2 "dashed" ;
+                sp:arg3 "solid" ;
+              ] ;
+            sp:variable [
+                sp:varName "style" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:predicate sp:arg1 ;
+    ] ;
+  spin:returnType xsd:string ;
+  rdfs:label "get style" ;
   rdfs:subClassOf spin:Functions ;
 .

@@ -1,5 +1,5 @@
 # baseURI: http://archimate.politie.nl/instances/
-# imports: file:///metromap/archimate-models/model6.xml
+# imports: file:///metromap/archimate-models/model8.xml
 # imports: http://topbraid.org/sxml
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # prefix: ai
@@ -14,7 +14,7 @@
 
 ai:
   a owl:Ontology ;
-  owl:imports <file:///metromap/archimate-models/model6.xml> ;
+  owl:imports <file:///metromap/archimate-models/model8.xml> ;
   owl:imports <http://topbraid.org/sxml> ;
   owl:imports p3.0: ;
   owl:versionInfo "Created with TopBraid Composer" ;

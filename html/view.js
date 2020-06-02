@@ -34,19 +34,11 @@ View.prototype.style = [
 	      'width': 3,
 	      'curve-style': 'bezier',
 	      'line-color': 'data(color)',
-	      'target-arrow-color': 'data(color)'
+	      'target-arrow-color': 'data(color)',
+	      'line-style': 'data(style)',
+	    	  'line-dash-pattern': [2,4]
 	    }
-	  },
-	  {
-		    selector: ':parent',
-		    style: {
-		    	'background-color':'white',
-		      	'label' : 'data(id)',
-		      	'text-margin-y': '-20px',
-		      	'color':'#888888',
-		      	'border-style': 'dashed'
-		    }
-		  }
+	  }
 ];
 
 

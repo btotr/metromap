@@ -2,6 +2,7 @@
 # imports: http://metro.politie.nl
 # imports: http://topbraid.org/sparqlmotionlib
 # imports: http://uispin.org/swon
+# imports: https://architecture.politie.nl/metromap/functions
 # prefix: endpoint
 
 @prefix ai: <http://archimate.politie.nl/instances/> .
@@ -46,6 +47,7 @@
   owl:imports <http://metro.politie.nl> ;
   owl:imports <http://topbraid.org/sparqlmotionlib> ;
   owl:imports <http://uispin.org/swon> ;
+  owl:imports <https://architecture.politie.nl/metromap/functions> ;
   owl:versionInfo "simple example for sparqlMotion" ;
 .
 endpoint:ApplyTopSPIN_1
@@ -154,6 +156,17 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "source" ;
                                     ] ;
                                 ] ;
+                              ui:childIndex 4 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "style" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "style" ;
+                                    ] ;
+                                ] ;
                               ui:childIndex 3 ;
                             ] ;
                           ui:child [
@@ -165,7 +178,7 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "target" ;
                                     ] ;
                                 ] ;
-                              ui:childIndex 4 ;
+                              ui:childIndex 5 ;
                             ] ;
                           ui:child [
                               a ui:TextNode ;
@@ -174,7 +187,7 @@ endpoint:ReturnSWPDocument_1
                             ] ;
                           ui:child [
                               a ui:TextNode ;
-                              ui:childIndex 5 ;
+                              ui:childIndex 6 ;
                               ui:text """}
 						""" ;
                             ] ;
@@ -307,6 +320,9 @@ endpoint:ReturnSWPDocument_1
                       [
                         sp:varName "documentation" ;
                       ]
+                      [
+                        sp:varName "style" ;
+                      ]
                     ) ;
                   sp:where (
                       [
@@ -348,18 +364,37 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
-                                a sp:Optional ;
-                                sp:elements (
-                                    [
-                                      sp:object [
-                                          sp:varName "color" ;
-                                        ] ;
-                                      sp:predicate m:color ;
-                                      sp:subject [
-                                          sp:varName "id" ;
-                                        ] ;
-                                    ]
-                                  ) ;
+                                sp:object [
+                                    sp:varName "l" ;
+                                  ] ;
+                                sp:predicate rdfs:label ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression [
+                                    a functions:getColor ;
+                                    sp:arg1 [
+                                        sp:varName "l" ;
+                                      ] ;
+                                  ] ;
+                                sp:variable [
+                                    sp:varName "color" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression [
+                                    a functions:getStyle ;
+                                    sp:arg1 [
+                                        sp:varName "id" ;
+                                      ] ;
+                                  ] ;
+                                sp:variable [
+                                    sp:varName "style" ;
+                                  ] ;
                               ]
                               [
                                 a sp:Filter ;

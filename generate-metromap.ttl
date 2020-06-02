@@ -63,15 +63,6 @@ sam:BB
                 sp:varName "i2" ;
               ] ;
           ]
-          [
-            sp:object [
-                sp:varName "color" ;
-              ] ;
-            sp:predicate <http://metro.politie.nl#color> ;
-            sp:subject [
-                sp:varName "sbb" ;
-              ] ;
-          ]
         ) ;
       sp:where (
           [
@@ -88,15 +79,6 @@ sam:BB
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "abb" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "l" ;
-              ] ;
-            sp:predicate rdfs:label ;
-            sp:subject [
-                sp:varName "sbb" ;
               ] ;
           ]
           [
@@ -128,18 +110,6 @@ sam:BB
                     ] ;
                 ]
               ) ;
-          ]
-          [
-            a sp:Bind ;
-            sp:expression [
-                a functions:getColor ;
-                sp:arg1 [
-                    sp:varName "l" ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "color" ;
-              ] ;
           ]
           [
             a sp:Optional ;

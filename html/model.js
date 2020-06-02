@@ -40,8 +40,8 @@ Model.prototype.getModel = function(debugarg, callback){
 		
 		var model = [
 {"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM","color":null,"version":null,"documentation":null,"source":"partij","target":"gezichtsfoto"}
-},{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM1","color":null,"version":null,"documentation":null,"source":"partij","target":"vingerafdruk"}
-},{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM2","color":null,"version":null,"documentation":null,"source":"partij","target":"identificatie"}
+},{"group":"edges","data":{"style": "dotted", "id":"SBB: Administreren Identiteits Vaststelling-FCM1","color":null,"version":null,"documentation":null,"source":"partij","target":"vingerafdruk"}
+},{"group":"edges","data":{"style": "dashed", "id":"SBB: Administreren Identiteits Vaststelling-FCM2","color":null,"version":null,"documentation":null,"source":"partij","target":"identificatie"}
 },{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM3","color":null,"version":null,"documentation":null,"source":"verificatie","target":"gezichtsfoto"}
 },{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM4","color":null,"version":null,"documentation":null,"source":"verificatie","target":"vingerafdruk"}
 },{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM5","color":null,"version":null,"documentation":null,"source":"verificatie","target":"identificatie"}
