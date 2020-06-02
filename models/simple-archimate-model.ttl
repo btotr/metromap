@@ -51,6 +51,10 @@
   rdfs:label "I" ;
   rdfs:subClassOf :B ;
 .
+:Q
+  a owl:ObjectProperty ;
+  rdfs:label "Q" ;
+.
 :R
   a rdf:Property ;
   rdfs:domain :F ;

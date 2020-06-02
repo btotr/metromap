@@ -116,6 +116,20 @@ sam:BB
               ] ;
           ]
           [
+            a sp:Minus ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "s" ;
+                    ] ;
+                  sp:predicate sam:Q ;
+                  sp:subject [
+                      sp:varName "i" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
             a sp:Bind ;
             sp:expression [
                 a functions:getColor ;
@@ -265,10 +279,24 @@ sam:C
               ] ;
           ]
           [
+            a sp:TriplePath ;
             sp:object [
                 sp:varName "i" ;
               ] ;
-            sp:predicate sam:T ;
+            sp:path [
+                a sp:AltPath ;
+                sp:path1 [
+                    a sp:SeqPath ;
+                    sp:path1 sam:T ;
+                    sp:path2 [
+                        a sp:ModPath ;
+                        sp:modMax -2 ;
+                        sp:modMin 1 ;
+                        sp:subPath sam:Q ;
+                      ] ;
+                  ] ;
+                sp:path2 sam:T ;
+              ] ;
             sp:subject [
                 sp:varName "f" ;
               ] ;
@@ -650,6 +678,76 @@ archimate:Realization
           ]
         ) ;
       rdfs:comment "00001 realization" ;
+    ] ;
+.
+archimate:Specialization
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:Q ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:Specialization ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 specialization" ;
     ] ;
 .
 owl:Thing
