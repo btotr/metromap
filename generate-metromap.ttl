@@ -219,15 +219,6 @@ sam:C
           ]
           [
             sp:object [
-                sp:varName "c2" ;
-              ] ;
-            sp:predicate sam:A ;
-            sp:subject [
-                sp:varName "sbb" ;
-              ] ;
-          ]
-          [
-            sp:object [
                 sp:varName "abb" ;
               ] ;
             sp:predicate sam:R ;

@@ -339,6 +339,15 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
+                                sp:object [
+                                    sp:varName "target" ;
+                                  ] ;
+                                sp:predicate sam:D ;
+                                sp:subject [
+                                    sp:varName "source" ;
+                                  ] ;
+                              ]
+                              [
                                 a sp:Optional ;
                                 sp:elements (
                                     [
