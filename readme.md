@@ -4,7 +4,7 @@ generates a metromap based on a archimate model (archimate exchange format)
 
 # prerequisite
 - Topbraid Composer
-- copy the content from the html folder to server.topbraidlive.org/system-applications/server.www/build/ (if you not working locally you have to depoy those files as-well)
+- copy the content from the html folder to server.topbraidlive.org/system-applications/server.www/build/ (if you not working locally you have to deploy those files as-well)
  
 
 # usage
@@ -19,3 +19,10 @@ instead of the xmlUrl you may use a source ontology
 2 import the metro ontology (settings > import) 
 3 add a new source instance
 4 past the archimate model in the archimate property
+
+## testing a archimate model in Composer
+
+1. save an archimate model into the project
+2. open instance-importer.ttl and drag the file into the imports tab
+
+Note: Any change into the archimate model wil not trigger a change in the imported file. Choose another name and import the new file after removing the last imported archimate model.

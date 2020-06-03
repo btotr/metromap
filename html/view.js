@@ -32,19 +32,38 @@ View.prototype.style = [
 	    selector: 'edge',
 	    style: {
 	      'width': 3,
+	      'font-size':'8px',
+	      'color':'white',
+	      "text-background-opacity": 1,
+	      "text-background-padding" :  '2px',
+	      "text-background-color":'data(color)',
+	      "text-background-shape": "roundrectangle",
 	      'curve-style': 'bezier',
 	      'line-color': 'data(color)',
+	      'label': 'data(label)',
 	      'target-arrow-color': 'data(color)',
-	      'line-style': 'data(style)',
+		      'line-style': 'data(style)',
 	    	  'line-dash-pattern': [2,4]
 	    }
-	  }
+	  },
+	  {
+		    selector: ':parent',
+		    style: {
+		    	'background-color':'white',
+		      	'label' : 'data(id)',
+		      	'text-margin-y': '-20px',
+		      	'color':'#888888',
+		      	'border-style': 'dashed'
+		    }
+		  }
 ];
 
 
 View.prototype.layout =  {
 		name: 'grid',
-		 columns: 4
+		rows: 1,
+		cols: 10,
+		fit: false
 		
 };
 

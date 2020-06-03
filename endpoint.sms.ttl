@@ -149,6 +149,17 @@ endpoint:ReturnSWPDocument_1
                             ] ;
                           ui:child [
                               a swon:Value ;
+                              arg:name "label" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "label" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 3 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
                               arg:name "source" ;
                               arg:value [
                                   a ui:label ;
@@ -156,7 +167,7 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "source" ;
                                     ] ;
                                 ] ;
-                              ui:childIndex 4 ;
+                              ui:childIndex 5 ;
                             ] ;
                           ui:child [
                               a swon:Value ;
@@ -167,7 +178,7 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "style" ;
                                     ] ;
                                 ] ;
-                              ui:childIndex 3 ;
+                              ui:childIndex 4 ;
                             ] ;
                           ui:child [
                               a swon:Value ;
@@ -178,7 +189,7 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "target" ;
                                     ] ;
                                 ] ;
-                              ui:childIndex 5 ;
+                              ui:childIndex 6 ;
                             ] ;
                           ui:child [
                               a ui:TextNode ;
@@ -187,7 +198,7 @@ endpoint:ReturnSWPDocument_1
                             ] ;
                           ui:child [
                               a ui:TextNode ;
-                              ui:childIndex 6 ;
+                              ui:childIndex 7 ;
                               ui:text """}
 						""" ;
                             ] ;
@@ -323,6 +334,9 @@ endpoint:ReturnSWPDocument_1
                       [
                         sp:varName "style" ;
                       ]
+                      [
+                        sp:varName "label" ;
+                      ]
                     ) ;
                   sp:where (
                       [
@@ -365,7 +379,7 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 sp:object [
-                                    sp:varName "l" ;
+                                    sp:varName "label" ;
                                   ] ;
                                 sp:predicate rdfs:label ;
                                 sp:subject [
@@ -377,7 +391,7 @@ endpoint:ReturnSWPDocument_1
                                 sp:expression [
                                     a functions:getColor ;
                                     sp:arg1 [
-                                        sp:varName "l" ;
+                                        sp:varName "label" ;
                                       ] ;
                                   ] ;
                                 sp:variable [

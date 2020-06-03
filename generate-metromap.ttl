@@ -289,12 +289,11 @@ sam:C
             a sp:Bind ;
             sp:expression [
                 a sp:concat ;
-                sp:arg1 "SBB: " ;
-                sp:arg2 [
+                sp:arg1 [
                     sp:varName "sLabel" ;
                   ] ;
-                sp:arg3 "-" ;
-                sp:arg4 [
+                sp:arg2 "-" ;
+                sp:arg3 [
                     sp:varName "cLabel" ;
                   ] ;
               ] ;
@@ -306,8 +305,7 @@ sam:C
             a sp:Bind ;
             sp:expression [
                 a sp:concat ;
-                sp:arg1 "ABB: " ;
-                sp:arg2 [
+                sp:arg1 [
                     sp:varName "sLabel" ;
                   ] ;
               ] ;
