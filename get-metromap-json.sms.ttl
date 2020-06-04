@@ -72,8 +72,8 @@ endpoint:ImportRDFFromWorkspace_1
 endpoint:ImportRDFFromWorkspace_2
   a sml:ImportRDFFromWorkspace ;
   sm:next endpoint:ApplyTopSPIN_1 ;
-  sm:nodeX 353 ;
-  sm:nodeY 614 ;
+  sm:nodeX 249 ;
+  sm:nodeY 669 ;
   sml:baseURI "{?workspace}" ;
   sml:ignoreImports false ;
   rdfs:label "Import RDFFrom workspace 2" ;
@@ -81,13 +81,15 @@ endpoint:ImportRDFFromWorkspace_2
 endpoint:ImportRDFFromWorkspace_3
   a sml:ImportRDFFromWorkspace ;
   sm:next endpoint:ApplyTopSPIN_1 ;
+  sm:nodeX 862 ;
+  sm:nodeY 133 ;
   sml:ignoreImports false ;
   sml:sourceFilePath "generate-metromap.ttl" ;
 .
 endpoint:ReturnSWPDocument_1
   a sml:ReturnSWPDocument ;
-  sm:nodeX 390 ;
-  sm:nodeY 1128 ;
+  sm:nodeX 352 ;
+  sm:nodeY 1077 ;
   sml:snippet true ;
   sml:view [
       a swon:Object ;
@@ -530,8 +532,8 @@ endpoint:buildString_1
         ] ;
     ] ;
   sm:next endpoint:ImportRDFFromWorkspace_2 ;
-  sm:nodeX 458 ;
-  sm:nodeY 337 ;
+  sm:nodeX 272 ;
+  sm:nodeY 361 ;
   sm:outputVariable "workspace" ;
   rdfs:label "build string 1" ;
 .
@@ -544,8 +546,8 @@ endpoint:metromap
       spl:predicate endpoint:debug ;
       spl:valueType xsd:string ;
       sm:next endpoint:buildString_1 ;
-      sm:nodeX 548 ;
-      sm:nodeY 65 ;
+      sm:nodeX 189 ;
+      sm:nodeY 90 ;
       sml:hidden true ;
     ] ;
   sm:returnModule endpoint:ReturnSWPDocument_1 ;
@@ -553,7 +555,4 @@ endpoint:metromap
   rdfs:comment "the instance name is used as idenifier for the request" ;
   rdfs:label "request" ;
   rdfs:subClassOf sm:Functions ;
-.
-sam:vastleggen-incident
-  sam:R sam:registreren-melding ;
 .

@@ -1,0 +1,143 @@
+# baseURI: http://metromap.politie.org/put-annotation
+# imports: http://topbraid.org/sparqlmotionfunctions
+# imports: http://topbraid.org/sparqlmotionlib-tb
+# prefix: put-annotation
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix put-annotation: <http://metromap.politie.org/put-annotation#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://archimate.politie.nl/instances#r-2-2>
+  rdfs:comment "test" ;
+.
+<http://metromap.politie.org/put-annotation>
+  a owl:Ontology ;
+  owl:imports <http://topbraid.org/sparqlmotionfunctions> ;
+  owl:imports <http://topbraid.org/sparqlmotionlib-tb> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+put-annotation:ApplyConstruct_1
+  a sml:ApplyConstruct ;
+  sm:next put-annotation:ExportToRDFFile_1 ;
+  sm:nodeX 113 ;
+  sm:nodeY 502 ;
+  sml:constructQuery [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "annotation" ;
+              ] ;
+            sp:predicate rdfs:comment ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:uri ;
+                sp:arg1 [
+                    sp:varName "workspaceString" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "graph" ;
+              ] ;
+          ]
+          [
+            a sp:NamedGraph ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "station" ;
+                    ] ;
+                  sp:predicate rdfs:label ;
+                  sp:subject [
+                      sp:varName "s" ;
+                    ] ;
+                ]
+              ) ;
+            sp:graphNameNode [
+                sp:varName "graph" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "Apply construct 1" ;
+.
+put-annotation:ExportToRDFFile_1
+  a sml:ExportToRDFFile ;
+  sm:next put-annotation:ReturnText_1 ;
+  sm:nodeX 371 ;
+  sm:nodeY 700 ;
+  sml:baseURI "{?workspaceString}" ;
+  rdfs:label "Export to RDFFile 1" ;
+.
+put-annotation:ReturnText_1
+  a sml:ReturnText ;
+  sm:nodeX 631 ;
+  sm:nodeY 822 ;
+  sml:mimeType "text" ;
+  sml:text "done" ;
+  rdfs:label "Return text 1" ;
+.
+put-annotation:Services_annotation
+  a ui:Service ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "aangifte" ;
+      spl:predicate <http://spinrdf.org/arg#station> ;
+      spl:valueType xsd:string ;
+      sm:next put-annotation:ApplyConstruct_1 ;
+      sm:nodeX 966 ;
+      sm:nodeY 118 ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "archimate_example_model" ;
+      spl:predicate <http://spinrdf.org/arg#workspace> ;
+      spl:valueType xsd:string ;
+      sm:next put-annotation:buildString_1 ;
+      sm:nodeX 495 ;
+      sm:nodeY 136 ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "removeme" ;
+      spl:predicate <http://spinrdf.org/arg#annotation> ;
+      spl:valueType xsd:string ;
+      sm:next put-annotation:ApplyConstruct_1 ;
+      sm:nodeX 56 ;
+      sm:nodeY 138 ;
+    ] ;
+  ui:responseType ui:TEXT ;
+  rdfs:label "Services annotation" ;
+  rdfs:subClassOf ui:Services ;
+.
+put-annotation:buildString_1
+  a spif:buildString ;
+  sp:arg1 [
+      a sp:concat ;
+      sp:arg1 "urn:x-evn-master:" ;
+      sp:arg2 [
+          sp:varName "workspace" ;
+        ] ;
+    ] ;
+  sm:next put-annotation:ApplyConstruct_1 ;
+  sm:nodeX 537 ;
+  sm:nodeY 344 ;
+  sm:outputVariable "workspaceString" ;
+  rdfs:label "build string 1" ;
+.

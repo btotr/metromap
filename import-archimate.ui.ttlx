@@ -117,7 +117,7 @@ importXML:XMLimport
       spl:valueType xsd:string ;
     ] ;
   ui:prototype """
-<ui:group let:baseURI=\"http://archimate.politie.nl/instances\" let:graphURI=\"{= IRI(CONCAT(&quot;urn:x-evn-master:&quot;, LCASE(?graph))) }\" let:schemaGraph=\"{= IRI(&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot;) }\" let:targetFilePath=\"/metromap/output.xml\" let:xmlFromURL=\"{= importer:importXMLFromUrl(?model, ?source, ?xmlUrl) }\">
+<ui:group let:baseURI=\"http://archimate.politie.nl/instances\" let:graphURI=\"{= IRI(CONCAT(&quot;urn:x-evn-master:&quot;, LCASE(?graph))) }\" let:schemaGraph=\"{= IRI(&quot;http://www.opengroup.org/xsd/archimate/3.0/&quot;) }\" let:targetFilePath=\"/metromap/debug/output.xml\" let:xmlFromURL=\"{= importer:importXMLFromUrl(?model, ?source, ?xmlUrl) }\">
     <ui:debug>
         <ui:dumpScope ui:message=\"import variables\"/>
     </ui:debug>
@@ -135,10 +135,10 @@ importXML:XMLimport
                             ?s ?p ?o .
                         } }\"/>
             </sml:ConvertXMLToRDF>
-            <sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/output.ttl\"/>
+            <sml:ExportToRDFFile sml:baseURI=\"{= ?baseURI }\" sml:targetFilePath=\"/metromap/debug/output.ttl\"/>
         </ui:setContext>
     </sml:ImportTextFile>
-    <ui:dumpGraph ui:filePath=\"/metromap/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
+    <ui:dumpGraph ui:filePath=\"/metromap/debug/output.ttl\" ui:graph=\"{= ui:tempGraph }\"/>
     <ui:setContext ui:queryGraph=\"{= ui:graphWithImports(?graphURI) }\">
         <ui:update ui:updateQuery=\"{!
                 INSERT {
