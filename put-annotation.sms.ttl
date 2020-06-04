@@ -28,8 +28,8 @@
 put-annotation:ApplyConstruct_1
   a sml:ApplyConstruct ;
   sm:next put-annotation:ExportToRDFFile_1 ;
-  sm:nodeX 113 ;
-  sm:nodeY 502 ;
+  sm:nodeX 139 ;
+  sm:nodeY 448 ;
   sml:constructQuery [
       a sp:Construct ;
       sp:templates (
@@ -80,15 +80,15 @@ put-annotation:ApplyConstruct_1
 put-annotation:ExportToRDFFile_1
   a sml:ExportToRDFFile ;
   sm:next put-annotation:ReturnText_1 ;
-  sm:nodeX 371 ;
-  sm:nodeY 700 ;
+  sm:nodeX 330 ;
+  sm:nodeY 636 ;
   sml:baseURI "{?workspaceString}" ;
   rdfs:label "Export to RDFFile 1" ;
 .
 put-annotation:ReturnText_1
   a sml:ReturnText ;
-  sm:nodeX 631 ;
-  sm:nodeY 822 ;
+  sm:nodeX 342 ;
+  sm:nodeY 817 ;
   sml:mimeType "text" ;
   sml:text "done" ;
   rdfs:label "Return text 1" ;
