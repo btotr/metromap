@@ -1,8 +1,10 @@
 # baseURI: http://metromap.politie.org/put-annotation
 # imports: http://topbraid.org/sparqlmotionfunctions
 # imports: http://topbraid.org/sparqlmotionlib-tb
+# imports: http://uispin.org/swon
 # prefix: put-annotation
 
+@prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix put-annotation: <http://metromap.politie.org/put-annotation#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,6 +15,7 @@
 @prefix spif: <http://spinrdf.org/spif#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
+@prefix swon: <http://uispin.org/swon#> .
 @prefix ui: <http://uispin.org/ui#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -23,121 +26,158 @@
   a owl:Ontology ;
   owl:imports <http://topbraid.org/sparqlmotionfunctions> ;
   owl:imports <http://topbraid.org/sparqlmotionlib-tb> ;
+  owl:imports <http://uispin.org/swon> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-put-annotation:ApplyConstruct_1
-  a sml:ApplyConstruct ;
-  sm:next put-annotation:ExportToRDFFile_1 ;
-  sm:nodeX 139 ;
-  sm:nodeY 448 ;
-  sml:constructQuery [
-      a sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "annotation" ;
-              ] ;
-            sp:predicate rdfs:comment ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-        ) ;
-      sp:where (
-          [
-            a sp:Bind ;
-            sp:expression [
-                a sp:uri ;
-                sp:arg1 [
-                    sp:varName "workspaceString" ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "graph" ;
-              ] ;
-          ]
-          [
-            a sp:NamedGraph ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "station" ;
-                    ] ;
-                  sp:predicate rdfs:label ;
-                  sp:subject [
-                      sp:varName "s" ;
-                    ] ;
-                ]
-              ) ;
-            sp:graphNameNode [
-                sp:varName "graph" ;
-              ] ;
-          ]
-        ) ;
-    ] ;
-  rdfs:label "Apply construct 1" ;
-.
-put-annotation:ExportToRDFFile_1
-  a sml:ExportToRDFFile ;
-  sm:next put-annotation:ReturnText_1 ;
-  sm:nodeX 330 ;
-  sm:nodeY 636 ;
-  sml:baseURI "{?workspaceString}" ;
-  rdfs:label "Export to RDFFile 1" ;
-.
-put-annotation:ReturnText_1
-  a sml:ReturnText ;
-  sm:nodeX 342 ;
-  sm:nodeY 817 ;
-  sml:mimeType "text" ;
-  sml:text "done" ;
-  rdfs:label "Return text 1" ;
-.
-put-annotation:Services_annotation
-  a ui:Service ;
-  spin:constraint [
-      a spl:Argument ;
-      spl:defaultValue "aangifte" ;
-      spl:predicate <http://spinrdf.org/arg#station> ;
-      spl:valueType xsd:string ;
-      sm:next put-annotation:ApplyConstruct_1 ;
-      sm:nodeX 966 ;
-      sm:nodeY 118 ;
-    ] ;
-  spin:constraint [
-      a spl:Argument ;
-      spl:defaultValue "archimate_example_model" ;
-      spl:predicate <http://spinrdf.org/arg#workspace> ;
-      spl:valueType xsd:string ;
-      sm:next put-annotation:buildString_1 ;
-      sm:nodeX 495 ;
-      sm:nodeY 136 ;
-    ] ;
-  spin:constraint [
-      a spl:Argument ;
-      spl:defaultValue "removeme" ;
-      spl:predicate <http://spinrdf.org/arg#annotation> ;
-      spl:valueType xsd:string ;
-      sm:next put-annotation:ApplyConstruct_1 ;
-      sm:nodeX 56 ;
-      sm:nodeY 138 ;
-    ] ;
-  ui:responseType ui:TEXT ;
-  rdfs:label "Services annotation" ;
-  rdfs:subClassOf ui:Services ;
-.
-put-annotation:buildString_1
-  a spif:buildString ;
-  sp:arg1 [
+put-annotation:ImportRDFFromWorkspace_1
+  a sml:ImportRDFFromWorkspace ;
+  sm:next put-annotation:ReturnSWPDocument_2 ;
+  sm:nodeX 285 ;
+  sm:nodeY 487 ;
+  sml:baseURI [
       a sp:concat ;
       sp:arg1 "urn:x-evn-master:" ;
       sp:arg2 [
           sp:varName "workspace" ;
         ] ;
     ] ;
-  sm:next put-annotation:ApplyConstruct_1 ;
-  sm:nodeX 537 ;
-  sm:nodeY 344 ;
-  sm:outputVariable "workspaceString" ;
-  rdfs:label "build string 1" ;
+  sml:ignoreImports false ;
+  rdfs:label "Import RDFFrom workspace 1" ;
+.
+put-annotation:ReturnSWPDocument_1
+  a sml:ReturnSWPDocument ;
+  sm:nodeX 678 ;
+  sm:nodeY 798 ;
+  sml:snippet true ;
+  sml:view [
+      a swon:Object ;
+      ui:child [
+          a swon:Value ;
+          arg:name "status" ;
+          arg:value "done" ;
+          ui:childIndex 0 ;
+        ] ;
+    ] ;
+  rdfs:label "Return SWPDocument 1" ;
+.
+put-annotation:ReturnSWPDocument_2
+  a sml:ReturnSWPDocument ;
+  sm:nodeX 310 ;
+  sm:nodeY 806 ;
+  sml:snippet true ;
+  sml:view [
+      a ui:group ;
+    ] ;
+  sml:view [
+      a ui:group ;
+      <http://uispin.org/let#graphURI> [
+          a sp:iri ;
+          sp:arg1 [
+              a sp:concat ;
+              sp:arg1 "urn:x-evn-master:" ;
+              sp:arg2 [
+                  a sp:lcase ;
+                  sp:arg1 [
+                      sp:varName "workspace" ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+      ui:child [
+          a ui:TextNode ;
+          ui:childIndex 1 ;
+          ui:text """
+	done!
+""" ;
+        ] ;
+      ui:child [
+          a ui:setContext ;
+          ui:child [
+              a ui:update ;
+              ui:childIndex 0 ;
+              ui:updateQuery [
+                  a sp:Modify ;
+                  sp:insertPattern (
+                      [
+                        a sp:NamedGraph ;
+                        sp:elements (
+                            [
+                              sp:object [
+                                  sp:varName "annotation" ;
+                                ] ;
+                              sp:predicate rdfs:comment ;
+                              sp:subject [
+                                  sp:varName "s" ;
+                                ] ;
+                            ]
+                          ) ;
+                        sp:graphNameNode [
+                            sp:varName "graphURI" ;
+                          ] ;
+                      ]
+                    ) ;
+                  sp:where (
+                      [
+                        a sp:NamedGraph ;
+                        sp:elements (
+                            [
+                              sp:object [
+                                  sp:varName "station" ;
+                                ] ;
+                              sp:predicate rdfs:label ;
+                              sp:subject [
+                                  sp:varName "s" ;
+                                ] ;
+                            ]
+                          ) ;
+                        sp:graphNameNode [
+                            sp:varName "graphURI" ;
+                          ] ;
+                      ]
+                    ) ;
+                ] ;
+            ] ;
+          ui:childIndex 0 ;
+          ui:queryGraph [
+              a ui:graphWithImports ;
+              sp:arg1 [
+                  sp:varName "graphURI" ;
+                ] ;
+            ] ;
+        ] ;
+    ] ;
+  rdfs:label "Return SWPDocument 2" ;
+.
+put-annotation:Services_annotation
+  a ui:Service ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "aangifte" ;
+      spl:predicate arg:station ;
+      spl:valueType xsd:string ;
+      sm:next put-annotation:ImportRDFFromWorkspace_1 ;
+      sm:nodeX 935 ;
+      sm:nodeY 51 ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "archimate_example_model" ;
+      spl:predicate arg:workspace ;
+      spl:valueType xsd:string ;
+      sm:next put-annotation:ImportRDFFromWorkspace_1 ;
+      sm:nodeX 461 ;
+      sm:nodeY 37 ;
+    ] ;
+  spin:constraint [
+      a spl:Argument ;
+      spl:defaultValue "removeme4" ;
+      spl:predicate arg:annotation ;
+      spl:valueType xsd:string ;
+      sm:next put-annotation:ImportRDFFromWorkspace_1 ;
+      sm:nodeX 27 ;
+      sm:nodeY 48 ;
+    ] ;
+  ui:responseType ui:TEXT ;
+  rdfs:label "Services annotation" ;
+  rdfs:subClassOf ui:Services ;
 .
