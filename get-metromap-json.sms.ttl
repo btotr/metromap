@@ -139,12 +139,9 @@ endpoint:ReturnSWPDocument_1
                               a swon:Value ;
                               arg:name "id" ;
                               arg:value [
-                                  a sp:concat ;
+                                  a ui:label ;
                                   sp:arg1 [
-                                      sp:varName "id" ;
-                                    ] ;
-                                  sp:arg2 [
-                                      a sp:rand ;
+                                      sp:varName "idLabel" ;
                                     ] ;
                                 ] ;
                               ui:childIndex 1 ;
@@ -215,24 +212,6 @@ endpoint:ReturnSWPDocument_1
                           arg:name "data" ;
                           ui:child [
                               a swon:Value ;
-                              arg:name "bar" ;
-                              arg:value 0 ;
-                              ui:childIndex 6 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "bax" ;
-                              arg:value 0 ;
-                              ui:childIndex 8 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "baz" ;
-                              arg:value 0 ;
-                              ui:childIndex 7 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
                               arg:name "color" ;
                               arg:value [
                                   a ui:label ;
@@ -252,12 +231,6 @@ endpoint:ReturnSWPDocument_1
                                     ] ;
                                 ] ;
                               ui:childIndex 4 ;
-                            ] ;
-                          ui:child [
-                              a swon:Value ;
-                              arg:name "foo" ;
-                              arg:value 10 ;
-                              ui:childIndex 5 ;
                             ] ;
                           ui:child [
                               a swon:Value ;
@@ -288,11 +261,21 @@ endpoint:ReturnSWPDocument_1
                             ] ;
                           ui:child [
                               a ui:TextNode ;
-                              ui:childIndex 9 ;
-                              ui:text """}
+                              ui:childIndex 5 ;
+                              ui:text """
+  
+						}
 						""" ;
                             ] ;
                           ui:childIndex 0 ;
+                        ] ;
+                      ui:child [
+                          a ui:CommentNode ;
+                          ui:childIndex 1 ;
+                          rdfs:comment """swon:Value arg:name=\"position\">{<swon:Value arg:name=\"x\" arg:value=\"{= 10 }\"/>
+                <swon:Value arg:name=\"y\" arg:value=\"200\"/>
+							}
+						</swon:Value""" ;
                         ] ;
                       ui:childIndex 1 ;
                       ui:condition [
@@ -309,6 +292,9 @@ endpoint:ReturnSWPDocument_1
               ui:resultSet [
                   a sp:Select ;
                   sp:resultVariables (
+                      [
+                        sp:varName "idLabel" ;
+                      ]
                       [
                         sp:varName "id" ;
                       ]
@@ -487,6 +473,36 @@ endpoint:ReturnSWPDocument_1
                         sp:predicate rdfs:label ;
                         sp:subject [
                             sp:varName "class" ;
+                          ] ;
+                      ]
+                      [
+                        a sp:Bind ;
+                        sp:expression [
+                            a sp:md5 ;
+                            sp:arg1 [
+                                a sp:concat ;
+                                sp:arg1 [
+                                    a sp:str ;
+                                    sp:arg1 [
+                                        sp:varName "id" ;
+                                      ] ;
+                                  ] ;
+                                sp:arg2 [
+                                    a sp:str ;
+                                    sp:arg1 [
+                                        sp:varName "source" ;
+                                      ] ;
+                                  ] ;
+                                sp:arg3 [
+                                    a sp:str ;
+                                    sp:arg1 [
+                                        sp:varName "target" ;
+                                      ] ;
+                                  ] ;
+                              ] ;
+                          ] ;
+                        sp:variable [
+                            sp:varName "idLabel" ;
                           ] ;
                       ]
                       [

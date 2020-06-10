@@ -92,6 +92,7 @@ ui:client
     <script src=\"{= fn:concat(?base, &quot;model.js&quot;) }\"/>
     <script src=\"{= fn:concat(?base, &quot;view.js&quot;) }\"/>
     <script src=\"{= fn:concat(?base, &quot;controller.js&quot;) }\"/>
+    <script src=\"{= fn:concat(?base, &quot;cytoscape-edge-connections.js&quot;) }\"/>
     <style>html, body, #cy  {
 	  			width:100%;
 	  			height:100%;

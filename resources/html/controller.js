@@ -8,6 +8,7 @@ function Controller() {
     	 self.view.cy.add(model);
     	 var layout = self.view.cy.layout(self.view.layout);
     	 layout.run();
+    	 self.view.addEdges();
     });
 }
 

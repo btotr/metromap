@@ -62,8 +62,8 @@ put-annotation:ReturnSWPDocument_1
 .
 put-annotation:ReturnSWPDocument_2
   a sml:ReturnSWPDocument ;
-  sm:nodeX 310 ;
-  sm:nodeY 806 ;
+  sm:nodeX 278 ;
+  sm:nodeY 777 ;
   sml:snippet true ;
   sml:view [
       a ui:group ;

@@ -3,12 +3,24 @@ var View = function() {
 }
 
 View.prototype.createCy = function(id){
+	
+	
 	this.cy = cytoscape({
 		container: document.getElementById(id), 
 		style: this.style,
 		layout: this.layout
 	});
 }
+
+View.prototype.addEdges = function(){
+	console.log("add edges")
+	this.cy.edgeConnections().addEdges([
+		{data: {id:  "4", source:   'SBB: Administreren Identiteits Vaststelling-FCM5', target:  'vingerafdruk'}}
+	])
+}
+
+
+
 
 
 View.prototype.style = [
@@ -46,6 +58,14 @@ View.prototype.style = [
 	    	  'line-dash-pattern': [2,4]
 	    }
 	  },
+	    {
+	      selector: 'node.aux-node',
+	      style: {
+	        'label': '',
+	        'width': 6,
+	        'height': 6
+	      }
+	    },
 	  {
 		    selector: ':parent',
 		    style: {

@@ -118,97 +118,102 @@ functions:getStyle
               ] ;
           ]
           [
-            sp:object [
-                sp:varName "sourceS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-          [
-            sp:object <http://www.opengroup.org/xsd/archimate/3.0/Plateau> ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "targetS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
-            sp:subject [
-                sp:varName "a" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "targetS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
-            sp:subject [
-                sp:varName "t" ;
-              ] ;
-          ]
-          [
-            sp:object <http://www.opengroup.org/xsd/archimate/3.0/Assignment> ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "t" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "sourceAS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/source> ;
-            sp:subject [
-                sp:varName "t" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "sourceAS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
-            sp:subject [
-                sp:varName "as" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "targetAS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
-            sp:subject [
-                sp:varName "t" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "targetAS" ;
-              ] ;
-            sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
-            sp:subject [
-                sp:varName "f" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "service" ;
-              ] ;
-            sp:predicate sam:R ;
-            sp:subject [
-                sp:varName "f" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "as" ;
-              ] ;
-            sp:predicate sam:A ;
-            sp:subject spin:_arg1 ;
+            a sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "sourceS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+                  sp:subject [
+                      sp:varName "s" ;
+                    ] ;
+                ]
+                [
+                  sp:object <http://www.opengroup.org/xsd/archimate/3.0/Plateau> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "s" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "targetS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
+                  sp:subject [
+                      sp:varName "a" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "targetS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+                  sp:subject [
+                      sp:varName "t" ;
+                    ] ;
+                ]
+                [
+                  sp:object <http://www.opengroup.org/xsd/archimate/3.0/Assignment> ;
+                  sp:predicate rdf:type ;
+                  sp:subject [
+                      sp:varName "t" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "sourceAS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/source> ;
+                  sp:subject [
+                      sp:varName "t" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "sourceAS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+                  sp:subject [
+                      sp:varName "as" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "targetAS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/target> ;
+                  sp:subject [
+                      sp:varName "t" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "targetAS" ;
+                    ] ;
+                  sp:predicate <http://www.opengroup.org/xsd/archimate/3.0/identifier> ;
+                  sp:subject [
+                      sp:varName "f" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "service" ;
+                    ] ;
+                  sp:predicate sam:R ;
+                  sp:subject [
+                      sp:varName "f" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "as" ;
+                    ] ;
+                  sp:predicate sam:A ;
+                  sp:subject spin:_arg1 ;
+                ]
+              ) ;
           ]
           [
             sp:object [

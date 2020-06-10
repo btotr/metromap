@@ -19,8 +19,8 @@ Model.prototype.getModel = function(debugarg, callback){
     			console.log(this.data);
     	    	callback(this.data);
 	    	}
-		};*/
-
+		};
+/*
 	var model2 = [
 		  { group: 'nodes', data: { id: 'opsporing' } },
 	
@@ -52,9 +52,11 @@ Model.prototype.getModel = function(debugarg, callback){
 },{"group":"nodes","data":{"id":"identificatie","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
 },{"group":"nodes","data":{"id":"vingerafdruk","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
 },{"group":"nodes","data":{"id":"identiteitsbewijs","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
+
+
 }]
 		
 		
 		
-	callback(model) 
+	callback(model)*/ 
 }
