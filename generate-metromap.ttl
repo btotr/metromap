@@ -559,6 +559,76 @@ archimate:Assignment
       rdfs:comment "00001 assignement" ;
     ] ;
 .
+archimate:Association
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:D ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:Association ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 assiosiation" ;
+    ] ;
+.
 archimate:ConceptGroup
   spin:rule [
       a sp:Construct ;
