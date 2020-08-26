@@ -24,5 +24,8 @@ instead of the xmlUrl you may use a source ontology
 
 1. save an archimate model into the project
 2. open instance-importer.ttl and drag the file into the imports tab
+3. create an ontology in edg (e.g. archimate_example_model)
+4. open the metromap http://localhost:8083/tbl/swp?_viewClass=ui:client&debug=archimate_example_model
+
 
 Note: Any change into the archimate model wil not trigger a change in the imported file. Choose another name and import the new file after removing the last imported archimate model.

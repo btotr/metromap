@@ -5,11 +5,21 @@ function Controller() {
     this.view.createCy('cy'); 
     this.view.addMenu(self);
     this.model.getModel(getQueryParams('debug',document.location.search), function(model){
-    	 self.view.cy.add(model);
+    	 self.view.cy.add(model.filter(filterByNode));
     	 var layout = self.view.cy.layout(self.view.layout);
     	 layout.run();
-    	 self.view.addEdges();
+    	 self.view.addEdges(model.filter(filterByEdge));
     });
+}
+
+
+function filterByNode(obj) {
+	  if (obj.group == "nodes") return true;
+}
+
+function filterByEdge(obj) {
+	  if (obj.group == "edges") return true;
+	  console.log(obj)
 }
 
 Controller.prototype.menuSelected = function(menuId, node){

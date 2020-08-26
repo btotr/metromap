@@ -12,11 +12,10 @@ View.prototype.createCy = function(id){
 	});
 }
 
-View.prototype.addEdges = function(){
-	console.log("add edges")
-	this.cy.edgeConnections().addEdges([
-		{data: {id:  "4", source:   'SBB: Administreren Identiteits Vaststelling-FCM5', target:  'vingerafdruk'}}
-	])
+View.prototype.addEdges = function(edges){
+	console.log("add edges", edges)
+	this.cy.edgeConnections().addEdges(edges)
+	//this.cy.edgeConnections().addEdge({data:{id:"test", "source":"c3a0abfca805c2b2ac96c2cb4ad2b58f", "target":"cb28ca7dfa09d5bc6e77e626391052a2"}})
 }
 
 
@@ -30,14 +29,9 @@ View.prototype.style = [
 	      'background-color': 'data(color)' ,
 	      'label': 'data(id)',
     	  'pie-size': '80%',
+    	  'pie-size': '80%',
           'pie-1-background-color': '#FFFFFF',
-          'pie-1-background-size': 'mapData(foo, 0, 8, 0, 100)',
-          'pie-2-background-color': '#DDDDDD',
-          'pie-2-background-size': 'mapData(bar, 0, 8, 0, 100)',
-          'pie-3-background-color': '#74E883',
-          'pie-3-background-size': 'mapData(baz, 0, 8, 0, 100)',
-          'pie-4-background-color': '#74E8FF',
-           'pie-4-background-size': 'mapData(bax, 0, 8, 0, 100)'
+          'pie-1-background-size': '100'
 	    }
 	  },
 	  {
@@ -53,29 +47,18 @@ View.prototype.style = [
 	      'curve-style': 'bezier',
 	      'line-color': 'data(color)',
 	      'label': 'data(label)',
-	      'target-arrow-color': 'data(color)',
-		      'line-style': 'data(style)',
-	    	  'line-dash-pattern': [2,4]
+	      'line-style': 'data(style)',
+    	  'line-dash-pattern': [2,4]
 	    }
 	  },
 	    {
 	      selector: 'node.aux-node',
 	      style: {
 	        'label': '',
-	        'width': 6,
-	        'height': 6
+	        'width': 1,
+	        'height': 1
 	      }
-	    },
-	  {
-		    selector: ':parent',
-		    style: {
-		    	'background-color':'white',
-		      	'label' : 'data(id)',
-		      	'text-margin-y': '-20px',
-		      	'color':'#888888',
-		      	'border-style': 'dashed'
-		    }
-		  }
+	    }
 ];
 
 
