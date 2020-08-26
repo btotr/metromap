@@ -626,7 +626,7 @@ archimate:Association
               ] ;
           ]
         ) ;
-      rdfs:comment "00001 assiosiation" ;
+      rdfs:comment "00001 association" ;
     ] ;
 .
 archimate:ConceptGroup
