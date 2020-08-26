@@ -47,20 +47,20 @@ sam:BB
           ]
           [
             sp:object [
-                sp:varName "i" ;
+                sp:varName "sbb" ;
               ] ;
             sp:predicate <http://metro.politie.nl#T> ;
             sp:subject [
-                sp:varName "sbb" ;
+                sp:varName "i" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "sbb" ;
+                sp:varName "i2" ;
               ] ;
             sp:predicate <http://metro.politie.nl#T> ;
             sp:subject [
-                sp:varName "i2" ;
+                sp:varName "sbb" ;
               ] ;
           ]
         ) ;
@@ -116,11 +116,11 @@ sam:BB
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "i" ;
+                      sp:varName "i2" ;
                     ] ;
                   sp:predicate sam:D ;
                   sp:subject [
-                      sp:varName "i2" ;
+                      sp:varName "i" ;
                     ] ;
                 ]
               ) ;
