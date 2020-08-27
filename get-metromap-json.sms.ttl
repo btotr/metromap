@@ -460,64 +460,64 @@ endpoint:ReturnSWPDocument_1
                                 sp:object m:L ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
-                                    sp:varName "idH" ;
+                                    sp:varName "idS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "idH" ;
+                                    sp:varName "idS" ;
                                   ] ;
                                 sp:predicate m:T ;
                                 sp:subject [
-                                    sp:varName "sourceH" ;
+                                    sp:varName "sourceS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "targetH" ;
+                                    sp:varName "targetS" ;
                                   ] ;
                                 sp:predicate m:T ;
                                 sp:subject [
-                                    sp:varName "idH" ;
+                                    sp:varName "idS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "targetH" ;
+                                    sp:varName "targetS" ;
                                   ] ;
                                 sp:predicate sam:D ;
                                 sp:subject [
-                                    sp:varName "sourceH" ;
+                                    sp:varName "sourceS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "ac" ;
+                                    sp:varName "acS" ;
                                   ] ;
                                 sp:predicate sam:A ;
                                 sp:subject [
-                                    sp:varName "idH" ;
+                                    sp:varName "idS" ;
                                   ] ;
                               ]
                               [
                                 sp:object p3.0:ApplicationComponent ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
-                                    sp:varName "ac" ;
+                                    sp:varName "acS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "acId" ;
+                                    sp:varName "acSId" ;
                                   ] ;
                                 sp:predicate p3.0:identifier ;
                                 sp:subject [
-                                    sp:varName "ac" ;
+                                    sp:varName "acS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "acId" ;
+                                    sp:varName "acSId" ;
                                   ] ;
                                 sp:predicate p3.0:source ;
                                 sp:subject [
@@ -540,25 +540,105 @@ endpoint:ReturnSWPDocument_1
                                         sp:arg1 [
                                             a sp:str ;
                                             sp:arg1 [
-                                                sp:varName "idH" ;
+                                                sp:varName "idS" ;
                                               ] ;
                                           ] ;
                                         sp:arg2 [
                                             a sp:str ;
                                             sp:arg1 [
-                                                sp:varName "sourceH" ;
+                                                sp:varName "sourceS" ;
                                               ] ;
                                           ] ;
                                         sp:arg3 [
                                             a sp:str ;
                                             sp:arg1 [
-                                                sp:varName "targetH" ;
+                                                sp:varName "targetS" ;
                                               ] ;
                                           ] ;
                                       ] ;
                                   ] ;
                                 sp:variable [
                                     sp:varName "source" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acTId" ;
+                                  ] ;
+                                sp:predicate p3.0:target ;
+                                sp:subject [
+                                    sp:varName "flow" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acTId" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "acT" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acT" ;
+                                  ] ;
+                                sp:predicate sam:A ;
+                                sp:subject [
+                                    sp:varName "idT" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "idT" ;
+                                  ] ;
+                                sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "sourceT" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "targetT" ;
+                                  ] ;
+                                sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "idT" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "targetT" ;
+                                  ] ;
+                                sp:predicate sam:D ;
+                                sp:subject [
+                                    sp:varName "sourceT" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:TriplePath ;
+                                sp:object [
+                                    sp:varName "idS" ;
+                                  ] ;
+                                sp:path [
+                                    a sp:ReversePath ;
+                                    sp:subPath sam:R ;
+                                  ] ;
+                                sp:subject [
+                                    sp:varName "sbb" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:TriplePath ;
+                                sp:object [
+                                    sp:varName "idT" ;
+                                  ] ;
+                                sp:path [
+                                    a sp:ReversePath ;
+                                    sp:subPath sam:R ;
+                                  ] ;
+                                sp:subject [
+                                    sp:varName "sbb" ;
                                   ] ;
                               ]
                               [
@@ -570,19 +650,19 @@ endpoint:ReturnSWPDocument_1
                                         sp:arg1 [
                                             a sp:str ;
                                             sp:arg1 [
-                                                sp:varName "id" ;
+                                                sp:varName "idT" ;
                                               ] ;
                                           ] ;
                                         sp:arg2 [
                                             a sp:str ;
                                             sp:arg1 [
-                                                sp:varName "sourceH" ;
+                                                sp:varName "sourceT" ;
                                               ] ;
                                           ] ;
                                         sp:arg3 [
                                             a sp:str ;
                                             sp:arg1 [
-                                                sp:varName "targetH" ;
+                                                sp:varName "targetT" ;
                                               ] ;
                                           ] ;
                                       ] ;
@@ -593,7 +673,7 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 a sp:Bind ;
-                                sp:expression "blue" ;
+                                sp:expression "Turquoise" ;
                                 sp:variable [
                                     sp:varName "color" ;
                                   ] ;
@@ -608,7 +688,7 @@ endpoint:ReturnSWPDocument_1
                               [
                                 a sp:Bind ;
                                 sp:expression [
-                                    sp:varName "idH" ;
+                                    sp:varName "idS" ;
                                   ] ;
                                 sp:variable [
                                     sp:varName "id" ;
