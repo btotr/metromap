@@ -413,6 +413,69 @@ endpoint:ReturnSWPDocument_1
                             )
                             (
                               [
+                                sp:object m:L ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "id" ;
+                                  ] ;
+                                sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "source" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "target" ;
+                                  ] ;
+                                sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "target" ;
+                                  ] ;
+                                sp:predicate sam:H ;
+                                sp:subject [
+                                    sp:varName "source" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Filter ;
+                                sp:expression [
+                                    a sp:strstarts ;
+                                    sp:arg1 [
+                                        a sp:str ;
+                                        sp:arg1 [
+                                            sp:varName "id" ;
+                                          ] ;
+                                      ] ;
+                                    sp:arg2 "https://architecture.politie.nl/metromap/generate#" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "#364492" ;
+                                sp:variable [
+                                    sp:varName "color" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "dashed" ;
+                                sp:variable [
+                                    sp:varName "style" ;
+                                  ] ;
+                              ]
+                            )
+                            (
+                              [
                                 sp:object m:S ;
                                 sp:predicate rdf:type ;
                                 sp:subject [

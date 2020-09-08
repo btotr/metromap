@@ -11,6 +11,7 @@
 @prefix functions: <https://architecture.politie.nl/metromap/functions#> .
 @prefix generate: <https://architecture.politie.nl/metromap/generate#> .
 @prefix instance: <https:///architecture.politie.nl/metromap/instance#> .
+@prefix m: <http://metro.politie.nl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -32,14 +33,14 @@ sam:BB
       a sp:Construct ;
       sp:templates (
           [
-            sp:object <http://metro.politie.nl#S> ;
+            sp:object m:S ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "i" ;
               ] ;
           ]
           [
-            sp:object <http://metro.politie.nl#L> ;
+            sp:object m:L ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "sbb" ;
@@ -49,7 +50,7 @@ sam:BB
             sp:object [
                 sp:varName "sbb" ;
               ] ;
-            sp:predicate <http://metro.politie.nl#T> ;
+            sp:predicate m:T ;
             sp:subject [
                 sp:varName "i" ;
               ] ;
@@ -58,7 +59,7 @@ sam:BB
             sp:object [
                 sp:varName "i2" ;
               ] ;
-            sp:predicate <http://metro.politie.nl#T> ;
+            sp:predicate m:T ;
             sp:subject [
                 sp:varName "sbb" ;
               ] ;
@@ -127,6 +128,37 @@ sam:BB
           ]
         ) ;
       rdfs:comment "00003 metromap mapping" ;
+    ] ;
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object generate:afhankelijkheid ;
+            sp:predicate m:T ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "i2" ;
+              ] ;
+            sp:predicate m:T ;
+            sp:subject generate:afhankelijkheid ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "i2" ;
+              ] ;
+            sp:predicate sam:H ;
+            sp:subject [
+                sp:varName "i" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00003 metromap mapping H" ;
     ] ;
 .
 sam:C
@@ -625,8 +657,128 @@ archimate:Association
                 sp:varName "t" ;
               ] ;
           ]
+          [
+            a sp:Filter ;
+            sp:expression [
+                a sp:notExists ;
+                sp:elements (
+                    [
+                      a sp:TriplePath ;
+                      sp:object "false" ;
+                      sp:path [
+                          a sp:SeqPath ;
+                          sp:path1 [
+                              a sp:SeqPath ;
+                              sp:path1 [
+                                  a sp:SeqPath ;
+                                  sp:path1 archimate:propertiesRef ;
+                                  sp:path2 archimate:propertyRef ;
+                                ] ;
+                              sp:path2 archimate:valueRef ;
+                            ] ;
+                          sp:path2 <http://www.linkedmodel.org/schema/dtype#value> ;
+                        ] ;
+                      sp:subject spin:_this ;
+                    ]
+                  ) ;
+              ] ;
+          ]
         ) ;
-      rdfs:comment "00001 association" ;
+      rdfs:comment "00001 association D" ;
+    ] ;
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "t" ;
+              ] ;
+            sp:predicate sam:H ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:source ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:Association ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:target ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "tid" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:BusinessObject ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "t" ;
+              ] ;
+          ]
+          [
+            a sp:Filter ;
+            sp:expression [
+                a sp:exists ;
+                sp:elements (
+                    [
+                      a sp:TriplePath ;
+                      sp:object "false" ;
+                      sp:path [
+                          a sp:SeqPath ;
+                          sp:path1 [
+                              a sp:SeqPath ;
+                              sp:path1 [
+                                  a sp:SeqPath ;
+                                  sp:path1 archimate:propertiesRef ;
+                                  sp:path2 archimate:propertyRef ;
+                                ] ;
+                              sp:path2 archimate:valueRef ;
+                            ] ;
+                          sp:path2 <http://www.linkedmodel.org/schema/dtype#value> ;
+                        ] ;
+                      sp:subject spin:_this ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 association H" ;
     ] ;
 .
 archimate:ConceptGroup
@@ -832,4 +984,9 @@ owl:Thing
   owl:imports sam: ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <https://architecture.politie.nl/metromap/functions> ;
+.
+generate:afhankelijkheid
+  a m:L ;
+  a sam:SBB ;
+  rdfs:label "test" ;
 .
