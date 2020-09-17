@@ -166,7 +166,7 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "source" ;
                                     ] ;
                                 ] ;
-                              ui:childIndex 5 ;
+                              ui:childIndex 6 ;
                             ] ;
                           ui:child [
                               a swon:Value ;
@@ -188,7 +188,18 @@ endpoint:ReturnSWPDocument_1
                                       sp:varName "target" ;
                                     ] ;
                                 ] ;
-                              ui:childIndex 6 ;
+                              ui:childIndex 7 ;
+                            ] ;
+                          ui:child [
+                              a swon:Value ;
+                              arg:name "width" ;
+                              arg:value [
+                                  a ui:label ;
+                                  sp:arg1 [
+                                      sp:varName "width" ;
+                                    ] ;
+                                ] ;
+                              ui:childIndex 5 ;
                             ] ;
                           ui:child [
                               a ui:TextNode ;
@@ -197,7 +208,7 @@ endpoint:ReturnSWPDocument_1
                             ] ;
                           ui:child [
                               a ui:TextNode ;
-                              ui:childIndex 7 ;
+                              ui:childIndex 8 ;
                               ui:text """}
 						""" ;
                             ] ;
@@ -325,6 +336,9 @@ endpoint:ReturnSWPDocument_1
                       [
                         sp:varName "label" ;
                       ]
+                      [
+                        sp:varName "width" ;
+                      ]
                     ) ;
                   sp:where (
                       [
@@ -384,9 +398,23 @@ endpoint:ReturnSWPDocument_1
                               [
                                 a sp:Bind ;
                                 sp:expression [
-                                    a functions:getColor ;
+                                    a sp:if ;
                                     sp:arg1 [
-                                        sp:varName "label" ;
+                                        a sp:strends ;
+                                        sp:arg1 [
+                                            a sp:str ;
+                                            sp:arg1 [
+                                                sp:varName "label" ;
+                                              ] ;
+                                          ] ;
+                                        sp:arg2 "office" ;
+                                      ] ;
+                                    sp:arg2 "#cccccc" ;
+                                    sp:arg3 [
+                                        a functions:getColor ;
+                                        sp:arg1 [
+                                            sp:varName "label" ;
+                                          ] ;
                                       ] ;
                                   ] ;
                                 sp:variable [
@@ -396,13 +424,34 @@ endpoint:ReturnSWPDocument_1
                               [
                                 a sp:Bind ;
                                 sp:expression [
-                                    a functions:getStyle ;
+                                    a sp:if ;
                                     sp:arg1 [
-                                        sp:varName "id" ;
+                                        a sp:strends ;
+                                        sp:arg1 [
+                                            a sp:str ;
+                                            sp:arg1 [
+                                                sp:varName "label" ;
+                                              ] ;
+                                          ] ;
+                                        sp:arg2 "office" ;
+                                      ] ;
+                                    sp:arg2 "dotted" ;
+                                    sp:arg3 [
+                                        a functions:getStyle ;
+                                        sp:arg1 [
+                                            sp:varName "id" ;
+                                          ] ;
                                       ] ;
                                   ] ;
                                 sp:variable [
                                     sp:varName "style" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "3" ;
+                                sp:variable [
+                                    sp:varName "width" ;
                                   ] ;
                               ]
                               [
@@ -485,6 +534,13 @@ endpoint:ReturnSWPDocument_1
                                 sp:expression "dashed" ;
                                 sp:variable [
                                     sp:varName "style" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "2" ;
+                                sp:variable [
+                                    sp:varName "width" ;
                                   ] ;
                               ]
                             )
@@ -834,8 +890,45 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
+                                a sp:Optional ;
+                                sp:elements (
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "flowValue" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:SeqPath ;
+                                          sp:path1 [
+                                              a sp:SeqPath ;
+                                              sp:path1 [
+                                                  a sp:SeqPath ;
+                                                  sp:path1 p3.0:propertiesRef ;
+                                                  sp:path2 p3.0:propertyRef ;
+                                                ] ;
+                                              sp:path2 p3.0:valueRef ;
+                                            ] ;
+                                          sp:path2 dtype:value ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "flow" ;
+                                        ] ;
+                                    ]
+                                  ) ;
+                              ]
+                              [
                                 a sp:Bind ;
-                                sp:expression "dotted" ;
+                                sp:expression [
+                                    a sp:if ;
+                                    sp:arg1 [
+                                        a sp:bound ;
+                                        sp:arg1 [
+                                            sp:varName "flowValue" ;
+                                          ] ;
+                                      ] ;
+                                    sp:arg2 "dotted" ;
+                                    sp:arg3 "solid" ;
+                                  ] ;
                                 sp:variable [
                                     sp:varName "style" ;
                                   ] ;
@@ -859,6 +952,13 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                                 sp:variable [
                                     sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "1" ;
+                                sp:variable [
+                                    sp:varName "width" ;
                                   ] ;
                               ]
                               [

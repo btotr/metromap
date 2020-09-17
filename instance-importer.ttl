@@ -1,5 +1,5 @@
 # baseURI: http://archimate.politie.nl/instances/
-# imports: file:///information-journey/resources/FO-flow.xml
+# imports: file:///information-journey/resources/FO-12.xml
 # imports: http://topbraid.org/sxml
 # imports: http://www.opengroup.org/xsd/archimate/3.0/
 # prefix: ai
@@ -14,7 +14,7 @@
 
 ai:
   a owl:Ontology ;
-  owl:imports <file:///information-journey/resources/FO-flow.xml> ;
+  owl:imports <file:///information-journey/resources/FO-12.xml> ;
   owl:imports <http://topbraid.org/sxml> ;
   owl:imports p3.0: ;
   owl:versionInfo "Created with TopBraid Composer" ;
