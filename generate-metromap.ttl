@@ -988,5 +988,6 @@ owl:Thing
 generate:afhankelijkheid
   a m:L ;
   a sam:SBB ;
-  rdfs:label "test" ;
+  rdfs:comment "This sbb is used to show the dependencies between the stations" ;
+  rdfs:label "afhankelijkheid" ;
 .

@@ -88,8 +88,8 @@ endpoint:ImportRDFFromWorkspace_3
 .
 endpoint:ReturnSWPDocument_1
   a sml:ReturnSWPDocument ;
-  sm:nodeX 352 ;
-  sm:nodeY 1077 ;
+  sm:nodeX 358 ;
+  sm:nodeY 1078 ;
   sml:snippet true ;
   sml:view [
       a swon:Object ;
@@ -332,6 +332,13 @@ endpoint:ReturnSWPDocument_1
                         sp:elements (
                             (
                               [
+                                a sp:Bind ;
+                                sp:expression "SBB between Concepts" ;
+                                sp:variable [
+                                    sp:varName "comment" ;
+                                  ] ;
+                              ]
+                              [
                                 sp:object m:L ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
@@ -413,6 +420,13 @@ endpoint:ReturnSWPDocument_1
                             )
                             (
                               [
+                                a sp:Bind ;
+                                sp:expression "edges bedween businessfunction clusters" ;
+                                sp:variable [
+                                    sp:varName "comment" ;
+                                  ] ;
+                              ]
+                              [
                                 sp:object m:L ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
@@ -461,7 +475,7 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 a sp:Bind ;
-                                sp:expression "#364492" ;
+                                sp:expression "#cccccc" ;
                                 sp:variable [
                                     sp:varName "color" ;
                                   ] ;
@@ -475,6 +489,13 @@ endpoint:ReturnSWPDocument_1
                               ]
                             )
                             (
+                              [
+                                a sp:Bind ;
+                                sp:expression "concepts" ;
+                                sp:variable [
+                                    sp:varName "comment" ;
+                                  ] ;
+                              ]
                               [
                                 sp:object m:S ;
                                 sp:predicate rdf:type ;
@@ -520,8 +541,24 @@ endpoint:ReturnSWPDocument_1
                             )
                             (
                               [
+                                a sp:Bind ;
+                                sp:expression "data flows between SBB" ;
+                                sp:variable [
+                                    sp:varName "comment" ;
+                                  ] ;
+                              ]
+                              [
                                 sp:object m:L ;
                                 sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "idS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "labelC" ;
+                                  ] ;
+                                sp:predicate rdfs:label ;
                                 sp:subject [
                                     sp:varName "idS" ;
                                   ] ;
@@ -592,6 +629,47 @@ endpoint:ReturnSWPDocument_1
                                 sp:predicate rdf:type ;
                                 sp:subject [
                                     sp:varName "flow" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "Only flows where the concept is assiociated" ;
+                                sp:variable [
+                                    sp:varName "comment2" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "flowId" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "flow" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "flowId" ;
+                                  ] ;
+                                sp:predicate p3.0:source ;
+                                sp:subject [
+                                    sp:varName "ass" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object p3.0:Association ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "ass" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "targetS" ;
+                                  ] ;
+                                sp:predicate p3.0:target ;
+                                sp:subject [
+                                    sp:varName "ass" ;
                                   ] ;
                               ]
                               [
@@ -736,16 +814,21 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 a sp:Bind ;
-                                sp:expression "Turquoise" ;
+                                sp:expression "dotted" ;
                                 sp:variable [
-                                    sp:varName "color" ;
+                                    sp:varName "style" ;
                                   ] ;
                               ]
                               [
                                 a sp:Bind ;
-                                sp:expression "dotted" ;
+                                sp:expression [
+                                    a functions:getColor ;
+                                    sp:arg1 [
+                                        sp:varName "labelC" ;
+                                      ] ;
+                                  ] ;
                                 sp:variable [
-                                    sp:varName "style" ;
+                                    sp:varName "color" ;
                                   ] ;
                               ]
                               [
