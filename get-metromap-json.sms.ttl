@@ -556,15 +556,6 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 sp:object [
-                                    sp:varName "labelC" ;
-                                  ] ;
-                                sp:predicate rdfs:label ;
-                                sp:subject [
-                                    sp:varName "idS" ;
-                                  ] ;
-                              ]
-                              [
-                                sp:object [
                                     sp:varName "idS" ;
                                   ] ;
                                 sp:predicate m:T ;
@@ -577,6 +568,24 @@ endpoint:ReturnSWPDocument_1
                                     sp:varName "targetS" ;
                                   ] ;
                                 sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "idS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "sourceIdentifier" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "sourceS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "labelC" ;
+                                  ] ;
+                                sp:predicate rdfs:label ;
                                 sp:subject [
                                     sp:varName "idS" ;
                                   ] ;
@@ -632,13 +641,6 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
-                                a sp:Bind ;
-                                sp:expression "Only flows where the concept is assiociated" ;
-                                sp:variable [
-                                    sp:varName "comment2" ;
-                                  ] ;
-                              ]
-                              [
                                 sp:object [
                                     sp:varName "flowId" ;
                                   ] ;
@@ -651,25 +653,44 @@ endpoint:ReturnSWPDocument_1
                                 sp:object [
                                     sp:varName "flowId" ;
                                   ] ;
-                                sp:predicate p3.0:source ;
+                                sp:predicate p3.0:target ;
                                 sp:subject [
-                                    sp:varName "ass" ;
+                                    sp:varName "association" ;
                                   ] ;
                               ]
                               [
                                 sp:object p3.0:Association ;
                                 sp:predicate rdf:type ;
                                 sp:subject [
-                                    sp:varName "ass" ;
+                                    sp:varName "association" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "targetS" ;
+                                    sp:varName "sourceIdentifier2" ;
                                   ] ;
-                                sp:predicate p3.0:target ;
+                                sp:predicate p3.0:source ;
                                 sp:subject [
-                                    sp:varName "ass" ;
+                                    sp:varName "association" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "Only flows where the concept is assiociated" ;
+                                sp:variable [
+                                    sp:varName "comment2" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Filter ;
+                                sp:expression [
+                                    a sp:eq ;
+                                    sp:arg1 [
+                                        sp:varName "sourceIdentifier" ;
+                                      ] ;
+                                    sp:arg2 [
+                                        sp:varName "sourceIdentifier2" ;
+                                      ] ;
                                   ] ;
                               ]
                               [
