@@ -543,6 +543,13 @@ endpoint:ReturnSWPDocument_1
                                     sp:varName "width" ;
                                   ] ;
                               ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "" ;
+                                sp:variable [
+                                    sp:varName "label" ;
+                                  ] ;
+                              ]
                             )
                             (
                               [
@@ -563,12 +570,136 @@ endpoint:ReturnSWPDocument_1
                                 a sp:Optional ;
                                 sp:elements (
                                     [
+                                      sp:object p3.0:Aggregation ;
+                                      sp:predicate rdf:type ;
+                                      sp:subject [
+                                          sp:varName "aggregation" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "aggregationSource" ;
+                                        ] ;
+                                      sp:predicate p3.0:source ;
+                                      sp:subject [
+                                          sp:varName "aggregation" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "aggregationSource" ;
+                                        ] ;
+                                      sp:predicate p3.0:identifier ;
+                                      sp:subject [
+                                          sp:varName "plateau" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object p3.0:Plateau ;
+                                      sp:predicate rdf:type ;
+                                      sp:subject [
+                                          sp:varName "plateau" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "workPackage" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:ReversePath ;
+                                          sp:subPath sam:R ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "plateau" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "aggregationTarget" ;
+                                        ] ;
+                                      sp:predicate p3.0:target ;
+                                      sp:subject [
+                                          sp:varName "aggregation" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "aggregationTarget" ;
+                                        ] ;
+                                      sp:predicate p3.0:identifier ;
+                                      sp:subject [
+                                          sp:varName "assignment" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object p3.0:Assignment ;
+                                      sp:predicate rdf:type ;
+                                      sp:subject [
+                                          sp:varName "assignment" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "assignmentSource" ;
+                                        ] ;
+                                      sp:predicate p3.0:source ;
+                                      sp:subject [
+                                          sp:varName "assignment" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "assignmentSource" ;
+                                        ] ;
+                                      sp:predicate p3.0:identifier ;
+                                      sp:subject [
+                                          sp:varName "application" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "assignmentTarget" ;
+                                        ] ;
+                                      sp:predicate p3.0:target ;
+                                      sp:subject [
+                                          sp:varName "assignment" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "assignmentTarget" ;
+                                        ] ;
+                                      sp:predicate p3.0:identifier ;
+                                      sp:subject [
+                                          sp:varName "function" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "service" ;
+                                        ] ;
+                                      sp:predicate sam:R ;
+                                      sp:subject [
+                                          sp:varName "function" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "id" ;
+                                        ] ;
+                                      sp:predicate sam:T ;
+                                      sp:subject [
+                                          sp:varName "function" ;
+                                        ] ;
+                                    ]
+                                    [
                                       sp:object [
                                           sp:varName "version" ;
                                         ] ;
-                                      sp:predicate sam:version ;
+                                      sp:predicate rdfs:label ;
                                       sp:subject [
-                                          sp:varName "id" ;
+                                          sp:varName "workPackage" ;
                                         ] ;
                                     ]
                                   ) ;
@@ -577,10 +708,15 @@ endpoint:ReturnSWPDocument_1
                                 a sp:Optional ;
                                 sp:elements (
                                     [
+                                      a sp:TriplePath ;
                                       sp:object [
                                           sp:varName "documentation" ;
                                         ] ;
-                                      sp:predicate sam:documentation ;
+                                      sp:path [
+                                          a sp:SeqPath ;
+                                          sp:path1 p3.0:documentationRef ;
+                                          sp:path2 dtype:value ;
+                                        ] ;
                                       sp:subject [
                                           sp:varName "id" ;
                                         ] ;
