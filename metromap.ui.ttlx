@@ -34,7 +34,7 @@
 client:NodeClass
   a ui:NodeClass ;
   ui:headIncludes """
-<ui:group let:base=\"lib/6.1.1.v20181206-1652R/server/build/\">
+<ui:group let:base=\"{= ui:lib() }/resources/html/s\">
     <title>metromap</title>
     <script src=\"{= fn:concat(?base, &quot;cytoscape.min.js&quot;) } \"/>
     <script src=\"{= fn:concat(?base, &quot;cytoscape-cxtmenu.js&quot;) }\"/>
