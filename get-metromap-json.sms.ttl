@@ -413,7 +413,14 @@ endpoint:ReturnSWPDocument_1
                                     sp:arg3 [
                                         a functions:getColor ;
                                         sp:arg1 [
-                                            sp:varName "label" ;
+                                            a sp:strafter ;
+                                            sp:arg1 [
+                                                a sp:str ;
+                                                sp:arg1 [
+                                                    sp:varName "label" ;
+                                                  ] ;
+                                              ] ;
+                                            sp:arg2 "-" ;
                                           ] ;
                                       ] ;
                                   ] ;
@@ -564,6 +571,165 @@ endpoint:ReturnSWPDocument_1
                                 sp:predicate rdf:type ;
                                 sp:subject [
                                     sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "iL" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "iLabel" ;
+                                  ] ;
+                                sp:predicate rdfs:label ;
+                                sp:subject [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Optional ;
+                                sp:elements (
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "access" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:ReversePath ;
+                                          sp:subPath p3.0:target ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "iL" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object p3.0:Access ;
+                                      sp:predicate rdf:type ;
+                                      sp:subject [
+                                          sp:varName "access" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "pL" ;
+                                        ] ;
+                                      sp:predicate p3.0:source ;
+                                      sp:subject [
+                                          sp:varName "access" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "p" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:ReversePath ;
+                                          sp:subPath p3.0:identifier ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "pL" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object p3.0:BusinessProcess ;
+                                      sp:predicate rdf:type ;
+                                      sp:subject [
+                                          sp:varName "p" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "pLabel" ;
+                                        ] ;
+                                      sp:predicate rdfs:label ;
+                                      sp:subject [
+                                          sp:varName "p" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "aggregation2" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:ReversePath ;
+                                          sp:subPath p3.0:target ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "pL" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object p3.0:Aggregation ;
+                                      sp:predicate rdf:type ;
+                                      sp:subject [
+                                          sp:varName "aggregation2" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "phL" ;
+                                        ] ;
+                                      sp:predicate p3.0:source ;
+                                      sp:subject [
+                                          sp:varName "aggregation2" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:TriplePath ;
+                                      sp:object [
+                                          sp:varName "pH" ;
+                                        ] ;
+                                      sp:path [
+                                          a sp:ReversePath ;
+                                          sp:subPath p3.0:identifier ;
+                                        ] ;
+                                      sp:subject [
+                                          sp:varName "phL" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      sp:object [
+                                          sp:varName "pHlabel" ;
+                                        ] ;
+                                      sp:predicate rdfs:label ;
+                                      sp:subject [
+                                          sp:varName "pH" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:Filter ;
+                                      sp:expression [
+                                          a sp:eq ;
+                                          sp:arg1 [
+                                              sp:varName "pHlabel" ;
+                                            ] ;
+                                          sp:arg2 "Coördineren werk" ;
+                                        ] ;
+                                    ]
+                                  ) ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression [
+                                    a sp:if ;
+                                    sp:arg1 [
+                                        a sp:bound ;
+                                        sp:arg1 [
+                                            sp:varName "access" ;
+                                          ] ;
+                                      ] ;
+                                    sp:arg2 "green" ;
+                                    sp:arg3 "black" ;
+                                  ] ;
+                                sp:variable [
+                                    sp:varName "color" ;
                                   ] ;
                               ]
                               [
@@ -722,13 +888,6 @@ endpoint:ReturnSWPDocument_1
                                         ] ;
                                     ]
                                   ) ;
-                              ]
-                              [
-                                a sp:Bind ;
-                                sp:expression "black" ;
-                                sp:variable [
-                                    sp:varName "color" ;
-                                  ] ;
                               ]
                             )
                             (
