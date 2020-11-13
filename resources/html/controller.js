@@ -5,19 +5,50 @@ function Controller() {
     this.view = new View();
     
     var container = document.getElementsByTagName("body")[0];
-    this.view.addDataLineageToggle(container, self.toggleDataLineage)
+    this.view.addDataLineageToggle(container, self.toggleDataLineage);
+    this.view.addPrintButton(container, self.createImage);
+    this.view.addPainterButton(container, self.paintingMode)
     //this.view.addTimeline(container, ["2020 Q2", "2020 Q3"], self.selectPeriod)
-    //  this.view.addCapabilityFilter(container, ["Opsporing", "Handhaving", "Sturing"], self.capabilityFilter)
+    //this.view.addCapabilityFilter(container, ["Opsporing", "Handhaving", "Sturing"], self.capabilityFilter)
     this.view.createCy('cy'); 
     this.view.addMenu(self);
-    // new Painter();
+
     this.model.getModel(getQueryParams('debug',document.location.search), function(model){
     	 self.view.cy.add(model.filter(filterByNode));
     	 var layout = self.view.cy.layout(self.view.layout);
     	 layout.run();
+    	 self.view.localPosition();  	 
     	 self.view.addEdges(model.filter(filterByEdge));
     });
+    
+    
+    this.view.cy.on('mouseup', 'node', self.savePosition);
+    this.view.cy.zoomingEnabled( false );
 }
+
+Controller.prototype.paintingMode = function(button){
+	button.addEventListener("click", function(e){
+		console.log("painter");
+		new Painter();
+	});
+
+	
+}
+
+Controller.prototype.createImage = function(button){
+	var self = this;
+	button.addEventListener("click", function(e){
+		console.log("export metromap");
+		
+		var png64 = self.cy.png({"full":true, "bg":"white"});
+		var img = document.createElement("img");
+		img.setAttribute("src", png64);
+		document.body.appendChild(img);
+	});
+
+	
+}
+
 
 var aux;
 Controller.prototype.toggleDataLineage = function(button) {
@@ -29,6 +60,12 @@ Controller.prototype.toggleDataLineage = function(button) {
 		console.log(aux);
 	});
 
+}
+
+Controller.prototype.savePosition = function(e) {
+	  var node = e.target;
+	  localStorage.setItem(node.id() , JSON.stringify(node.position()));
+	  // console.log(JSON.parse(localStorage.getItem(node.id())));
 }
 
 
@@ -60,11 +97,13 @@ function filterByEdge(obj) {
 
 Controller.prototype.menuSelected = function(menuId, node){
 	if (menuId == 3) {
-		console.log(node._private.data.version);
+		var message = node._private.data.version || "geen gegevens beschikbaar";
+		console.log(message);
 	}
 	
 	if (menuId == 2) {
-		console.log(node._private.data.documentation);
+		var message = node._private.data.documentation || "geen gegevens beschikbaar";
+		console.log(message);
 	}
 }
 
@@ -81,7 +120,7 @@ const getQueryParams = ( params, url ) => {
 };
 
 
-// PAINTER (TODO)
+// PAINTER (experimental)
 
 
 function Painter(){
