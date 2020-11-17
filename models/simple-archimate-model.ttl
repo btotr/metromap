@@ -1,104 +1,105 @@
 # baseURI: http://simplearchimatemodel.politie.nl/
+# prefix: sam
 
-@prefix : <http://simplearchimatemodel.politie.nl/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sam: <http://simplearchimatemodel.politie.nl/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:
+sam:
   a owl:Ontology ;
 .
-:A
+sam:A
   a rdf:Property ;
-  rdfs:domain :BB ;
+  rdfs:domain sam:BB ;
   rdfs:label "A" ;
   rdfs:range owl:Thing ;
 .
-:ABB
+sam:ABB
   a owl:Class ;
   rdfs:label "ABB" ;
-  rdfs:subClassOf :BB ;
+  rdfs:subClassOf sam:BB ;
 .
-:B
+sam:B
   a owl:Class ;
   rdfs:label "B" ;
   rdfs:subClassOf owl:Thing ;
 .
-:BB
+sam:BB
   a owl:Class ;
   rdfs:label "BB" ;
   rdfs:subClassOf owl:Thing ;
 .
-:C
+sam:C
   a owl:Class ;
   rdfs:label "C" ;
   rdfs:subClassOf owl:Thing ;
 .
-:D
+sam:D
   a owl:ObjectProperty ;
-  rdfs:domain :B ;
+  rdfs:domain sam:B ;
   rdfs:label "D" ;
-  rdfs:range :B ;
+  rdfs:range sam:B ;
 .
-:F
+sam:F
   a owl:Class ;
   rdfs:label "F" ;
   rdfs:subClassOf owl:Thing ;
 .
-:H
+sam:H
   a owl:ObjectProperty ;
-  rdfs:domain :B ;
-  rdfs:range :B ;
+  rdfs:domain sam:B ;
+  rdfs:range sam:B ;
 .
-:I
+sam:I
   a owl:Class ;
   rdfs:label "I" ;
-  rdfs:subClassOf :B ;
+  rdfs:subClassOf sam:B ;
 .
-:Q
+sam:Q
   a owl:ObjectProperty ;
   rdfs:label "Q" ;
 .
-:R
+sam:R
   a rdf:Property ;
-  rdfs:domain :F ;
+  rdfs:domain sam:F ;
   rdfs:label "R" ;
-  rdfs:range :S ;
+  rdfs:range sam:S ;
 .
-:S
+sam:S
   a owl:Class ;
   rdfs:label "S" ;
   rdfs:subClassOf owl:Thing ;
 .
-:SBB
+sam:SBB
   a owl:Class ;
   rdfs:label "SBB" ;
-  rdfs:subClassOf :BB ;
+  rdfs:subClassOf sam:BB ;
 .
-:T
+sam:T
   a rdf:Property ;
-  rdfs:domain :F ;
+  rdfs:domain sam:F ;
   rdfs:label "T" ;
-  rdfs:range :I ;
+  rdfs:range sam:I ;
 .
-:V
+sam:V
   a rdf:Property ;
-  rdfs:domain :C ;
+  rdfs:domain sam:C ;
   rdfs:label "V" ;
-  rdfs:range :C ;
+  rdfs:range sam:C ;
 .
-:X
+sam:X
   a rdf:Property ;
-  rdfs:domain :C ;
+  rdfs:domain sam:C ;
   rdfs:label "X" ;
-  rdfs:range :F ;
+  rdfs:range sam:F ;
 .
-:documentation
+sam:documentation
   a owl:DatatypeProperty ;
   rdfs:label "documentation" ;
 .
-:version
+sam:version
   a owl:DatatypeProperty ;
   rdfs:label "version" ;
 .

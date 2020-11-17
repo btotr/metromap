@@ -96,6 +96,7 @@ function filterByEdge(obj) {
 }
 
 Controller.prototype.menuSelected = function(menuId, node){
+	console.log(menuId)
 	if (menuId == 3) {
 		var message = node._private.data.version || "geen gegevens beschikbaar";
 		console.log(message);
@@ -105,6 +106,21 @@ Controller.prototype.menuSelected = function(menuId, node){
 		var message = node._private.data.documentation || "geen gegevens beschikbaar";
 		console.log(message);
 	}
+	
+	if (menuId == 1) {
+		this.model.savedQueryCandS("Administreren%20"+node._private.data.id.replace(" ", "%20"), function(data){
+			var array = [];
+			data.forEach(element => {
+				if(element.dl) array.push([element.fl.value,  element.dl.value ])
+				else array.push([element.fl.value,  "" ])
+				}
+			);
+			console.table(array)
+		})
+		
+	}
+	
+	
 }
 
 window.addEventListener('load', function(){

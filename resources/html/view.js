@@ -206,13 +206,13 @@ View.prototype.addMenu = function(controller){
 				 }
 			 ,
 			    {
-			      fillColor: 'rgba(0, 130, 0, 1)', 
+			      fillColor: 'rgba(0, 0, 120, 1)', 
 			      content: 'functies', 
 			      contentStyle: {},
 			      select: function(ele){
-			    	  controller.menuSelected(3,ele) 
+			    	  controller.menuSelected(1,ele) 
 			      },
-			      enabled: false 
+			      enabled: true 
 				 }
 	  ], 
 	  fillColor: 'rgba(0, 0, 0, 1)', 

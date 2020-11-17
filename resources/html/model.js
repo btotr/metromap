@@ -3,7 +3,7 @@ var Model = function() {
 }
 
 Model.prototype.getModel = function(debugarg, callback){
-		/*var debug = "";
+		var debug = "";
 		if(debugarg) debug = "&debug="+debugarg	
 	
 		var self = this;
@@ -20,43 +20,21 @@ Model.prototype.getModel = function(debugarg, callback){
     	    	callback(this.data);
 	    	}
 		};
-/*
-	var model2 = [
-		  { group: 'nodes', data: { id: 'opsporing' } },
+}
+
+Model.prototype.savedQueryCandS = function(s,callback){
 	
-	
-		  { group: 'nodes', data: { id: 'beheren beslag', color: 'black', parent: 'opsporing',  bar: 10} },
-		  { group: 'nodes', data: { id: 'veiligstellen voorwerp', color: 'black' , parent: 'opsporing',  bar: 10} },
-		  
-		  { group: 'nodes', data: { id: 'goed', color: 'black', foo: 10} },
-		  { group: 'nodes', data: { id: 'teruggave beslag', color: 'black',  foo: 10} },
-		  
-		  { group: 'edges', data: { id: 'beheren beslag-goed-bvh', source: 'beheren beslag', target: 'goed', color: 'green' } },
-		  { group: 'edges', data: { id: 'veiligstellen voorwerp-goed-opp', source: 'veiligstellen voorwerp', target: 'goed', color: 'blue' } },
-		  { group: 'edges', data: { id: 'beheren beslag-goed-summit', source: 'beheren beslag', target: 'goed', color: 'red' } },
-		  { group: 'edges', data: { id: 'goed-teruggave beslag-bvh', source: 'goed', target: 'teruggave beslag', color: 'green' } }
-
-		];
+			var self = this;
+		var oReq = new XMLHttpRequest();
+		var origin = document.location.origin;
+		if (document.location.hostname != "localhost") origin += "/edg"
+		oReq.open("GET", origin + "/tbl/sparql?query=SELECT++%3Ffl+%3Fdl+%0AWHERE+%7B%0A%09%3Fassignment+a+archimate%3AAssignment+.%0A%09%3Fassignment+archimate%3Asource+%3FassignmentSource+.++%0A++++%3Fassignment+archimate%3Atarget+%3FassignmentTarget+.++%0A%09%3Fassignment+archimate%3Aidentifier+%3FassignmentId+.%0A%0A+++%09%3Fc+archimate%3Aidentifier+%3FassignmentSource+.%0A+%09%3Ff+archimate%3Aidentifier+%3FassignmentTarget+.%0A%0A++%09%3Ff+a+sam%3AF+.%0A%09%3Ff+rdfs%3Alabel+%3Ffl+.%0A%09%3Ff+%5Esam%3AX+%3Fc+.%0A%09%3Fc+rdfs%3Alabel+%3Fcl+.%0A%09%3Fs+%5Esam%3AR+%3Ff+.%0A%09%3Fs+rdfs%3Alabel+%3Fsl+.%0A%09+%0A%09OPTIONAL+%7B%0A%09%09%3Fassociation+archimate%3Atarget+%3FassignmentId+.%0A%09%09%3Fassociation+archimate%3Asource+%3FdId+.%0A%09%09%3Fd++archimate%3Aidentifier+%3FdId+.%0A++++++++%3Fd+rdfs%3Alabel+%3Fdl+.%0A%09%7D%0A%0A%09FILTER+%28%3Fsl+%3D+%22"+s+"%22+%29+.%0A%7D&default-graph-uri=urn%3Ax-evn-master%3Aarchimate_example_model&format=json&with-imports=true");
+		oReq.send();
 		
-		var model = [
-{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM","color":null,"version":null,"documentation":null,"source":"partij","target":"gezichtsfoto"}
-},{"group":"edges","data":{"style": "dotted", "id":"SBB: Administreren Identiteits Vaststelling-FCM1","color":null,"version":null,"documentation":null,"source":"partij","target":"vingerafdruk"}
-},{"group":"edges","data":{"style": "dashed", "id":"SBB: Administreren Identiteits Vaststelling-FCM2","color":null,"version":null,"documentation":null,"source":"partij","target":"identificatie"}
-},{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM3","color":null,"version":null,"documentation":null,"source":"verificatie","target":"gezichtsfoto"}
-},{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM4","color":null,"version":null,"documentation":null,"source":"verificatie","target":"vingerafdruk"}
-},{"group":"edges","data":{"id":"SBB: Administreren Identiteits Vaststelling-FCM5","color":null,"version":null,"documentation":null,"source":"verificatie","target":"identificatie"}
+		oReq.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {	
+    	    	callback(JSON.parse(this.responseText).results.bindings);
+	    	}
+		};
 
-},{"group":"nodes","data":{"id":"gezichtsfoto","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
-},{"group":"nodes","data":{"id":"partij","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
-},{"group":"nodes","data":{"id":"verificatie","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
-},{"group":"nodes","data":{"id":"identificatie","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
-},{"group":"nodes","data":{"id":"vingerafdruk","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
-},{"group":"nodes","data":{"id":"identiteitsbewijs","color":"black","version":null,"documentation":null,"foo":10,"bar":0,"baz":0,"bax":0}
-
-
-}]
-		
-		
-		
-	callback(model)*/ 
 }

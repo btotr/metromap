@@ -409,7 +409,7 @@ endpoint:ReturnSWPDocument_1
                                           ] ;
                                         sp:arg2 "office" ;
                                       ] ;
-                                    sp:arg2 "#cccccc" ;
+                                    sp:arg2 "#CCCCCC" ;
                                     sp:arg3 [
                                         a functions:getColor ;
                                         sp:arg1 [
