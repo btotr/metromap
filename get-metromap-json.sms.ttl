@@ -710,7 +710,7 @@ endpoint:ReturnSWPDocument_1
                                           sp:arg1 [
                                               sp:varName "pHlabel" ;
                                             ] ;
-                                          sp:arg2 "Coördineren werk" ;
+                                          sp:arg2 "Coördineren werk !!verander werkproces!!" ;
                                         ] ;
                                     ]
                                   ) ;
@@ -1236,6 +1236,193 @@ endpoint:ReturnSWPDocument_1
                                         sp:varName "labelC" ;
                                       ] ;
                                   ] ;
+                                sp:variable [
+                                    sp:varName "color" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression [
+                                    sp:varName "idS" ;
+                                  ] ;
+                                sp:variable [
+                                    sp:varName "id" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "1" ;
+                                sp:variable [
+                                    sp:varName "width" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "" ;
+                                sp:variable [
+                                    sp:varName "label" ;
+                                  ] ;
+                              ]
+                            )
+                            (
+                              [
+                                a sp:Bind ;
+                                sp:expression "flow between generic services and ABB" ;
+                                sp:variable [
+                                    sp:varName "comment" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object m:L ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "idS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "idS" ;
+                                  ] ;
+                                sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "sourceS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "targetS" ;
+                                  ] ;
+                                sp:predicate m:T ;
+                                sp:subject [
+                                    sp:varName "idS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "labelC" ;
+                                  ] ;
+                                sp:predicate rdfs:label ;
+                                sp:subject [
+                                    sp:varName "idS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acS" ;
+                                  ] ;
+                                sp:predicate sam:A ;
+                                sp:subject [
+                                    sp:varName "idS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object p3.0:ApplicationService ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "acS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acSId" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "acS" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acSId" ;
+                                  ] ;
+                                sp:predicate p3.0:target ;
+                                sp:subject [
+                                    sp:varName "serving" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object p3.0:Serving ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "serving" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "servingId" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "serving" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression [
+                                    a sp:md5 ;
+                                    sp:arg1 [
+                                        a sp:concat ;
+                                        sp:arg1 [
+                                            a sp:str ;
+                                            sp:arg1 [
+                                                sp:varName "idS" ;
+                                              ] ;
+                                          ] ;
+                                        sp:arg2 [
+                                            a sp:str ;
+                                            sp:arg1 [
+                                                sp:varName "sourceS" ;
+                                              ] ;
+                                          ] ;
+                                        sp:arg3 [
+                                            a sp:str ;
+                                            sp:arg1 [
+                                                sp:varName "targetS" ;
+                                              ] ;
+                                          ] ;
+                                      ] ;
+                                  ] ;
+                                sp:variable [
+                                    sp:varName "source" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acTId" ;
+                                  ] ;
+                                sp:predicate p3.0:source ;
+                                sp:subject [
+                                    sp:varName "serving" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "acTId" ;
+                                  ] ;
+                                sp:predicate p3.0:identifier ;
+                                sp:subject [
+                                    sp:varName "acT" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression [
+                                    sp:varName "acT" ;
+                                  ] ;
+                                sp:variable [
+                                    sp:varName "target" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "solid" ;
+                                sp:variable [
+                                    sp:varName "style" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "#0000FF" ;
                                 sp:variable [
                                     sp:varName "color" ;
                                   ] ;

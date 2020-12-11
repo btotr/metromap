@@ -43,12 +43,12 @@ sam:BB
             sp:object m:L ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "sbb" ;
+                sp:varName "bb" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "sbb" ;
+                sp:varName "bb" ;
               ] ;
             sp:predicate m:T ;
             sp:subject [
@@ -61,7 +61,7 @@ sam:BB
               ] ;
             sp:predicate m:T ;
             sp:subject [
-                sp:varName "sbb" ;
+                sp:varName "bb" ;
               ] ;
           ]
         ) ;
@@ -83,13 +83,29 @@ sam:BB
               ] ;
           ]
           [
-            sp:object [
-                sp:varName "i" ;
-              ] ;
-            sp:predicate sam:A ;
-            sp:subject [
-                sp:varName "abb" ;
-              ] ;
+            a sp:Union ;
+            sp:elements (
+                (
+                  [
+                    sp:object archimate:ApplicationService ;
+                    sp:predicate rdf:type ;
+                    sp:subject [
+                        sp:varName "i" ;
+                      ] ;
+                  ]
+                )
+                (
+                  [
+                    sp:object [
+                        sp:varName "i" ;
+                      ] ;
+                    sp:predicate sam:A ;
+                    sp:subject [
+                        sp:varName "abb" ;
+                      ] ;
+                  ]
+                )
+              ) ;
           ]
           [
             sp:object sam:I ;
@@ -126,8 +142,17 @@ sam:BB
                 ]
               ) ;
           ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                sp:varName "abb" ;
+              ] ;
+            sp:variable [
+                sp:varName "bb" ;
+              ] ;
+          ]
         ) ;
-      rdfs:comment "00003 metromap mapping" ;
+      rdfs:comment "00003 metromap mapping (change mode to ?sbb or ?abb)" ;
     ] ;
   spin:rule [
       a sp:Construct ;
@@ -533,6 +558,64 @@ archimate:Aggregation
           ]
         ) ;
       rdfs:comment "00001 aggregation" ;
+    ] ;
+.
+archimate:ApplicationService
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object sam:I ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object archimate:ApplicationService ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sId" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sId" ;
+              ] ;
+            sp:predicate archimate:source ;
+            sp:subject [
+                sp:varName "serving" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:Serving ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "serving" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "servingId" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "serving" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 applicationservice as information object (generic services like multimedia or digital signature)" ;
     ] ;
 .
 archimate:Assignment
