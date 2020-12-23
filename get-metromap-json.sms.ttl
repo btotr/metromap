@@ -407,22 +407,10 @@ endpoint:ReturnSWPDocument_1
                                                 sp:varName "label" ;
                                               ] ;
                                           ] ;
-                                        sp:arg2 "office" ;
+                                        sp:arg2 "fo (opp)" ;
                                       ] ;
-                                    sp:arg2 "#CCCCCC" ;
-                                    sp:arg3 [
-                                        a functions:getColor ;
-                                        sp:arg1 [
-                                            a sp:strafter ;
-                                            sp:arg1 [
-                                                a sp:str ;
-                                                sp:arg1 [
-                                                    sp:varName "label" ;
-                                                  ] ;
-                                              ] ;
-                                            sp:arg2 "-" ;
-                                          ] ;
-                                      ] ;
+                                    sp:arg2 "#FF0000" ;
+                                    sp:arg3 "#CCCCCC" ;
                                   ] ;
                                 sp:variable [
                                     sp:varName "color" ;
@@ -471,6 +459,16 @@ endpoint:ReturnSWPDocument_1
                                     sp:arg2 [
                                         sp:varName "target" ;
                                       ] ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Filter ;
+                                sp:expression [
+                                    a sp:ne ;
+                                    sp:arg1 [
+                                        sp:varName "label" ;
+                                      ] ;
+                                    sp:arg2 "afhankelijkheid" ;
                                   ] ;
                               ]
                             )
@@ -701,16 +699,6 @@ endpoint:ReturnSWPDocument_1
                                       sp:predicate rdfs:label ;
                                       sp:subject [
                                           sp:varName "pH" ;
-                                        ] ;
-                                    ]
-                                    [
-                                      a sp:Filter ;
-                                      sp:expression [
-                                          a sp:eq ;
-                                          sp:arg1 [
-                                              sp:varName "pHlabel" ;
-                                            ] ;
-                                          sp:arg2 "Coördineren werk !!verander werkproces!!" ;
                                         ] ;
                                     ]
                                   ) ;
@@ -1448,6 +1436,23 @@ endpoint:ReturnSWPDocument_1
                                 sp:expression "" ;
                                 sp:variable [
                                     sp:varName "label" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "false" ;
+                                sp:variable [
+                                    sp:varName "gs" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Filter ;
+                                sp:expression [
+                                    a sp:eq ;
+                                    sp:arg1 [
+                                        sp:varName "gs" ;
+                                      ] ;
+                                    sp:arg2 "true" ;
                                   ] ;
                               ]
                             )

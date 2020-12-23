@@ -87,7 +87,7 @@ sam:BB
             sp:elements (
                 (
                   [
-                    sp:object archimate:ApplicationService ;
+                    sp:object archimate:ApplicationServiceDisabled ;
                     sp:predicate rdf:type ;
                     sp:subject [
                         sp:varName "i" ;
@@ -145,7 +145,7 @@ sam:BB
           [
             a sp:Bind ;
             sp:expression [
-                sp:varName "abb" ;
+                sp:varName "sbb" ;
               ] ;
             sp:variable [
                 sp:varName "bb" ;
