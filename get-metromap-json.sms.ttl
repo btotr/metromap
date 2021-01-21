@@ -407,9 +407,9 @@ endpoint:ReturnSWPDocument_1
                                                 sp:varName "label" ;
                                               ] ;
                                           ] ;
-                                        sp:arg2 "fo (opp)" ;
+                                        sp:arg2 "TRIS" ;
                                       ] ;
-                                    sp:arg2 "#FF0000" ;
+                                    sp:arg2 "#00FF00" ;
                                     sp:arg3 "#CCCCCC" ;
                                   ] ;
                                 sp:variable [
@@ -699,6 +699,23 @@ endpoint:ReturnSWPDocument_1
                                       sp:predicate rdfs:label ;
                                       sp:subject [
                                           sp:varName "pH" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:Bind ;
+                                      sp:expression "false" ;
+                                      sp:variable [
+                                          sp:varName "bp" ;
+                                        ] ;
+                                    ]
+                                    [
+                                      a sp:Filter ;
+                                      sp:expression [
+                                          a sp:eq ;
+                                          sp:arg1 [
+                                              sp:varName "bp" ;
+                                            ] ;
+                                          sp:arg2 "true" ;
                                         ] ;
                                     ]
                                   ) ;
