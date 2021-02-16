@@ -145,7 +145,7 @@ sam:BB
           [
             a sp:Bind ;
             sp:expression [
-                sp:varName "sbb" ;
+                sp:varName "abb" ;
               ] ;
             sp:variable [
                 sp:varName "bb" ;
@@ -560,64 +560,6 @@ archimate:Aggregation
       rdfs:comment "00001 aggregation" ;
     ] ;
 .
-archimate:ApplicationService
-  spin:rule [
-      a sp:Construct ;
-      sp:templates (
-          [
-            sp:object sam:I ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object archimate:ApplicationService ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "sId" ;
-              ] ;
-            sp:predicate archimate:identifier ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "sId" ;
-              ] ;
-            sp:predicate archimate:source ;
-            sp:subject [
-                sp:varName "serving" ;
-              ] ;
-          ]
-          [
-            sp:object archimate:Serving ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "serving" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "servingId" ;
-              ] ;
-            sp:predicate archimate:identifier ;
-            sp:subject [
-                sp:varName "serving" ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "00001 applicationservice as information object (generic services like multimedia or digital signature)" ;
-    ] ;
-.
 archimate:Assignment
   spin:rule [
       a sp:Construct ;
@@ -746,22 +688,55 @@ archimate:Association
                 a sp:notExists ;
                 sp:elements (
                     [
+                      sp:object [
+                          sp:varName "rc" ;
+                        ] ;
+                      sp:predicate archimate:identifier ;
+                      sp:subject spin:_this ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "rc" ;
+                        ] ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#relationshipRef-connection> ;
+                      sp:subject [
+                          sp:varName "clc" ;
+                        ] ;
+                    ]
+                    [
                       a sp:TriplePath ;
-                      sp:object "false" ;
+                      sp:object [
+                          sp:varName "lc" ;
+                        ] ;
                       sp:path [
                           a sp:SeqPath ;
-                          sp:path1 [
-                              a sp:SeqPath ;
-                              sp:path1 [
-                                  a sp:SeqPath ;
-                                  sp:path1 archimate:propertiesRef ;
-                                  sp:path2 archimate:propertyRef ;
-                                ] ;
-                              sp:path2 archimate:valueRef ;
-                            ] ;
-                          sp:path2 <http://www.linkedmodel.org/schema/dtype#value> ;
+                          sp:path1 <http://www.topbraid.org/2007/05/composite.owl#child> ;
+                          sp:path2 <http://www.topbraid.org/2007/05/composite.owl#child> ;
                         ] ;
-                      sp:subject spin:_this ;
+                      sp:subject [
+                          sp:varName "clc" ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "128" ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#b-lineColor> ;
+                      sp:subject [
+                          sp:varName "lc" ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "0" ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#g-lineColor> ;
+                      sp:subject [
+                          sp:varName "lc" ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "128" ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#r-lineColor> ;
+                      sp:subject [
+                          sp:varName "lc" ;
+                        ] ;
                     ]
                   ) ;
               ] ;
@@ -840,22 +815,55 @@ archimate:Association
                 a sp:exists ;
                 sp:elements (
                     [
+                      sp:object [
+                          sp:varName "rc" ;
+                        ] ;
+                      sp:predicate archimate:identifier ;
+                      sp:subject spin:_this ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "rc" ;
+                        ] ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#relationshipRef-connection> ;
+                      sp:subject [
+                          sp:varName "clc" ;
+                        ] ;
+                    ]
+                    [
                       a sp:TriplePath ;
-                      sp:object "false" ;
+                      sp:object [
+                          sp:varName "lc" ;
+                        ] ;
                       sp:path [
                           a sp:SeqPath ;
-                          sp:path1 [
-                              a sp:SeqPath ;
-                              sp:path1 [
-                                  a sp:SeqPath ;
-                                  sp:path1 archimate:propertiesRef ;
-                                  sp:path2 archimate:propertyRef ;
-                                ] ;
-                              sp:path2 archimate:valueRef ;
-                            ] ;
-                          sp:path2 <http://www.linkedmodel.org/schema/dtype#value> ;
+                          sp:path1 <http://www.topbraid.org/2007/05/composite.owl#child> ;
+                          sp:path2 <http://www.topbraid.org/2007/05/composite.owl#child> ;
                         ] ;
-                      sp:subject spin:_this ;
+                      sp:subject [
+                          sp:varName "clc" ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "128" ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#b-lineColor> ;
+                      sp:subject [
+                          sp:varName "lc" ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "0" ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#g-lineColor> ;
+                      sp:subject [
+                          sp:varName "lc" ;
+                        ] ;
+                    ]
+                    [
+                      sp:object "128" ;
+                      sp:predicate <file:///metromap/resources/fo-200.xml#r-lineColor> ;
+                      sp:subject [
+                          sp:varName "lc" ;
+                        ] ;
                     ]
                   ) ;
               ] ;
@@ -1021,6 +1029,64 @@ archimate:Specialization
           ]
         ) ;
       rdfs:comment "00001 specialization" ;
+    ] ;
+.
+archimate:TechnologyService
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object sam:I ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object archimate:TechnologyService ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sId" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sId" ;
+              ] ;
+            sp:predicate archimate:source ;
+            sp:subject [
+                sp:varName "serving" ;
+              ] ;
+          ]
+          [
+            sp:object archimate:Serving ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "serving" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "servingId" ;
+              ] ;
+            sp:predicate archimate:identifier ;
+            sp:subject [
+                sp:varName "serving" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "00001 technology service as information object (generic services like multimedia or digital signature)" ;
     ] ;
 .
 owl:Thing

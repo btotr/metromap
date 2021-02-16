@@ -1251,6 +1251,23 @@ endpoint:ReturnSWPDocument_1
                                     sp:varName "label" ;
                                   ] ;
                               ]
+                              [
+                                a sp:Bind ;
+                                sp:expression "false" ;
+                                sp:variable [
+                                    sp:varName "df" ;
+                                  ] ;
+                              ]
+                              [
+                                a sp:Filter ;
+                                sp:expression [
+                                    a sp:eq ;
+                                    sp:arg1 [
+                                        sp:varName "df" ;
+                                      ] ;
+                                    sp:arg2 "true" ;
+                                  ] ;
+                              ]
                             )
                             (
                               [
@@ -1295,6 +1312,13 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
+                                sp:object p3.0:ApplicationComponent ;
+                                sp:predicate rdf:type ;
+                                sp:subject [
+                                    sp:varName "acS" ;
+                                  ] ;
+                              ]
+                              [
                                 sp:object [
                                     sp:varName "acS" ;
                                   ] ;
@@ -1304,24 +1328,35 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
-                                sp:object p3.0:ApplicationService ;
-                                sp:predicate rdf:type ;
+                                sp:object [
+                                    sp:varName "aF" ;
+                                  ] ;
+                                sp:predicate sam:X ;
                                 sp:subject [
                                     sp:varName "acS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "acSId" ;
+                                    sp:varName "aS" ;
+                                  ] ;
+                                sp:predicate sam:R ;
+                                sp:subject [
+                                    sp:varName "aF" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "iaS" ;
                                   ] ;
                                 sp:predicate p3.0:identifier ;
                                 sp:subject [
-                                    sp:varName "acS" ;
+                                    sp:varName "aS" ;
                                   ] ;
                               ]
                               [
                                 sp:object [
-                                    sp:varName "acSId" ;
+                                    sp:varName "iaS" ;
                                   ] ;
                                 sp:predicate p3.0:target ;
                                 sp:subject [
@@ -1337,11 +1372,20 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 sp:object [
-                                    sp:varName "servingId" ;
+                                    sp:varName "gvI" ;
+                                  ] ;
+                                sp:predicate p3.0:source ;
+                                sp:subject [
+                                    sp:varName "serving" ;
+                                  ] ;
+                              ]
+                              [
+                                sp:object [
+                                    sp:varName "gvI" ;
                                   ] ;
                                 sp:predicate p3.0:identifier ;
                                 sp:subject [
-                                    sp:varName "serving" ;
+                                    sp:varName "gv" ;
                                   ] ;
                               ]
                               [
@@ -1375,27 +1419,9 @@ endpoint:ReturnSWPDocument_1
                                   ] ;
                               ]
                               [
-                                sp:object [
-                                    sp:varName "acTId" ;
-                                  ] ;
-                                sp:predicate p3.0:source ;
-                                sp:subject [
-                                    sp:varName "serving" ;
-                                  ] ;
-                              ]
-                              [
-                                sp:object [
-                                    sp:varName "acTId" ;
-                                  ] ;
-                                sp:predicate p3.0:identifier ;
-                                sp:subject [
-                                    sp:varName "acT" ;
-                                  ] ;
-                              ]
-                              [
                                 a sp:Bind ;
                                 sp:expression [
-                                    sp:varName "acT" ;
+                                    sp:varName "gv" ;
                                   ] ;
                                 sp:variable [
                                     sp:varName "target" ;
@@ -1440,9 +1466,9 @@ endpoint:ReturnSWPDocument_1
                               ]
                               [
                                 a sp:Bind ;
-                                sp:expression "false" ;
+                                sp:expression "true" ;
                                 sp:variable [
-                                    sp:varName "gs" ;
+                                    sp:varName "gvd" ;
                                   ] ;
                               ]
                               [
@@ -1450,7 +1476,7 @@ endpoint:ReturnSWPDocument_1
                                 sp:expression [
                                     a sp:eq ;
                                     sp:arg1 [
-                                        sp:varName "gs" ;
+                                        sp:varName "gvd" ;
                                       ] ;
                                     sp:arg2 "true" ;
                                   ] ;
@@ -1504,26 +1530,6 @@ endpoint:ReturnSWPDocument_1
                           ] ;
                         sp:variable [
                             sp:varName "idLabel" ;
-                          ] ;
-                      ]
-                      [
-                        a sp:Filter ;
-                        sp:expression [
-                            a sp:or ;
-                            sp:arg1 [
-                                a sp:eq ;
-                                sp:arg1 [
-                                    sp:varName "class" ;
-                                  ] ;
-                                sp:arg2 m:S ;
-                              ] ;
-                            sp:arg2 [
-                                a sp:eq ;
-                                sp:arg1 [
-                                    sp:varName "class" ;
-                                  ] ;
-                                sp:arg2 m:L ;
-                              ] ;
                           ] ;
                       ]
                     ) ;
